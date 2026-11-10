@@ -8,7 +8,6 @@ export async function updateSession(request: NextRequest) {
   });
 
   if (!isSupabaseConfigured()) {
-    // Supabase credentials not set yet; permit navigation so user can configure
     return supabaseResponse;
   }
 
@@ -55,7 +54,6 @@ export async function updateSession(request: NextRequest) {
 
   const isAdminRoute = pathname.startsWith("/admin");
 
-  // Redirect unauthenticated user from protected routes to /login
   if (!user && isProtectedRoute) {
     const redirectUrl = request.nextUrl.clone();
     redirectUrl.pathname = "/login";
@@ -63,14 +61,12 @@ export async function updateSession(request: NextRequest) {
     return NextResponse.redirect(redirectUrl);
   }
 
-  // Redirect authenticated user from public auth routes to /dashboard
   if (user && isAuthRoute) {
     const redirectUrl = request.nextUrl.clone();
     redirectUrl.pathname = "/dashboard";
     return NextResponse.redirect(redirectUrl);
   }
 
-  // Check admin privileges for /admin routes
   if (user && isAdminRoute) {
     const { data: profile } = await supabase
       .from("profiles")
@@ -86,7 +82,6 @@ export async function updateSession(request: NextRequest) {
     }
   }
 
-  // Root redirect: if logged in go to dashboard, else login
   if (pathname === "/") {
     const redirectUrl = request.nextUrl.clone();
     redirectUrl.pathname = user ? "/dashboard" : "/login";
