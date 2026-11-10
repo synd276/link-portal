@@ -49,14 +49,6 @@ jobs:
             echo "=== .vercel/output/config.json ==="
             cat .vercel/output/config.json
           fi
-          if [ -d .vercel/output/static ]; then
-            echo "=== .vercel/output/static contents ==="
-            ls -la .vercel/output/static
-          fi
-          if [ -d .vercel/output/functions ]; then
-            echo "=== .vercel/output/functions contents ==="
-            ls -la .vercel/output/functions
-          fi
 
       - name: Deploy to Vercel production
         id: vercel_deploy
@@ -65,14 +57,25 @@ jobs:
           echo "=== Raw Deployment Output ==="
           echo "$DEPLOY_OUTPUT"
           
-          # Extract deployment URL (starts with https://)
-          DEPLOY_URL=$(echo "$DEPLOY_OUTPUT" | grep -o 'https://[^ ]*' | head -n 1)
+          # Extract real deployment URL (ending in .vercel.app)
+          DEPLOY_URL=$(echo "$DEPLOY_OUTPUT" | grep -o 'https://[^ ]*\.vercel\.app' | head -n 1)
           echo "DEPLOY_URL=$DEPLOY_URL" >> $GITHUB_OUTPUT
           echo "Deployment URL: $DEPLOY_URL"
 
-          # Assign alias to quanlydachucnang.vercel.app if configured
-          echo "=== Setting alias for quanlydachucnang.vercel.app ==="
-          npx vercel@latest alias set "$DEPLOY_URL" quanlydachucnang.vercel.app --token="$VERCEL_TOKEN" || true
+          echo "=== Current Aliases on Vercel ==="
+          npx vercel@latest alias ls --token="$VERCEL_TOKEN" || true
+
+          # Assign aliases
+          if [ -n "$DEPLOY_URL" ]; then
+            echo "=== Setting alias for quanlydachucnang.vercel.app ==="
+            npx vercel@latest alias set "$DEPLOY_URL" quanlydachucnang.vercel.app --token="$VERCEL_TOKEN" || true
+
+            echo "=== Setting alias for quanlydachucnang-vy-8173.vercel.app ==="
+            npx vercel@latest alias set "$DEPLOY_URL" quanlydachucnang-vy-8173.vercel.app --token="$VERCEL_TOKEN" || true
+
+            echo "=== Setting alias for link-portal-vy-8173.vercel.app ==="
+            npx vercel@latest alias set "$DEPLOY_URL" link-portal-vy-8173.vercel.app --token="$VERCEL_TOKEN" || true
+          fi
 
       - name: Test Live Deployment Connectivity
         run: |
@@ -90,3 +93,11 @@ jobs:
           echo ""
           echo "=== Testing https://quanlydachucnang.vercel.app ==="
           curl -ILs "https://quanlydachucnang.vercel.app" | head -n 25
+
+          echo ""
+          echo "=== Testing https://quanlydachucnang-vy-8173.vercel.app ==="
+          curl -ILs "https://quanlydachucnang-vy-8173.vercel.app" | head -n 25
+
+          echo ""
+          echo "=== Testing https://link-portal-vy-8173.vercel.app ==="
+          curl -ILs "https://link-portal-vy-8173.vercel.app" | head -n 25
