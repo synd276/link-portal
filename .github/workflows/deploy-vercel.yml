@@ -30,7 +30,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: npm
           cache-dependency-path: package-lock.json
 
@@ -52,7 +52,7 @@ jobs:
 
           echo "" >> "$LOG_FILE"
           echo "=== 3. Inspecting .vercel/output ===" >> "$LOG_FILE"
-          find .vercel/output -maxdepth 3 >> "$LOG_FILE" 2>&1 || true
+          find .vercel/output -maxdepth 4 >> "$LOG_FILE" 2>&1 || true
 
           if [ -f .vercel/output/config.json ]; then
             echo "" >> "$LOG_FILE"
@@ -91,5 +91,5 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add run_logs/latest_deploy.txt
-          git commit -m "chore(ci): capture build output tree and config [skip ci]" || true
+          git commit -m "chore(ci): update build output diagnostics [skip ci]" || true
           git push origin main || true
