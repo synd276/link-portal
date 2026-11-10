@@ -1,0 +1,106 @@
+=== 1. Deploying Prebuilt Production ===
+Vercel CLI 65.14.0
+Retrieving project…
+Deploying vy-8173/link-portal
+Uploading [--------------------] (0.0B/5.8KB)
+Uploading [====================] (5.8KB/5.8KB)
+  Inspect         https://vercel.com/vy-8173/link-portal/3Uth9ceBJWK2HmRt1g1md92pQ79i
+  Production      https://link-portal-4rnsro5vo-vy-8173.vercel.app
+https://link-portal-4rnsro5vo-vy-8173.vercel.appBuilding…
+Building…
+[2K[1A[2K[G  Production      https://link-portal-4rnsro5vo-vy-8173.vercel.app
+Completing…
+▲ Aliased         https://quanlydachucnang.vercel.app
+
+✓ Ready in 4s
+
+Next steps:
+- Automatically deploy changes on every push by connecting Git:
+  vercel git connect
+- Check the production response:
+  vercel curl https://quanlydachucnang.vercel.app
+- View build logs:
+  vercel inspect link-portal-4rnsro5vo-vy-8173.vercel.app --logs
+- Create a new deployment from the same source:
+  vercel redeploy link-portal-4rnsro5vo-vy-8173.vercel.app
+=== Extracted DEPLOY_URL: https://link-portal-4rnsro5vo-vy-8173.vercel.app ===
+
+=== 2. Vercel Aliases ===
+Vercel CLI 65.14.0
+Fetching aliases under vy-8173
+> aliases found under vy-8173 [670ms]
+  source                                      url                                    age    
+  link-portal-hlib8z04j-vy-8173.vercel.app    quanlydachucnang-vy-8173.vercel.app    27m    
+  link-portal-nz1fjiw82-vy-8173.vercel.app    test-quanlydachucnang.vercel.app       56m    
+  link-portal-4rnsro5vo-vy-8173.vercel.app    quanlydachucnang.vercel.app             1h    
+  link-portal-4rnsro5vo-vy-8173.vercel.app    link-portal-vy-8173.vercel.app          3h    
+  link-portal-4uk3c358j-vy-8173.vercel.app    project-25jhf.vercel.app                3h    
+
+
+=== 3. Vercel Projects ===
+Vercel CLI 65.14.0
+Fetching projects in vy-8173
+> Projects found under vy-8173  [471ms]
+
+  Project Name   Latest Production URL                 Updated   Node Version   Status   
+  link-portal    https://quanlydachucnang.vercel.app   3s        26.x                    
+
+
+=== 4. Vercel Domains ===
+Vercel CLI 65.14.0
+Fetching Domains under vy-8173
+> 0 Domains found under vy-8173 [101ms]
+
+=== 5. Setting Aliases ===
+Vercel CLI 65.14.0
+> Assigning alias quanlydachucnang.vercel.app to https://link-portal-4rnsro5vo-vy-8173.vercel.app
+Creating alias
+> Success! https://quanlydachucnang.vercel.app now points to https://link-portal-4rnsro5vo-vy-8173.vercel.app [504ms]
+Vercel CLI 65.14.0
+> Assigning alias quanlydachucnang-vy-8173.vercel.app to https://link-portal-4rnsro5vo-vy-8173.vercel.app
+Creating alias
+> Success! https://quanlydachucnang-vy-8173.vercel.app now points to https://link-portal-4rnsro5vo-vy-8173.vercel.app [580ms]
+! quanlydachucnang-vy-8173.vercel.app is assigned to this deployment only, so it won't follow future production deployments.
+
+  To make it follow production, add it to project link-portal:
+    `vercel domains add quanlydachucnang-vy-8173.vercel.app link-portal`
+Vercel CLI 65.14.0
+> Assigning alias link-portal-vy-8173.vercel.app to https://link-portal-4rnsro5vo-vy-8173.vercel.app
+Creating alias
+> Success! https://link-portal-vy-8173.vercel.app now points to https://link-portal-4rnsro5vo-vy-8173.vercel.app [599ms]
+
+=== 6. Testing Connectivity ===
+--- Test DEPLOY_URL (https://link-portal-4rnsro5vo-vy-8173.vercel.app) ---
+HTTP/2 404 
+cache-control: public, max-age=0, must-revalidate
+content-type: text/plain; charset=utf-8
+date: Tue, 10 Nov 2026 07:56:03 GMT
+server: Vercel
+strict-transport-security: max-age=63072000; includeSubDomains; preload
+x-robots-tag: noindex
+x-vercel-error: NOT_FOUND
+x-vercel-id: cle1::fgm2q-1794297363171-ac2d98243e15
+content-length: 79
+
+--- Test quanlydachucnang.vercel.app ---
+HTTP/2 404 
+cache-control: public, max-age=0, must-revalidate
+content-type: text/plain; charset=utf-8
+date: Tue, 10 Nov 2026 07:56:03 GMT
+server: Vercel
+strict-transport-security: max-age=63072000; includeSubDomains; preload
+x-vercel-error: NOT_FOUND
+x-vercel-id: cle1::d9c7x-1794297363355-9fe07e28c879
+content-length: 79
+
+--- Test link-portal-vy-8173.vercel.app ---
+HTTP/2 404 
+cache-control: public, max-age=0, must-revalidate
+content-type: text/plain; charset=utf-8
+date: Tue, 10 Nov 2026 07:56:03 GMT
+server: Vercel
+strict-transport-security: max-age=63072000; includeSubDomains; preload
+x-vercel-error: NOT_FOUND
+x-vercel-id: cle1::kcf7n-1794297363536-e788897a71ee
+content-length: 79
+
