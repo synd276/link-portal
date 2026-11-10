@@ -1,14 +1,156 @@
-=== 1. Deploying Prebuilt Production ===
+=== 1. Vercel Pull ===
+Vercel CLI 65.14.0
+Retrieving project…
+> Downloading `production` environment variables for link-portal
+Downloading
+
+✓ Created         .vercel/.env.production.local file
+
+> Downloading project settings
+Downloaded project settings to ~/work/link-portal/link-portal/.vercel/project.json [0ms]
+
+=== 2. Vercel Build ===
+Vercel CLI 65.14.0
+WARNING! Build not running on Vercel. System environment variables will not be available.
+Installing dependencies...
+npm warn EBADENGINE Unsupported engine {
+npm warn EBADENGINE   package: '@supabase/auth-js@2.119.0',
+npm warn EBADENGINE   required: { node: '>=22.0.0' },
+npm warn EBADENGINE   current: { node: 'v20.20.2', npm: '10.8.2' }
+npm warn EBADENGINE }
+npm warn EBADENGINE Unsupported engine {
+npm warn EBADENGINE   package: '@supabase/functions-js@2.119.0',
+npm warn EBADENGINE   required: { node: '>=22.0.0' },
+npm warn EBADENGINE   current: { node: 'v20.20.2', npm: '10.8.2' }
+npm warn EBADENGINE }
+npm warn EBADENGINE Unsupported engine {
+npm warn EBADENGINE   package: '@supabase/postgrest-js@2.119.0',
+npm warn EBADENGINE   required: { node: '>=22.0.0' },
+npm warn EBADENGINE   current: { node: 'v20.20.2', npm: '10.8.2' }
+npm warn EBADENGINE }
+npm warn EBADENGINE Unsupported engine {
+npm warn EBADENGINE   package: '@supabase/realtime-js@2.119.0',
+npm warn EBADENGINE   required: { node: '>=22.0.0' },
+npm warn EBADENGINE   current: { node: 'v20.20.2', npm: '10.8.2' }
+npm warn EBADENGINE }
+npm warn EBADENGINE Unsupported engine {
+npm warn EBADENGINE   package: '@supabase/storage-js@2.119.0',
+npm warn EBADENGINE   required: { node: '>=22.0.0' },
+npm warn EBADENGINE   current: { node: 'v20.20.2', npm: '10.8.2' }
+npm warn EBADENGINE }
+npm warn EBADENGINE Unsupported engine {
+npm warn EBADENGINE   package: '@supabase/supabase-js@2.119.0',
+npm warn EBADENGINE   required: { node: '>=22.0.0' },
+npm warn EBADENGINE   current: { node: 'v20.20.2', npm: '10.8.2' }
+npm warn EBADENGINE }
+
+up to date in 703ms
+
+150 packages are looking for funding
+  run `npm fund` for details
+Running "npm run build"
+
+> link-portal@0.1.0 build
+> next build
+
+▲ Next.js 16.4.6 (Turbopack)
+✓ Running next.config.ts took 30ms
+Attention: Next.js now collects completely anonymous telemetry regarding usage.
+This information is used to shape Next.js' roadmap and prioritize features.
+You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
+https://nextjs.org/telemetry
+
+- Cache Components enabled
+- Partial Prefetching enabled
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 5.6s
+  Running TypeScript ...
+  Finished TypeScript in 4.6s ...
+  Collecting page data using 3 workers ...
+⚠️  Node.js 20 and below are deprecated and will no longer be supported in future versions of @supabase/supabase-js. Please upgrade to Node.js 22 or later. For more information, visit: https://github.com/orgs/supabase/discussions/45715
+⚠️  Node.js 20 and below are deprecated and will no longer be supported in future versions of @supabase/supabase-js. Please upgrade to Node.js 22 or later. For more information, visit: https://github.com/orgs/supabase/discussions/45715
+⚠️  Node.js 20 and below are deprecated and will no longer be supported in future versions of @supabase/supabase-js. Please upgrade to Node.js 22 or later. For more information, visit: https://github.com/orgs/supabase/discussions/45715
+  Generating static pages using 3 workers (0/20) ...
+  Generating static pages using 3 workers (5/20) 
+  Generating static pages using 3 workers (10/20) 
+  Generating static pages using 3 workers (15/20) 
+✓ Generating static pages using 3 workers (20/20) in 758ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ◐ /
+├ ○ /_not-found
+├ ◐ /admin
+├ ◐ /admin/categories
+├ ◐ /admin/settings
+├ ◐ /admin/users
+├ ◐ /admin/websites
+├ ◐ /categories
+├ ◐ /dashboard
+├ ○ /forgot-password
+├ ○ /login
+├ ◐ /recent
+├ ○ /register
+├ ○ /reset-password
+├ ◐ /settings
+├ ◐ /websites
+├ ◐ /websites/favorites
+└ ◐ /websites/personal
+
+
+ƒ Proxy (Middleware)
+
+○  (Static)             prerendered as static content
+◐  (Partial Prerender)  prerendered as static HTML with dynamic server-streamed content
+
+Build Completed in .vercel/output [13s]
+
+=== 3. Inspecting .vercel/output ===
+.vercel/output
+.vercel/output/config.json
+.vercel/output/builds.json
+.vercel/output/static
+.vercel/output/static/globe.svg
+.vercel/output/static/vercel.svg
+.vercel/output/static/file.svg
+.vercel/output/static/window.svg
+.vercel/output/static/next.svg
+.vercel/output/diagnostics
+.vercel/output/diagnostics/cli_traces.json
+
+=== 4. .vercel/output/config.json ===
+{
+  "version": 3,
+  "daemons": {},
+  "routes": [
+    {
+      "handle": "error"
+    },
+    {
+      "status": 404,
+      "src": "^(?!/api).*$",
+      "dest": "/404.html"
+    }
+  ],
+  "framework": {
+    "slug": "nextjs",
+    "version": "16.4.6"
+  },
+  "crons": []
+}
+
+=== 5. Vercel Deploy ===
 Vercel CLI 65.14.0
 Retrieving project…
 Deploying vy-8173/link-portal
 Uploading [--------------------] (0.0B/5.8KB)
 Uploading [====================] (5.8KB/5.8KB)
-  Inspect         https://vercel.com/vy-8173/link-portal/3Uth9ceBJWK2HmRt1g1md92pQ79i
-  Production      https://link-portal-4rnsro5vo-vy-8173.vercel.app
-https://link-portal-4rnsro5vo-vy-8173.vercel.appBuilding…
+  Inspect         https://vercel.com/vy-8173/link-portal/GULLUfHBqk63kg2mQJRGqv238rAr
+  Production      https://link-portal-3rwizd2kx-vy-8173.vercel.app
+https://link-portal-3rwizd2kx-vy-8173.vercel.appBuilding…
 Building…
-[2K[1A[2K[G  Production      https://link-portal-4rnsro5vo-vy-8173.vercel.app
+[2K[1A[2K[G  Production      https://link-portal-3rwizd2kx-vy-8173.vercel.app
 Completing…
 ▲ Aliased         https://quanlydachucnang.vercel.app
 
@@ -20,87 +162,48 @@ Next steps:
 - Check the production response:
   vercel curl https://quanlydachucnang.vercel.app
 - View build logs:
-  vercel inspect link-portal-4rnsro5vo-vy-8173.vercel.app --logs
+  vercel inspect link-portal-3rwizd2kx-vy-8173.vercel.app --logs
 - Create a new deployment from the same source:
-  vercel redeploy link-portal-4rnsro5vo-vy-8173.vercel.app
-=== Extracted DEPLOY_URL: https://link-portal-4rnsro5vo-vy-8173.vercel.app ===
+  vercel redeploy link-portal-3rwizd2kx-vy-8173.vercel.app
+DEPLOY_URL: https://link-portal-3rwizd2kx-vy-8173.vercel.app
 
-=== 2. Vercel Aliases ===
+=== 6. Setting Aliases ===
 Vercel CLI 65.14.0
-Fetching aliases under vy-8173
-> aliases found under vy-8173 [670ms]
-  source                                      url                                    age    
-  link-portal-hlib8z04j-vy-8173.vercel.app    quanlydachucnang-vy-8173.vercel.app    27m    
-  link-portal-nz1fjiw82-vy-8173.vercel.app    test-quanlydachucnang.vercel.app       56m    
-  link-portal-4rnsro5vo-vy-8173.vercel.app    quanlydachucnang.vercel.app             1h    
-  link-portal-4rnsro5vo-vy-8173.vercel.app    link-portal-vy-8173.vercel.app          3h    
-  link-portal-4uk3c358j-vy-8173.vercel.app    project-25jhf.vercel.app                3h    
-
-
-=== 3. Vercel Projects ===
-Vercel CLI 65.14.0
-Fetching projects in vy-8173
-> Projects found under vy-8173  [471ms]
-
-  Project Name   Latest Production URL                 Updated   Node Version   Status   
-  link-portal    https://quanlydachucnang.vercel.app   3s        26.x                    
-
-
-=== 4. Vercel Domains ===
-Vercel CLI 65.14.0
-Fetching Domains under vy-8173
-> 0 Domains found under vy-8173 [101ms]
-
-=== 5. Setting Aliases ===
-Vercel CLI 65.14.0
-> Assigning alias quanlydachucnang.vercel.app to https://link-portal-4rnsro5vo-vy-8173.vercel.app
+> Assigning alias quanlydachucnang.vercel.app to https://link-portal-3rwizd2kx-vy-8173.vercel.app
 Creating alias
-> Success! https://quanlydachucnang.vercel.app now points to https://link-portal-4rnsro5vo-vy-8173.vercel.app [504ms]
+> Success! https://quanlydachucnang.vercel.app now points to https://link-portal-3rwizd2kx-vy-8173.vercel.app [379ms]
 Vercel CLI 65.14.0
-> Assigning alias quanlydachucnang-vy-8173.vercel.app to https://link-portal-4rnsro5vo-vy-8173.vercel.app
+> Assigning alias link-portal-vy-8173.vercel.app to https://link-portal-3rwizd2kx-vy-8173.vercel.app
 Creating alias
-> Success! https://quanlydachucnang-vy-8173.vercel.app now points to https://link-portal-4rnsro5vo-vy-8173.vercel.app [580ms]
-! quanlydachucnang-vy-8173.vercel.app is assigned to this deployment only, so it won't follow future production deployments.
+> Success! https://link-portal-vy-8173.vercel.app now points to https://link-portal-3rwizd2kx-vy-8173.vercel.app [401ms]
 
-  To make it follow production, add it to project link-portal:
-    `vercel domains add quanlydachucnang-vy-8173.vercel.app link-portal`
-Vercel CLI 65.14.0
-> Assigning alias link-portal-vy-8173.vercel.app to https://link-portal-4rnsro5vo-vy-8173.vercel.app
-Creating alias
-> Success! https://link-portal-vy-8173.vercel.app now points to https://link-portal-4rnsro5vo-vy-8173.vercel.app [599ms]
-
-=== 6. Testing Connectivity ===
---- Test DEPLOY_URL (https://link-portal-4rnsro5vo-vy-8173.vercel.app) ---
+=== 7. Connectivity Tests ===
+--- Test DEPLOY_URL (https://link-portal-3rwizd2kx-vy-8173.vercel.app) ---
 HTTP/2 404 
 cache-control: public, max-age=0, must-revalidate
 content-type: text/plain; charset=utf-8
-date: Tue, 10 Nov 2026 07:56:03 GMT
+date: Tue, 10 Nov 2026 07:58:55 GMT
 server: Vercel
 strict-transport-security: max-age=63072000; includeSubDomains; preload
 x-robots-tag: noindex
 x-vercel-error: NOT_FOUND
-x-vercel-id: cle1::fgm2q-1794297363171-ac2d98243e15
+x-vercel-id: sfo1::zdfr8-1794297535805-90e9d4a4d465
 content-length: 79
 
+--- Content of DEPLOY_URL ---
+The page could not be found
+
+NOT_FOUND
+
+sfo1::rr4q5-1794297535928-88f62973c0ba
 --- Test quanlydachucnang.vercel.app ---
 HTTP/2 404 
 cache-control: public, max-age=0, must-revalidate
 content-type: text/plain; charset=utf-8
-date: Tue, 10 Nov 2026 07:56:03 GMT
+date: Tue, 10 Nov 2026 07:58:56 GMT
 server: Vercel
 strict-transport-security: max-age=63072000; includeSubDomains; preload
 x-vercel-error: NOT_FOUND
-x-vercel-id: cle1::d9c7x-1794297363355-9fe07e28c879
-content-length: 79
-
---- Test link-portal-vy-8173.vercel.app ---
-HTTP/2 404 
-cache-control: public, max-age=0, must-revalidate
-content-type: text/plain; charset=utf-8
-date: Tue, 10 Nov 2026 07:56:03 GMT
-server: Vercel
-strict-transport-security: max-age=63072000; includeSubDomains; preload
-x-vercel-error: NOT_FOUND
-x-vercel-id: cle1::kcf7n-1794297363536-e788897a71ee
+x-vercel-id: sfo1::c79qr-1794297536035-37021f4bc9e9
 content-length: 79
 
