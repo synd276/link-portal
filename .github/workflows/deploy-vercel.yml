@@ -70,6 +70,10 @@ jobs:
           echo "DEPLOY_URL=$DEPLOY_URL" >> $GITHUB_OUTPUT
           echo "Deployment URL: $DEPLOY_URL"
 
+          # Assign alias to quanlydachucnang.vercel.app if configured
+          echo "=== Setting alias for quanlydachucnang.vercel.app ==="
+          npx vercel@latest alias set "$DEPLOY_URL" quanlydachucnang.vercel.app --token="$VERCEL_TOKEN" || true
+
       - name: Test Live Deployment Connectivity
         run: |
           DEPLOY_URL="${{ steps.vercel_deploy.outputs.DEPLOY_URL }}"
@@ -81,10 +85,8 @@ jobs:
             echo ""
             echo "--> GET $DEPLOY_URL/login (Headers):"
             curl -ILs "$DEPLOY_URL/login" | head -n 25
-
-            echo ""
-            echo "--> Testing response body of /login:"
-            curl -s "$DEPLOY_URL/login" | head -n 30
-          else
-            echo "No deployment URL captured."
           fi
+
+          echo ""
+          echo "=== Testing https://quanlydachucnang.vercel.app ==="
+          curl -ILs "https://quanlydachucnang.vercel.app" | head -n 25

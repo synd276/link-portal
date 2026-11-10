@@ -18,7 +18,6 @@ export async function proxy(request: NextRequest) {
   });
 
   if (!isSupabaseConfigured()) {
-    // Supabase credentials not set yet; permit navigation so user can configure
     return supabaseResponse;
   }
 
@@ -96,10 +95,10 @@ export async function proxy(request: NextRequest) {
     }
   }
 
-  // Root redirect: if logged in go to dashboard, else login
-  if (pathname === "/") {
+  // If logged in and on root landing page, redirect to dashboard
+  if (pathname === "/" && user) {
     const redirectUrl = request.nextUrl.clone();
-    redirectUrl.pathname = user ? "/dashboard" : "/login";
+    redirectUrl.pathname = "/dashboard";
     return NextResponse.redirect(redirectUrl);
   }
 
