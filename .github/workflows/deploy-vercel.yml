@@ -1,0 +1,90 @@
+name: Deploy to Vercel
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: vercel-production
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    name: Deploy production
+    runs-on: ubuntu-latest
+    env:
+      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+      VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Pull Vercel production configuration
+        run: npx vercel@latest pull --yes --environment=production --token="$VERCEL_TOKEN"
+
+      - name: Build prebuilt deployment output
+        run: npx vercel@latest build --prod --token="$VERCEL_TOKEN"
+
+      - name: Inspect Prebuilt Bundle Output
+        run: |
+          echo "=== .vercel/output directory structure ==="
+          ls -la .vercel/output
+          if [ -f .vercel/output/config.json ]; then
+            echo "=== .vercel/output/config.json ==="
+            cat .vercel/output/config.json
+          fi
+          if [ -d .vercel/output/static ]; then
+            echo "=== .vercel/output/static contents ==="
+            ls -la .vercel/output/static
+          fi
+          if [ -d .vercel/output/functions ]; then
+            echo "=== .vercel/output/functions contents ==="
+            ls -la .vercel/output/functions
+          fi
+
+      - name: Deploy to Vercel production
+        id: vercel_deploy
+        run: |
+          DEPLOY_OUTPUT=$(npx vercel@latest deploy --prebuilt --prod --token="$VERCEL_TOKEN")
+          echo "=== Raw Deployment Output ==="
+          echo "$DEPLOY_OUTPUT"
+          
+          # Extract deployment URL (starts with https://)
+          DEPLOY_URL=$(echo "$DEPLOY_OUTPUT" | grep -o 'https://[^ ]*' | head -n 1)
+          echo "DEPLOY_URL=$DEPLOY_URL" >> $GITHUB_OUTPUT
+          echo "Deployment URL: $DEPLOY_URL"
+
+      - name: Test Live Deployment Connectivity
+        run: |
+          DEPLOY_URL="${{ steps.vercel_deploy.outputs.DEPLOY_URL }}"
+          echo "=== Testing Deployment URL: $DEPLOY_URL ==="
+          if [ -n "$DEPLOY_URL" ]; then
+            echo "--> GET $DEPLOY_URL (Headers):"
+            curl -ILs "$DEPLOY_URL" | head -n 25
+
+            echo ""
+            echo "--> GET $DEPLOY_URL/login (Headers):"
+            curl -ILs "$DEPLOY_URL/login" | head -n 25
+
+            echo ""
+            echo "--> Testing response body of /login:"
+            curl -s "$DEPLOY_URL/login" | head -n 30
+          else
+            echo "No deployment URL captured."
+          fi

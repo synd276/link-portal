@@ -1,69 +1,128 @@
-import Image from "next/image";
+import Link from "next/link";
+import { redirect } from "next/navigation";
+import { Compass, ShieldCheck, Zap, LayoutGrid, Bookmark, ArrowRight } from "lucide-react";
+import { createClient, isSupabaseConfigured } from "@/lib/supabase/server";
+import { Button } from "@/components/ui/button";
+import { ThemeToggle } from "@/components/theme-toggle";
 
-export default function Home() {
+export default async function HomePage() {
+  if (isSupabaseConfigured()) {
+    const supabase = await createClient();
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+
+    if (user) {
+      redirect("/dashboard");
+    }
+  }
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
+    <div className="min-h-screen flex flex-col bg-background">
+      {/* Header */}
+      <header className="border-b bg-background/80 backdrop-blur-md sticky top-0 z-40">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div className="h-9 w-9 rounded-xl bg-primary text-primary-foreground flex items-center justify-center shadow-xs">
+              <Compass className="h-5 w-5" />
+            </div>
+            <span className="font-bold text-lg tracking-tight">Link Portal</span>
+          </div>
+
+          <div className="flex items-center gap-3">
+            <ThemeToggle />
+            <Button variant="ghost" asChild>
+              <Link href="/login">Đăng nhập</Link>
+            </Button>
+            <Button asChild>
+              <Link href="/register">
+                Bắt đầu ngay
+                <ArrowRight className="ml-1.5 h-4 w-4" />
+              </Link>
+            </Button>
+          </div>
+        </div>
+      </header>
+
+      {/* Hero Section */}
+      <main className="flex-1">
+        <section className="py-20 sm:py-28 text-center max-w-4xl mx-auto px-4">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary mb-6">
+            <Zap className="h-3.5 w-3.5" />
+            Nền tảng quản lý liên kết tập trung thế hệ mới
+          </div>
+
+          <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight text-foreground leading-tight">
+            Quản lý & truy cập mọi website của bạn tại một nơi
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+
+          <p className="mt-6 text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+            Link Portal giúp bạn lưu trữ, phân loại danh mục, đánh dấu yêu thích và tìm kiếm nhanh chóng các website quan trọng cho công việc và học tập.
           </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
+            <Button size="lg" className="h-12 px-8 text-base shadow-md" asChild>
+              <Link href="/register">
+                Tạo tài khoản miễn phí
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
+            <Button size="lg" variant="outline" className="h-12 px-8 text-base" asChild>
+              <Link href="/login">
+                Đăng nhập hệ thống
+              </Link>
+            </Button>
+          </div>
+        </section>
+
+        {/* Feature Grid */}
+        <section className="py-16 bg-muted/40 border-y">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div className="p-6 rounded-2xl bg-card border shadow-xs space-y-3">
+                <div className="h-10 w-10 rounded-lg bg-blue-500/10 text-blue-600 flex items-center justify-center">
+                  <LayoutGrid className="h-5 w-5" />
+                </div>
+                <h3 className="font-semibold text-lg">Bố cục 3 cột hiện đại</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Trải nghiệm SaaS chuẩn mực với thanh điều hướng bên trái, lưới website trung tâm và thanh tiện ích ghi chú nhanh bên phải.
+                </p>
+              </div>
+
+              <div className="p-6 rounded-2xl bg-card border shadow-xs space-y-3">
+                <div className="h-10 w-10 rounded-lg bg-amber-500/10 text-amber-600 flex items-center justify-center">
+                  <Bookmark className="h-5 w-5" />
+                </div>
+                <h3 className="font-semibold text-lg">Phân loại & Yêu thích</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Tự động đồng bộ website toàn hệ thống (Global) kết hợp với kho liên kết cá nhân (Personal) bảo mật riêng tư.
+                </p>
+              </div>
+
+              <div className="p-6 rounded-2xl bg-card border shadow-xs space-y-3">
+                <div className="h-10 w-10 rounded-lg bg-emerald-500/10 text-emerald-600 flex items-center justify-center">
+                  <ShieldCheck className="h-5 w-5" />
+                </div>
+                <h3 className="font-semibold text-lg">Bảo mật cấp cơ sở dữ liệu</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Supabase Row Level Security (RLS) bảo vệ từng liên kết, xác thực quyền Admin an toàn và phân quyền người dùng chặt chẽ.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
       </main>
+
+      {/* Footer */}
+      <footer className="border-t py-8 text-center text-sm text-muted-foreground">
+        <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="flex items-center gap-2 font-medium">
+            <Compass className="h-4 w-4 text-primary" />
+            <span>Link Portal</span>
+          </div>
+          <p>© 2026 Link Portal. Xây dựng với Next.js, Supabase & Tailwind CSS.</p>
+        </div>
+      </footer>
     </div>
   );
 }
