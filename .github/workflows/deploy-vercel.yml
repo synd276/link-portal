@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 concurrency:
   group: vercel-production
@@ -24,6 +24,8 @@ jobs:
     steps:
       - name: Check out source
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
@@ -41,63 +43,57 @@ jobs:
       - name: Build prebuilt deployment output
         run: npx vercel@latest build --prod --token="$VERCEL_TOKEN"
 
-      - name: Inspect Prebuilt Bundle Output
-        run: |
-          echo "=== .vercel/output directory structure ==="
-          ls -la .vercel/output
-          if [ -f .vercel/output/config.json ]; then
-            echo "=== .vercel/output/config.json ==="
-            cat .vercel/output/config.json
-          fi
-
       - name: Deploy to Vercel production
         id: vercel_deploy
         run: |
-          DEPLOY_OUTPUT=$(npx vercel@latest deploy --prebuilt --prod --token="$VERCEL_TOKEN")
-          echo "=== Raw Deployment Output ==="
+          mkdir -p run_logs
+          LOG_FILE="run_logs/latest_deploy.txt"
+          
+          echo "=== 1. Deploying Prebuilt Production ===" > "$LOG_FILE"
+          DEPLOY_OUTPUT=$(npx vercel@latest deploy --prebuilt --prod --token="$VERCEL_TOKEN" 2>&1)
+          echo "$DEPLOY_OUTPUT" >> "$LOG_FILE"
           echo "$DEPLOY_OUTPUT"
           
           # Extract real deployment URL (ending in .vercel.app)
           DEPLOY_URL=$(echo "$DEPLOY_OUTPUT" | grep -o 'https://[^ ]*\.vercel\.app' | head -n 1)
           echo "DEPLOY_URL=$DEPLOY_URL" >> $GITHUB_OUTPUT
-          echo "Deployment URL: $DEPLOY_URL"
+          echo "=== Extracted DEPLOY_URL: $DEPLOY_URL ===" >> "$LOG_FILE"
 
-          echo "=== Current Aliases on Vercel ==="
-          npx vercel@latest alias ls --token="$VERCEL_TOKEN" || true
+          echo "" >> "$LOG_FILE"
+          echo "=== 2. Vercel Aliases ===" >> "$LOG_FILE"
+          npx vercel@latest alias ls --token="$VERCEL_TOKEN" >> "$LOG_FILE" 2>&1 || true
 
-          # Assign aliases
+          echo "" >> "$LOG_FILE"
+          echo "=== 3. Vercel Projects ===" >> "$LOG_FILE"
+          npx vercel@latest project ls --token="$VERCEL_TOKEN" >> "$LOG_FILE" 2>&1 || true
+
+          echo "" >> "$LOG_FILE"
+          echo "=== 4. Vercel Domains ===" >> "$LOG_FILE"
+          npx vercel@latest domains ls --token="$VERCEL_TOKEN" >> "$LOG_FILE" 2>&1 || true
+
+          echo "" >> "$LOG_FILE"
+          echo "=== 5. Setting Aliases ===" >> "$LOG_FILE"
           if [ -n "$DEPLOY_URL" ]; then
-            echo "=== Setting alias for quanlydachucnang.vercel.app ==="
-            npx vercel@latest alias set "$DEPLOY_URL" quanlydachucnang.vercel.app --token="$VERCEL_TOKEN" || true
-
-            echo "=== Setting alias for quanlydachucnang-vy-8173.vercel.app ==="
-            npx vercel@latest alias set "$DEPLOY_URL" quanlydachucnang-vy-8173.vercel.app --token="$VERCEL_TOKEN" || true
-
-            echo "=== Setting alias for link-portal-vy-8173.vercel.app ==="
-            npx vercel@latest alias set "$DEPLOY_URL" link-portal-vy-8173.vercel.app --token="$VERCEL_TOKEN" || true
+            npx vercel@latest alias set "$DEPLOY_URL" quanlydachucnang.vercel.app --token="$VERCEL_TOKEN" >> "$LOG_FILE" 2>&1 || true
+            npx vercel@latest alias set "$DEPLOY_URL" quanlydachucnang-vy-8173.vercel.app --token="$VERCEL_TOKEN" >> "$LOG_FILE" 2>&1 || true
+            npx vercel@latest alias set "$DEPLOY_URL" link-portal-vy-8173.vercel.app --token="$VERCEL_TOKEN" >> "$LOG_FILE" 2>&1 || true
           fi
 
-      - name: Test Live Deployment Connectivity
+          echo "" >> "$LOG_FILE"
+          echo "=== 6. Testing Connectivity ===" >> "$LOG_FILE"
+          if [ -n "$DEPLOY_URL" ]; then
+            echo "--- Test DEPLOY_URL ($DEPLOY_URL) ---" >> "$LOG_FILE"
+            curl -ILs "$DEPLOY_URL" | head -n 25 >> "$LOG_FILE" 2>&1 || true
+          fi
+          echo "--- Test quanlydachucnang.vercel.app ---" >> "$LOG_FILE"
+          curl -ILs "https://quanlydachucnang.vercel.app" | head -n 25 >> "$LOG_FILE" 2>&1 || true
+          echo "--- Test link-portal-vy-8173.vercel.app ---" >> "$LOG_FILE"
+          curl -ILs "https://link-portal-vy-8173.vercel.app" | head -n 25 >> "$LOG_FILE" 2>&1 || true
+
+      - name: Commit and push deployment diagnostic logs
         run: |
-          DEPLOY_URL="${{ steps.vercel_deploy.outputs.DEPLOY_URL }}"
-          echo "=== Testing Deployment URL: $DEPLOY_URL ==="
-          if [ -n "$DEPLOY_URL" ]; then
-            echo "--> GET $DEPLOY_URL (Headers):"
-            curl -ILs "$DEPLOY_URL" | head -n 25
-
-            echo ""
-            echo "--> GET $DEPLOY_URL/login (Headers):"
-            curl -ILs "$DEPLOY_URL/login" | head -n 25
-          fi
-
-          echo ""
-          echo "=== Testing https://quanlydachucnang.vercel.app ==="
-          curl -ILs "https://quanlydachucnang.vercel.app" | head -n 25
-
-          echo ""
-          echo "=== Testing https://quanlydachucnang-vy-8173.vercel.app ==="
-          curl -ILs "https://quanlydachucnang-vy-8173.vercel.app" | head -n 25
-
-          echo ""
-          echo "=== Testing https://link-portal-vy-8173.vercel.app ==="
-          curl -ILs "https://link-portal-vy-8173.vercel.app" | head -n 25
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add run_logs/latest_deploy.txt
+          git commit -m "chore(ci): save vercel deployment diagnostics [skip ci]" || true
+          git push origin main || true
