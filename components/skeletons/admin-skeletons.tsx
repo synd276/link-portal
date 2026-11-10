@@ -287,3 +287,87 @@ export function AdminDashboardSkeleton() {
     </div>
   );
 }
+
+
+export function AdminLogsSkeleton() {
+  return (
+    <div className="space-y-6">
+      {/* Header */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2 border-b">
+        <div>
+          <h1 className="text-2xl sm:text-3xl font-bold tracking-tight">
+            Nhật ký sự kiện (Event Log)
+          </h1>
+          <p className="text-sm text-muted-foreground mt-0.5">
+            Theo dõi tất cả lỗi hệ thống và hành động thêm, xóa, sửa của quản trị viên
+          </p>
+        </div>
+
+        <div className="flex items-center gap-2">
+          <Skeleton className="h-9 w-24 rounded-md" />
+          <Skeleton className="h-9 w-28 rounded-md" />
+        </div>
+      </div>
+
+      {/* 4 Stat Cards */}
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        {Array.from({ length: 4 }).map((_, i) => (
+          <div key={i} className="p-4 rounded-xl border bg-card space-y-2">
+            <div className="flex items-center justify-between">
+              <Skeleton className="h-3.5 w-24" />
+              <Skeleton className="h-4 w-4 rounded-md" />
+            </div>
+            <Skeleton className="h-7 w-12" />
+          </div>
+        ))}
+      </div>
+
+      {/* Filters Bar */}
+      <div className="flex flex-col sm:flex-row gap-3 bg-card p-3 rounded-xl border">
+        <div className="relative flex-1">
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+          <Input placeholder="Tìm kiếm sự kiện, lỗi, hành động, email..." disabled className="pl-9 h-9" />
+        </div>
+        <Skeleton className="h-9 w-32 rounded-md" />
+        <Skeleton className="h-9 w-36 rounded-md" />
+      </div>
+
+      {/* Table */}
+      <div className="rounded-xl border bg-card overflow-hidden shadow-2xs">
+        <div className="overflow-x-auto">
+          <table className="w-full text-left text-sm">
+            <thead className="bg-muted/50 border-b text-xs font-semibold uppercase text-muted-foreground">
+              <tr>
+                <th className="py-3 px-4">Mức độ</th>
+                <th className="py-3 px-4">Thời gian</th>
+                <th className="py-3 px-4">Hành động</th>
+                <th className="py-3 px-4">Nội dung sự kiện</th>
+                <th className="py-3 px-4">Tác nhân</th>
+                <th className="py-3 px-4 text-right">Chi tiết</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-border">
+              {Array.from({ length: 8 }).map((_, i) => (
+                <tr key={i} className="hover:bg-muted/30">
+                  <td className="py-3 px-4"><Skeleton className="h-5 w-16 rounded-md" /></td>
+                  <td className="py-3 px-4"><Skeleton className="h-4 w-28" /></td>
+                  <td className="py-3 px-4"><Skeleton className="h-5 w-28 rounded-md" /></td>
+                  <td className="py-3 px-4">
+                    <div className="space-y-1">
+                      <Skeleton className="h-4 w-64 sm:w-80" />
+                      <Skeleton className="h-3 w-40" />
+                    </div>
+                  </td>
+                  <td className="py-3 px-4"><Skeleton className="h-4 w-24" /></td>
+                  <td className="py-3 px-4 text-right">
+                    <Skeleton className="h-8 w-16 ml-auto rounded-md" />
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  );
+}

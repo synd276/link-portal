@@ -11,6 +11,7 @@ import {
   profileSchema,
   changePasswordSchema,
 } from "@/lib/validations";
+import { logError } from "@/lib/logger";
 
 export interface ActionResult<T = unknown> {
   success: boolean;
@@ -28,9 +29,14 @@ export async function loginAction(values: unknown): Promise<ActionResult> {
 
   const parsed = loginSchema.safeParse(values);
   if (!parsed.success) {
+    const errorMsg = parsed.error.issues[0]?.message || "Thông tin đăng nhập không hợp lệ";
+    await logError({
+      action: "LOGIN_VALIDATION_ERROR",
+      message: `Lỗi xác thực dữ liệu đăng nhập: ${errorMsg}`,
+    });
     return {
       success: false,
-      error: parsed.error.issues[0]?.message || "Thông tin đăng nhập không hợp lệ",
+      error: errorMsg,
     };
   }
 
@@ -47,6 +53,17 @@ export async function loginAction(values: unknown): Promise<ActionResult> {
     } else if (error.message.includes("Email not confirmed")) {
       message = "Email chưa được xác thực. Vui lòng kiểm tra hộp thư của bạn.";
     }
+
+    await logError({
+      action: "AUTH_LOGIN_FAILED",
+      message: `Đăng nhập thất bại cho tài khoản '${parsed.data.email}': ${error.message}`,
+      details: {
+        email: parsed.data.email,
+        error_message: error.message,
+      },
+      userEmail: parsed.data.email,
+    });
+
     return { success: false, error: message };
   }
 
@@ -86,6 +103,19 @@ export async function registerAction(values: unknown): Promise<ActionResult> {
     if (error.message.includes("User already registered")) {
       message = "Email này đã được sử dụng. Vui lòng chọn đăng nhập hoặc dùng email khác.";
     }
+
+    await logError({
+      action: "AUTH_REGISTER_FAILED",
+      message: `Đăng ký tài khoản thất bại cho '${parsed.data.email}': ${error.message}`,
+      details: {
+        email: parsed.data.email,
+        full_name: parsed.data.full_name,
+        error_message: error.message,
+      },
+      userEmail: parsed.data.email,
+      userName: parsed.data.full_name,
+    });
+
     return { success: false, error: message };
   }
 
@@ -124,6 +154,11 @@ export async function forgotPasswordAction(values: unknown): Promise<ActionResul
   });
 
   if (error) {
+    await logError({
+      action: "AUTH_FORGOT_PASSWORD_FAILED",
+      message: `Yêu cầu đặt lại mật khẩu thất bại cho '${parsed.data.email}': ${error.message}`,
+      userEmail: parsed.data.email,
+    });
     return { success: false, error: error.message };
   }
 
@@ -152,6 +187,10 @@ export async function resetPasswordAction(values: unknown): Promise<ActionResult
   });
 
   if (error) {
+    await logError({
+      action: "AUTH_RESET_PASSWORD_FAILED",
+      message: `Cập nhật mật khẩu mới thất bại: ${error.message}`,
+    });
     return { success: false, error: error.message };
   }
 
@@ -196,6 +235,12 @@ export async function updateProfileAction(values: unknown): Promise<ActionResult
     .eq("id", user.id);
 
   if (error) {
+    await logError({
+      action: "UPDATE_PROFILE_ERROR",
+      message: `Cập nhật thông tin tài khoản thất bại: ${error.message}`,
+      userId: user.id,
+      userEmail: user.email,
+    });
     return { success: false, error: error.message };
   }
 
@@ -220,6 +265,10 @@ export async function changePasswordAction(values: unknown): Promise<ActionResul
   });
 
   if (error) {
+    await logError({
+      action: "CHANGE_PASSWORD_ERROR",
+      message: `Đổi mật khẩu thất bại: ${error.message}`,
+    });
     return { success: false, error: error.message };
   }
 

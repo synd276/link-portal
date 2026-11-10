@@ -3,6 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { createClient, isSupabaseConfigured } from "@/lib/supabase/server";
 import { AdminStats, UserRole } from "@/types/database";
+import { logAdminAction, logError } from "@/lib/logger";
 
 export interface ActionResult<T = unknown> {
   success: boolean;
@@ -81,6 +82,12 @@ export async function updateUserRoleAction(
 ): Promise<ActionResult> {
   const { isAdmin, userId: currentAdminId } = await checkIsAdmin();
   if (!isAdmin) {
+    await logError({
+      action: "UNAUTHORIZED_ROLE_CHANGE",
+      message: "Yêu cầu thay đổi vai trò người dùng bị từ chối: Không đủ đặc quyền",
+      details: { targetUserId: userId, requestedRole: newRole },
+      userId: currentAdminId,
+    });
     return { success: false, error: "Bạn không có quyền thay đổi vai trò người dùng." };
   }
 
@@ -89,6 +96,14 @@ export async function updateUserRoleAction(
   }
 
   const supabase = await createClient();
+
+  // Get target user info
+  const { data: targetUser } = await supabase
+    .from("profiles")
+    .select("full_name, role")
+    .eq("id", userId)
+    .single();
+
   const { error } = await supabase
     .from("profiles")
     .update({
@@ -98,8 +113,28 @@ export async function updateUserRoleAction(
     .eq("id", userId);
 
   if (error) {
+    await logError({
+      action: "UPDATE_USER_ROLE_DB_ERROR",
+      message: `Lỗi cơ sở dữ liệu khi đổi quyền người dùng ID "${userId}": ${error.message}`,
+      details: { userId, newRole, error },
+      userId: currentAdminId,
+    });
     return { success: false, error: error.message };
   }
+
+  await logAdminAction({
+    action: "UPDATE_USER_ROLE",
+    message: `Quản trị viên đã đổi vai trò của '${targetUser?.full_name || userId}' thành '${newRole}'`,
+    entityType: "user",
+    entityId: userId,
+    details: {
+      target_user_id: userId,
+      previous_role: targetUser?.role,
+      new_role: newRole,
+    },
+    level: "warn",
+    userId: currentAdminId,
+  });
 
   revalidatePath("/admin/users");
   return { success: true };
@@ -108,6 +143,12 @@ export async function updateUserRoleAction(
 export async function deleteUserProfileAction(userId: string): Promise<ActionResult> {
   const { isAdmin, userId: currentAdminId } = await checkIsAdmin();
   if (!isAdmin) {
+    await logError({
+      action: "UNAUTHORIZED_DELETE_USER",
+      message: "Yêu cầu xóa người dùng bị từ chối: Không có quyền admin",
+      details: { targetUserId: userId },
+      userId: currentAdminId,
+    });
     return { success: false, error: "Bạn không có quyền xóa người dùng." };
   }
 
@@ -116,11 +157,38 @@ export async function deleteUserProfileAction(userId: string): Promise<ActionRes
   }
 
   const supabase = await createClient();
+
+  // Get target user info
+  const { data: targetUser } = await supabase
+    .from("profiles")
+    .select("full_name, role")
+    .eq("id", userId)
+    .single();
+
   const { error } = await supabase.from("profiles").delete().eq("id", userId);
 
   if (error) {
+    await logError({
+      action: "DELETE_USER_DB_ERROR",
+      message: `Lỗi cơ sở dữ liệu khi xóa người dùng ID "${userId}": ${error.message}`,
+      details: { userId, error },
+      userId: currentAdminId,
+    });
     return { success: false, error: error.message };
   }
+
+  await logAdminAction({
+    action: "DELETE_USER",
+    message: `Quản trị viên đã xóa tài khoản người dùng '${targetUser?.full_name || userId}'`,
+    entityType: "user",
+    entityId: userId,
+    details: {
+      target_user_id: userId,
+      deleted_user: targetUser,
+    },
+    level: "warn",
+    userId: currentAdminId,
+  });
 
   revalidatePath("/admin/users");
   return { success: true };

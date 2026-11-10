@@ -14,6 +14,27 @@ export default function ErrorBoundary({
 }) {
   React.useEffect(() => {
     console.error("App Error:", error);
+
+    try {
+      fetch("/api/logs", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          level: "error",
+          category: "error",
+          action: "CLIENT_CRASH_ERROR",
+          message: error.message || "Lỗi giao diện ứng dụng không mong muốn",
+          details: {
+            name: error.name,
+            digest: error.digest,
+            stack: error.stack,
+            url: typeof window !== "undefined" ? window.location.href : null,
+          },
+        }),
+      }).catch(() => {});
+    } catch {
+      // Ignored
+    }
   }, [error]);
 
   return (

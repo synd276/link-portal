@@ -43,3 +43,20 @@ export function formatDateTime(dateString: string | null | undefined): string {
     minute: "2-digit",
   });
 }
+
+
+export function formatRelativeTime(dateString: string | null | undefined): string {
+  if (!dateString) return "";
+  const now = Date.now();
+  const past = new Date(dateString).getTime();
+  const diffSec = Math.floor((now - past) / 1000);
+
+  if (diffSec < 60) return "Vừa xong";
+  const diffMin = Math.floor(diffSec / 60);
+  if (diffMin < 60) return `${diffMin} phút trước`;
+  const diffHours = Math.floor(diffMin / 60);
+  if (diffHours < 24) return `${diffHours} giờ trước`;
+  const diffDays = Math.floor(diffHours / 24);
+  if (diffDays < 30) return `${diffDays} ngày trước`;
+  return formatDate(dateString);
+}

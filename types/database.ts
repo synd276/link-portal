@@ -92,3 +92,29 @@ export interface AdminStats {
   personalWebsites: number;
   totalCategories: number;
 }
+
+export type EventLogLevel = "info" | "warn" | "error";
+export type EventLogCategory = "admin_action" | "error" | "auth" | "system";
+
+export interface EventLog {
+  id: string;
+  level: EventLogLevel;
+  category: EventLogCategory;
+  action: string;
+  entity_type?: string | null;
+  entity_id?: string | null;
+  message: string;
+  details?: Record<string, unknown> | null;
+  user_id?: string | null;
+  user_email?: string | null;
+  user_name?: string | null;
+  ip_address?: string | null;
+  created_at: string;
+}
+
+export interface EventLogStats {
+  total: number;
+  errors: number;
+  adminActions: number;
+  warnings: number;
+}

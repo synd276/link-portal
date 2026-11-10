@@ -56,7 +56,7 @@ WHERE id = (SELECT id FROM auth.users WHERE email = 'YOUR_EMAIL@example.com');`;
               <p className="text-xs text-muted-foreground font-medium">Row Level Security</p>
               <p className="text-sm font-bold text-foreground">RLS Bật toàn diện</p>
               <Badge variant="outline" className="text-[10px] text-emerald-600 border-emerald-500/30 mt-1">
-                7 / 7 Bảng bảo vệ
+                8 / 8 Bảng bảo vệ
               </Badge>
             </div>
           </CardContent>
@@ -134,6 +134,14 @@ WHERE id = (SELECT id FROM auth.users WHERE email = 'YOUR_EMAIL@example.com');`;
               </div>
               <Badge variant="success">Bảo vệ</Badge>
             </div>
+
+            <div className="p-3 border rounded-lg bg-muted/20 flex items-center justify-between">
+              <div>
+                <p className="font-semibold text-foreground">event_logs</p>
+                <p className="text-muted-foreground">Nhật ký sự kiện, theo dõi lỗi và thao tác admin</p>
+              </div>
+              <Badge variant="success">Bảo vệ</Badge>
+            </div>
           </div>
         </CardContent>
       </Card>
@@ -162,3 +170,4 @@ WHERE id = (SELECT id FROM auth.users WHERE email = 'YOUR_EMAIL@example.com');`;
     </div>
   );
 }
+

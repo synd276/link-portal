@@ -2271,3 +2271,6 @@ export const getAdminUsers = cache(async (): Promise<Profile[]> => {
   if (error || !data) return [];
   return data;
 });
+
+
+export { getEventLogs, getEventLogStats } from "./logger";

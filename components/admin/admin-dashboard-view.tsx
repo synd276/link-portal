@@ -10,6 +10,7 @@ import {
   Plus,
   Lock,
   Sparkles,
+  ScrollText,
 } from "lucide-react";
 import { AdminStats, Website, Profile } from "@/types/database";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -41,7 +42,12 @@ export function AdminDashboardView({
           </p>
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 flex-wrap">
+          <Button variant="outline" asChild>
+            <Link href="/admin/logs">
+              <ScrollText className="mr-1.5 h-4 w-4" /> Nhật ký sự kiện
+            </Link>
+          </Button>
           <Button asChild>
             <Link href="/admin/websites">
               <Plus className="mr-1.5 h-4 w-4" /> Thêm website hệ thống
@@ -193,3 +199,4 @@ export function AdminDashboardView({
     </div>
   );
 }
+

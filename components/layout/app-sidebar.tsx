@@ -13,6 +13,7 @@ import {
   Clock,
   Settings,
   ShieldAlert,
+  ScrollText,
   LogOut,
   ChevronLeft,
   ChevronRight,
@@ -61,6 +62,7 @@ export function AppSidebar({
     { title: "Quản lý Website", href: "/admin/websites", icon: Globe },
     { title: "Quản lý Danh mục", href: "/admin/categories", icon: FolderTree },
     { title: "Quản lý Người dùng", href: "/admin/users", icon: UserCheck },
+    { title: "Nhật ký sự kiện", href: "/admin/logs", icon: ScrollText },
     { title: "Cấu hình Hệ thống", href: "/admin/settings", icon: Settings },
   ];
 
