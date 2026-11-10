@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { Suspense } from "react";
 import {
   getUserProfile,
   getDashboardStats,
@@ -6,13 +7,14 @@ import {
   getWebsites,
 } from "@/lib/data";
 import { DashboardView } from "@/components/dashboard/dashboard-view";
+import { DashboardViewSkeleton } from "@/components/skeletons/user-skeletons";
 
 export const metadata: Metadata = {
   title: "Dashboard | Hệ thống quản lý đa chức năng",
   description: "Trang tổng quan Hệ thống quản lý đa chức năng",
 };
 
-export default async function DashboardPage() {
+async function DashboardData() {
   const [profile, stats, categories, allWebsites, recentWebsites, favoriteWebsites] =
     await Promise.all([
       getUserProfile(),
@@ -35,5 +37,13 @@ export default async function DashboardPage() {
       favoriteWebsites={favoriteWebsites}
       allWebsites={allWebsites}
     />
+  );
+}
+
+export default function DashboardPage() {
+  return (
+    <Suspense fallback={<DashboardViewSkeleton />}>
+      <DashboardData />
+    </Suspense>
   );
 }

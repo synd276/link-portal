@@ -1,13 +1,15 @@
 import { Metadata } from "next";
+import { Suspense } from "react";
 import { getUserProfile, getCategories, getWebsites } from "@/lib/data";
 import { WebsiteGrid } from "@/components/websites/website-grid";
+import { WebsiteGridSkeleton } from "@/components/skeletons/user-skeletons";
 
 export const metadata: Metadata = {
   title: "Website cá nhân | Hệ thống quản lý đa chức năng",
   description: "Các liên kết website do chính bạn tự thêm và quản lý",
 };
 
-export default async function PersonalWebsitesPage() {
+async function PersonalWebsitesData() {
   const [profile, categories, websites] = await Promise.all([
     getUserProfile(),
     getCategories(),
@@ -24,5 +26,20 @@ export default async function PersonalWebsitesPage() {
       title="Website cá nhân"
       description="Kho liên kết riêng tư do bạn quản lý. Chỉ tài khoản của bạn mới có quyền xem và chỉnh sửa."
     />
+  );
+}
+
+export default function PersonalWebsitesPage() {
+  return (
+    <Suspense
+      fallback={
+        <WebsiteGridSkeleton
+          title="Website cá nhân"
+          description="Kho liên kết riêng tư do bạn quản lý. Chỉ tài khoản của bạn mới có quyền xem và chỉnh sửa."
+        />
+      }
+    >
+      <PersonalWebsitesData />
+    </Suspense>
   );
 }

@@ -1,6 +1,8 @@
 import { Metadata } from "next";
+import { Suspense } from "react";
 import { getUserProfile, getCategories, getWebsites } from "@/lib/data";
 import { WebsiteGrid } from "@/components/websites/website-grid";
+import { WebsiteGridSkeleton } from "@/components/skeletons/user-skeletons";
 
 export const metadata: Metadata = {
   title: "Tất cả website | Hệ thống quản lý đa chức năng",
@@ -16,8 +18,12 @@ interface PageProps {
   }>;
 }
 
-export default async function AllWebsitesPage(props: PageProps) {
-  const searchParams = await props.searchParams;
+async function AllWebsitesData({
+  searchParamsPromise,
+}: {
+  searchParamsPromise: PageProps["searchParams"];
+}) {
+  const searchParams = await searchParamsPromise;
   const [profile, categories, websites] = await Promise.all([
     getUserProfile(),
     getCategories(),
@@ -40,5 +46,20 @@ export default async function AllWebsitesPage(props: PageProps) {
       title="Tất cả website"
       description="Quản lý và tìm kiếm các website toàn hệ thống và cá nhân của bạn"
     />
+  );
+}
+
+export default function AllWebsitesPage(props: PageProps) {
+  return (
+    <Suspense
+      fallback={
+        <WebsiteGridSkeleton
+          title="Tất cả website"
+          description="Quản lý và tìm kiếm các website toàn hệ thống và cá nhân của bạn"
+        />
+      }
+    >
+      <AllWebsitesData searchParamsPromise={props.searchParams} />
+    </Suspense>
   );
 }

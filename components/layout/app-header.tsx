@@ -92,7 +92,7 @@ export function AppHeader({
         </Button>
 
         <div className="hidden sm:flex items-center gap-1.5 text-xs text-muted-foreground min-w-0">
-          <Link href="/dashboard" className="hover:text-foreground">
+          <Link href="/dashboard" prefetch={true} className="hover:text-foreground">
             Trang chủ
           </Link>
           <ChevronRight className="h-3.5 w-3.5 shrink-0" />
@@ -166,7 +166,7 @@ export function AppHeader({
             </DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuItem asChild>
-              <Link href="/settings">
+              <Link href="/settings" prefetch={true}>
                 <User className="mr-2 h-4 w-4" /> Thông tin tài khoản
               </Link>
             </DropdownMenuItem>
@@ -179,7 +179,7 @@ export function AppHeader({
               <>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem asChild>
-                  <Link href="/admin">
+                  <Link href="/admin" prefetch={true}>
                     <span className="mr-2 text-amber-500 font-bold">★</span> Quản trị hệ thống
                   </Link>
                 </DropdownMenuItem>

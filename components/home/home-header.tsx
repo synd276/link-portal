@@ -94,7 +94,7 @@ export function HomeHeader({
                 asChild
                 className="hidden md:inline-flex h-9 text-xs gap-1.5 font-medium border-border"
               >
-                <Link href="/dashboard">
+                <Link href="/dashboard" prefetch={true}>
                   <LayoutDashboard className="h-4 w-4 text-primary" />
                   <span>Dashboard</span>
                 </Link>
@@ -128,7 +128,7 @@ export function HomeHeader({
                     </Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild>
-                    <Link href="/settings">
+                    <Link href="/settings" prefetch={true}>
                       <Settings className="mr-2 h-4 w-4" /> Cài đặt tài khoản
                     </Link>
                   </DropdownMenuItem>
@@ -136,7 +136,7 @@ export function HomeHeader({
                     <>
                       <DropdownMenuSeparator />
                       <DropdownMenuItem asChild>
-                        <Link href="/admin">
+                        <Link href="/admin" prefetch={true}>
                           <Shield className="mr-2 h-4 w-4 text-emerald-600" /> Quản trị hệ thống
                         </Link>
                       </DropdownMenuItem>
@@ -156,10 +156,10 @@ export function HomeHeader({
             /* Guest / Not logged in state: KHÔNG hiện nút Thêm website */
             <div className="flex items-center gap-2">
               <Button variant="ghost" size="sm" asChild className="h-9 text-xs sm:text-sm">
-                <Link href="/login">Đăng nhập</Link>
+                <Link href="/login" prefetch={true}>Đăng nhập</Link>
               </Button>
               <Button size="sm" asChild className="h-9 text-xs sm:text-sm font-semibold shadow-xs">
-                <Link href="/register">
+                <Link href="/register" prefetch={true}>
                   Đăng ký
                   <ArrowRight className="ml-1.5 h-3.5 w-3.5" />
                 </Link>

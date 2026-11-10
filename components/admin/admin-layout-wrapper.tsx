@@ -50,7 +50,7 @@ export function AdminLayoutWrapper({
               asChild
               className="gap-1.5 h-8 text-xs font-medium"
             >
-              <Link href="/dashboard">
+              <Link href="/dashboard" prefetch={true}>
                 <ArrowLeft className="h-3.5 w-3.5" /> Về trang người dùng
               </Link>
             </Button>

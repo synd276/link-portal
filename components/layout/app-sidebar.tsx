@@ -81,6 +81,7 @@ export function AppSidebar({
           <div className="h-16 flex items-center justify-between px-3.5 border-b">
             <Link
               href="/"
+              prefetch={true}
               onClick={handleLinkClick}
               className="flex items-center gap-2.5 overflow-hidden"
             >
@@ -135,6 +136,7 @@ export function AppSidebar({
                 <Link
                   key={item.href}
                   href={item.href}
+                  prefetch={true}
                   onClick={handleLinkClick}
                   className={cn(
                     "flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition-colors group relative",
@@ -186,6 +188,7 @@ export function AppSidebar({
                     <Link
                       key={item.href}
                       href={item.href}
+                      prefetch={true}
                       onClick={handleLinkClick}
                       className={cn(
                         "flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition-colors group",
