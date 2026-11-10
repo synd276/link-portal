@@ -3,13 +3,44 @@ import { NextResponse, type NextRequest } from "next/server";
 import { isSupabaseConfigured } from "./client";
 
 export async function updateSession(request: NextRequest) {
+  const pathname = request.nextUrl.pathname;
+
+  const isAuthRoute =
+    pathname.startsWith("/login") ||
+    pathname.startsWith("/register") ||
+    pathname.startsWith("/forgot-password");
+
+  const isProtectedRoute =
+    pathname.startsWith("/dashboard") ||
+    pathname.startsWith("/websites") ||
+    pathname.startsWith("/categories") ||
+    pathname.startsWith("/recent") ||
+    pathname.startsWith("/settings") ||
+    pathname.startsWith("/admin");
+
+  if (!isSupabaseConfigured()) {
+    return NextResponse.next({ request });
+  }
+
+  const cookies = request.cookies.getAll();
+  const hasAuthCookie = cookies.some(
+    (c) => c.name.startsWith("sb-") && c.value && c.value.length > 0
+  );
+
+  if (!hasAuthCookie && isProtectedRoute) {
+    const redirectUrl = request.nextUrl.clone();
+    redirectUrl.pathname = "/login";
+    redirectUrl.searchParams.set("redirectedFrom", pathname);
+    return NextResponse.redirect(redirectUrl);
+  }
+
+  if (!hasAuthCookie && !isAuthRoute) {
+    return NextResponse.next({ request });
+  }
+
   let supabaseResponse = NextResponse.next({
     request,
   });
-
-  if (!isSupabaseConfigured()) {
-    return supabaseResponse;
-  }
 
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL!;
   const anonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
@@ -37,23 +68,6 @@ export async function updateSession(request: NextRequest) {
     data: { user },
   } = await supabase.auth.getUser();
 
-  const pathname = request.nextUrl.pathname;
-
-  const isAuthRoute =
-    pathname.startsWith("/login") ||
-    pathname.startsWith("/register") ||
-    pathname.startsWith("/forgot-password");
-
-  const isProtectedRoute =
-    pathname.startsWith("/dashboard") ||
-    pathname.startsWith("/websites") ||
-    pathname.startsWith("/categories") ||
-    pathname.startsWith("/recent") ||
-    pathname.startsWith("/settings") ||
-    pathname.startsWith("/admin");
-
-  const isAdminRoute = pathname.startsWith("/admin");
-
   if (!user && isProtectedRoute) {
     const redirectUrl = request.nextUrl.clone();
     redirectUrl.pathname = "/login";
@@ -65,21 +79,6 @@ export async function updateSession(request: NextRequest) {
     const redirectUrl = request.nextUrl.clone();
     redirectUrl.pathname = "/";
     return NextResponse.redirect(redirectUrl);
-  }
-
-  if (user && isAdminRoute) {
-    const { data: profile } = await supabase
-      .from("profiles")
-      .select("role")
-      .eq("id", user.id)
-      .single();
-
-    if (profile?.role !== "admin") {
-      const redirectUrl = request.nextUrl.clone();
-      redirectUrl.pathname = "/";
-      redirectUrl.searchParams.set("error", "unauthorized");
-      return NextResponse.redirect(redirectUrl);
-    }
   }
 
   return supabaseResponse;

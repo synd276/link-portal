@@ -1,4 +1,5 @@
 import { cache } from "react";
+import { cookies } from "next/headers";
 import { createClient, isSupabaseConfigured } from "@/lib/supabase/server";
 import {
   Profile,
@@ -1820,8 +1821,35 @@ export const DEFAULT_WEBSITES: Website[] = [
   }
 ];
 
+// In-memory cache for fast repeated reads across the server container
+const CACHE_TTL_MS = 60 * 1000; // 60 seconds
+let cachedCategories: { data: Category[]; timestamp: number } | null = null;
+let cachedGlobalWebsites: { data: Website[]; timestamp: number } | null = null;
+
+export function invalidateCategoriesCache() {
+  cachedCategories = null;
+}
+
+export function invalidateWebsitesCache() {
+  cachedGlobalWebsites = null;
+  cachedCategories = null;
+}
+
 export const getCurrentUser = cache(async () => {
   if (!isSupabaseConfigured()) return null;
+
+  try {
+    const cookieStore = await cookies();
+    const hasAuth = cookieStore
+      .getAll()
+      .some((c) => c.name.startsWith("sb-") && c.value && c.value.length > 0);
+    if (!hasAuth) {
+      return null;
+    }
+  } catch {
+    // If called outside request context
+  }
+
   const supabase = await createClient();
   const {
     data: { user },
@@ -1841,7 +1869,19 @@ export const getUserProfile = cache(async (): Promise<Profile | null> => {
     .eq("id", user.id)
     .single();
 
-  return profile || null;
+  if (profile) return profile;
+
+  return {
+    id: user.id,
+    full_name:
+      user.user_metadata?.full_name ||
+      user.email?.split("@")[0] ||
+      "Người dùng",
+    avatar_url: user.user_metadata?.avatar_url || null,
+    role: "user",
+    created_at: user.created_at,
+    updated_at: user.created_at,
+  };
 });
 
 export const getUserSettings = cache(async (): Promise<UserSettings | null> => {
@@ -1865,6 +1905,11 @@ interface RawCategoryRow extends Category {
 
 export const getCategories = cache(async (): Promise<Category[]> => {
   if (!isSupabaseConfigured()) return DEFAULT_CATEGORIES;
+
+  if (cachedCategories && Date.now() - cachedCategories.timestamp < CACHE_TTL_MS) {
+    return cachedCategories.data;
+  }
+
   const supabase = await createClient();
 
   const query = supabase
@@ -1884,7 +1929,7 @@ export const getCategories = cache(async (): Promise<Category[]> => {
     return DEFAULT_CATEGORIES;
   }
 
-  return rows.map((cat) => ({
+  const result = rows.map((cat) => ({
     id: cat.id,
     name: cat.name,
     description: cat.description,
@@ -1896,6 +1941,13 @@ export const getCategories = cache(async (): Promise<Category[]> => {
     updated_at: cat.updated_at,
     website_count: cat.websites?.[0]?.count || 0,
   }));
+
+  cachedCategories = {
+    data: result,
+    timestamp: Date.now(),
+  };
+
+  return result;
 });
 
 export interface WebsiteFilters {
@@ -1912,89 +1964,148 @@ export const getWebsites = cache(
     const supabase = await createClient();
     const user = await getCurrentUser();
 
-    // 1. Get user favorite ids
-    const favoriteIds = new Set<string>();
-    if (user) {
+    // 1. Fast path for favorites scope
+    if (filters.scope === "favorites") {
+      if (!user) return [];
       const { data: favs } = await supabase
         .from("user_favorites")
         .select("website_id")
         .eq("user_id", user.id);
-      if (favs) {
-        favs.forEach((f) => favoriteIds.add(f.website_id));
+      if (!favs || favs.length === 0) return [];
+
+      const favIds = favs.map((f) => f.website_id);
+      const { data: favWebsites } = await supabase
+        .from("websites")
+        .select("*, category:categories(*)")
+        .in("id", favIds)
+        .order("sort_order", { ascending: true });
+
+      return (favWebsites || []).map((item) => ({
+        ...item,
+        is_favorite: true,
+      }));
+    }
+
+    // 2. Fast path for personal scope
+    if (filters.scope === "personal") {
+      if (!user) return [];
+      const { data: personal } = await supabase
+        .from("websites")
+        .select("*, category:categories(*)")
+        .eq("user_id", user.id)
+        .eq("is_global", false)
+        .order("created_at", { ascending: false });
+
+      return (personal || []).map((item) => ({
+        ...item,
+        is_favorite: false,
+      }));
+    }
+
+    // 3. General query (all or global)
+    const isDefaultQuery =
+      !filters.categoryId &&
+      !filters.query &&
+      (!filters.sortBy || filters.sortBy === "sort-order") &&
+      (!filters.limit || filters.limit >= 60);
+
+    // Start fetching user favorites in parallel with websites query
+    const favPromise = user
+      ? supabase
+          .from("user_favorites")
+          .select("website_id")
+          .eq("user_id", user.id)
+      : Promise.resolve({ data: [] });
+
+    let rows: Website[];
+    if (
+      isDefaultQuery &&
+      cachedGlobalWebsites &&
+      Date.now() - cachedGlobalWebsites.timestamp < CACHE_TTL_MS
+    ) {
+      rows = cachedGlobalWebsites.data;
+    } else {
+      let query = supabase
+        .from("websites")
+        .select("*, category:categories(*)");
+
+      if (filters.categoryId) {
+        query = query.eq("category_id", filters.categoryId);
       }
-    }
-
-    let query = supabase
-      .from("websites")
-      .select("*, category:categories(*)");
-
-    if (filters.categoryId) {
-      query = query.eq("category_id", filters.categoryId);
-    }
-
-    if (filters.scope === "global") {
-      query = query.eq("is_global", true);
-    } else if (filters.scope === "personal") {
-      query = query.eq("is_global", false);
-      if (user) {
-        query = query.eq("user_id", user.id);
+      if (filters.scope === "global") {
+        query = query.eq("is_global", true);
       }
-    } else if (filters.scope === "favorites") {
-      if (favoriteIds.size === 0) {
-        return [];
+      if (filters.query && filters.query.trim().length > 0) {
+        const q = `%${filters.query.trim()}%`;
+        query = query.or(`name.ilike.${q},url.ilike.${q},description.ilike.${q}`);
       }
-      query = query.in("id", Array.from(favoriteIds));
+
+      switch (filters.sortBy) {
+        case "name-asc":
+          query = query.order("name", { ascending: true });
+          break;
+        case "name-desc":
+          query = query.order("name", { ascending: false });
+          break;
+        case "created-asc":
+          query = query.order("created_at", { ascending: true });
+          break;
+        case "created-desc":
+          query = query.order("created_at", { ascending: false });
+          break;
+        case "sort-order":
+        default:
+          query = query
+            .order("sort_order", { ascending: true })
+            .order("is_featured", { ascending: false })
+            .order("name", { ascending: true });
+          break;
+      }
+
+      if (filters.limit) {
+        query = query.limit(filters.limit);
+      }
+
+      const [{ data }, favRes] = await Promise.all([query, favPromise]);
+      rows = (data || []) as unknown as Website[];
+
+      const hasGateCards = rows.some(
+        (w) =>
+          w.url.includes("ttcntnmt.com.vn") ||
+          w.name.includes("ILIS") ||
+          w.name.includes("SỞ NÔNG NGHIỆP")
+      );
+
+      if (!hasGateCards) {
+        const personalWebsites = rows.filter((r) => !r.is_global);
+        rows = [...DEFAULT_WEBSITES, ...personalWebsites];
+      }
+
+      if (isDefaultQuery && rows.length > 0) {
+        cachedGlobalWebsites = {
+          data: rows,
+          timestamp: Date.now(),
+        };
+      }
+
+      const favoriteIds = new Set<string>();
+      if (favRes && favRes.data) {
+        favRes.data.forEach((f: { website_id: string }) => favoriteIds.add(f.website_id));
+      }
+
+      return rows.map((item) => ({
+        ...item,
+        is_favorite: favoriteIds.has(item.id),
+      }));
     }
 
-    if (filters.query && filters.query.trim().length > 0) {
-      const q = `%${filters.query.trim()}%`;
-      query = query.or(`name.ilike.${q},url.ilike.${q},description.ilike.${q}`);
+    const favRes = await favPromise;
+    const favoriteIds = new Set<string>();
+    if (favRes && favRes.data) {
+      favRes.data.forEach((f: { website_id: string }) => favoriteIds.add(f.website_id));
     }
 
-    // Sort order
-    switch (filters.sortBy) {
-      case "name-asc":
-        query = query.order("name", { ascending: true });
-        break;
-      case "name-desc":
-        query = query.order("name", { ascending: false });
-        break;
-      case "created-asc":
-        query = query.order("created_at", { ascending: true });
-        break;
-      case "created-desc":
-        query = query.order("created_at", { ascending: false });
-        break;
-      case "sort-order":
-      default:
-        query = query
-          .order("sort_order", { ascending: true })
-          .order("is_featured", { ascending: false })
-          .order("name", { ascending: true });
-        break;
-    }
-
-    if (filters.limit) {
-      query = query.limit(filters.limit);
-    }
-
-    const { data, error } = await query;
-    const rows = (data || []) as unknown as Website[];
-
-    const hasGateCards = rows.some(
-      (w) =>
-        w.url.includes("ttcntnmt.com.vn") ||
-        w.name.includes("ILIS") ||
-        w.name.includes("SỞ NÔNG NGHIỆP")
-    );
-
-    let allList = rows;
-    if (!hasGateCards) {
-      const personalWebsites = rows.filter((r) => !r.is_global);
-      allList = [...DEFAULT_WEBSITES, ...personalWebsites];
-    }
-
-    return allList.map((item) => ({
+    return rows.map((item) => ({
       ...item,
       is_favorite: favoriteIds.has(item.id),
     }));
@@ -2068,11 +2179,11 @@ export const getUserNotes = cache(async (): Promise<UserNote[]> => {
 export const getDashboardStats = cache(async (): Promise<DashboardStats> => {
   if (!isSupabaseConfigured()) {
     return {
-      totalWebsites: 0,
+      totalWebsites: DEFAULT_WEBSITES.length,
       favoriteWebsites: 0,
-      totalCategories: 0,
+      totalCategories: DEFAULT_CATEGORIES.length,
       personalWebsites: 0,
-      globalWebsites: 0,
+      globalWebsites: DEFAULT_WEBSITES.length,
       recentVisitsCount: 0,
     };
   }
@@ -2080,67 +2191,59 @@ export const getDashboardStats = cache(async (): Promise<DashboardStats> => {
   const user = await getCurrentUser();
   const supabase = await createClient();
 
-  // Total available websites (global + user personal)
-  const { count: totalWebsites } = await supabase
-    .from("websites")
-    .select("*", { count: "exact", head: true });
-
-  // Favorites
-  let favCount = 0;
-  if (user) {
-    const { count } = await supabase
-      .from("user_favorites")
-      .select("*", { count: "exact", head: true })
-      .eq("user_id", user.id);
-    favCount = count || 0;
-  }
-
-  // Categories
-  const { count: totalCategories } = await supabase
-    .from("categories")
-    .select("*", { count: "exact", head: true });
-
-  // Personal
-  let personalCount = 0;
-  if (user) {
-    const { count } = await supabase
-      .from("websites")
-      .select("*", { count: "exact", head: true })
-      .eq("user_id", user.id)
-      .eq("is_global", false);
-    personalCount = count || 0;
-  }
-
-  // Global
-  const { count: globalCount } = await supabase
-    .from("websites")
-    .select("*", { count: "exact", head: true })
-    .eq("is_global", true);
-
-  // Recent visits count
-  let recentVisitsCount = 0;
-  if (user) {
-    const { count } = await supabase
-      .from("user_visits")
-      .select("*", { count: "exact", head: true })
-      .eq("user_id", user.id);
-    recentVisitsCount = count || 0;
-  }
+  // Execute all 6 stats queries in parallel
+  const [
+    totalWebsitesRes,
+    favRes,
+    totalCategoriesRes,
+    personalRes,
+    globalRes,
+    recentVisitsRes,
+  ] = await Promise.all([
+    supabase.from("websites").select("*", { count: "exact", head: true }),
+    user
+      ? supabase.from("user_favorites").select("*", { count: "exact", head: true }).eq("user_id", user.id)
+      : Promise.resolve({ count: 0 }),
+    supabase.from("categories").select("*", { count: "exact", head: true }),
+    user
+      ? supabase.from("websites").select("*", { count: "exact", head: true }).eq("user_id", user.id).eq("is_global", false)
+      : Promise.resolve({ count: 0 }),
+    supabase.from("websites").select("*", { count: "exact", head: true }).eq("is_global", true),
+    user
+      ? supabase.from("user_visits").select("*", { count: "exact", head: true }).eq("user_id", user.id)
+      : Promise.resolve({ count: 0 }),
+  ]);
 
   return {
-    totalWebsites: totalWebsites || 0,
-    favoriteWebsites: favCount,
-    totalCategories: totalCategories || 0,
-    personalWebsites: personalCount,
-    globalWebsites: globalCount || 0,
-    recentVisitsCount: recentVisitsCount,
+    totalWebsites: totalWebsitesRes.count || 0,
+    favoriteWebsites: favRes.count || 0,
+    totalCategories: totalCategoriesRes.count || 0,
+    personalWebsites: personalRes.count || 0,
+    globalWebsites: globalRes.count || 0,
+    recentVisitsCount: recentVisitsRes.count || 0,
   };
 });
 
 export const getAdminStats = cache(async (): Promise<AdminStats> => {
+  if (!isSupabaseConfigured()) {
+    return {
+      totalUsers: 0,
+      totalWebsites: DEFAULT_WEBSITES.length,
+      globalWebsites: DEFAULT_WEBSITES.length,
+      personalWebsites: 0,
+      totalCategories: DEFAULT_CATEGORIES.length,
+    };
+  }
+
   const supabase = await createClient();
 
-  const [{ count: users }, { count: totalWebsites }, { count: globalWebsites }, { count: personalWebsites }, { count: categories }] = await Promise.all([
+  const [
+    { count: users },
+    { count: totalWebsites },
+    { count: globalWebsites },
+    { count: personalWebsites },
+    { count: categories },
+  ] = await Promise.all([
     supabase.from("profiles").select("*", { count: "exact", head: true }),
     supabase.from("websites").select("*", { count: "exact", head: true }),
     supabase.from("websites").select("*", { count: "exact", head: true }).eq("is_global", true),
@@ -2158,6 +2261,7 @@ export const getAdminStats = cache(async (): Promise<AdminStats> => {
 });
 
 export const getAdminUsers = cache(async (): Promise<Profile[]> => {
+  if (!isSupabaseConfigured()) return [];
   const supabase = await createClient();
   const { data, error } = await supabase
     .from("profiles")

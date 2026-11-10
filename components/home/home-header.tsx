@@ -4,8 +4,7 @@ import * as React from "react";
 import Link from "next/link";
 import {
   Compass,
-  User,
-  Settings,
+    Settings,
   LogOut,
   LayoutDashboard,
   Shield,

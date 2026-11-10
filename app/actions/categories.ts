@@ -4,6 +4,7 @@ import { revalidatePath } from "next/cache";
 import { createClient, isSupabaseConfigured } from "@/lib/supabase/server";
 import { categorySchema } from "@/lib/validations";
 import { Category } from "@/types/database";
+import { invalidateCategoriesCache } from "@/lib/data";
 
 export interface ActionResult<T = unknown> {
   success: boolean;
@@ -61,6 +62,7 @@ export async function createCategoryAction(values: unknown): Promise<ActionResul
     return { success: false, error: error.message };
   }
 
+  invalidateCategoriesCache();
   revalidatePath("/categories");
   revalidatePath("/dashboard");
   revalidatePath("/");
@@ -138,6 +140,7 @@ export async function updateCategoryAction(
     return { success: false, error: error.message };
   }
 
+  invalidateCategoriesCache();
   revalidatePath("/categories");
   revalidatePath("/dashboard");
   revalidatePath("/");
@@ -191,6 +194,7 @@ export async function deleteCategoryAction(id: string): Promise<ActionResult> {
     return { success: false, error: error.message };
   }
 
+  invalidateCategoriesCache();
   revalidatePath("/categories");
   revalidatePath("/dashboard");
   revalidatePath("/");

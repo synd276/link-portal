@@ -9,14 +9,14 @@ export default async function AdminLayout({
 }: {
   children: React.ReactNode;
 }) {
+  let profile = null;
+
   if (isSupabaseConfigured()) {
-    const profile = await getUserProfile();
+    profile = await getUserProfile();
     if (!profile || profile.role !== "admin") {
       redirect("/dashboard?error=unauthorized");
     }
   }
-
-  const profile = await getUserProfile();
 
   return (
     <AdminLayoutWrapper profile={profile}>

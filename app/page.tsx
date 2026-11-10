@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { cookies } from "next/headers";
 import { Compass } from "lucide-react";
 import { getCurrentUser, getUserProfile, getCategories, getWebsites } from "@/lib/data";

@@ -12,7 +12,6 @@ import {
   ChevronUp,
   Globe,
   X,
-  Layers,
 } from "lucide-react";
 import { Website, Category } from "@/types/database";
 import { SimpleWebsiteCard } from "@/components/websites/simple-website-card";
@@ -50,9 +49,11 @@ export function HomeView({
   }, [searchQuery]);
 
   // Keep in sync with server data
-  React.useEffect(() => {
+  const [prevInitial, setPrevInitial] = React.useState(initialWebsites);
+  if (prevInitial !== initialWebsites) {
+    setPrevInitial(initialWebsites);
     setWebsites(initialWebsites);
-  }, [initialWebsites]);
+  }
 
   // Group websites into 3 columns: AI, Đảng, Chính quyền
   const { aiWebsites, dangWebsites, chinhQuyenWebsites } = React.useMemo(() => {

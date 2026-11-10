@@ -1,7 +1,6 @@
 "use client";
 
 import * as React from "react";
-import Image from "next/image";
 import {
   ExternalLink,
   Star,
@@ -63,8 +62,8 @@ export function WebsiteCard({
     isAdmin ||
     (!website.is_global && website.user_id && website.user_id === currentUserId);
 
-  const handleOpenWebsite = async (e: React.MouseEvent) => {
-    // Record visit in background
+  const handleOpenWebsite = async () => {
+    if (!currentUserId) return;
     recordVisitAction(website.id).catch(() => {});
   };
 
@@ -135,6 +134,7 @@ export function WebsiteCard({
                     className="h-full w-full object-contain"
                     onError={() => setImgError(true)}
                     loading="lazy"
+                    decoding="async"
                   />
                 ) : (
                   <Globe className="h-5 w-5 text-muted-foreground" />

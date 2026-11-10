@@ -13,13 +13,48 @@ function isSupabaseConfigured(): boolean {
 }
 
 export async function proxy(request: NextRequest) {
+  const pathname = request.nextUrl.pathname;
+
+  const isAuthRoute =
+    pathname.startsWith("/login") ||
+    pathname.startsWith("/register") ||
+    pathname.startsWith("/forgot-password");
+
+  const isProtectedRoute =
+    pathname.startsWith("/dashboard") ||
+    pathname.startsWith("/websites") ||
+    pathname.startsWith("/categories") ||
+    pathname.startsWith("/recent") ||
+    pathname.startsWith("/settings") ||
+    pathname.startsWith("/admin");
+
+  if (!isSupabaseConfigured()) {
+    return NextResponse.next({ request });
+  }
+
+  // Fast path: Check for Supabase session cookies before initiating network calls
+  const cookies = request.cookies.getAll();
+  const hasAuthCookie = cookies.some(
+    (c) => c.name.startsWith("sb-") && c.value && c.value.length > 0
+  );
+
+  // If unauthenticated and accessing a protected route, redirect to login immediately
+  if (!hasAuthCookie && isProtectedRoute) {
+    const redirectUrl = request.nextUrl.clone();
+    redirectUrl.pathname = "/login";
+    redirectUrl.searchParams.set("redirectedFrom", pathname);
+    return NextResponse.redirect(redirectUrl);
+  }
+
+  // If unauthenticated and accessing a public non-auth route, pass through with 0ms overhead
+  if (!hasAuthCookie && !isAuthRoute) {
+    return NextResponse.next({ request });
+  }
+
+  // User has session cookies or is on an auth route: refresh/validate session
   let supabaseResponse = NextResponse.next({
     request,
   });
-
-  if (!isSupabaseConfigured()) {
-    return supabaseResponse;
-  }
 
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL!;
   const anonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
@@ -47,24 +82,7 @@ export async function proxy(request: NextRequest) {
     data: { user },
   } = await supabase.auth.getUser();
 
-  const pathname = request.nextUrl.pathname;
-
-  const isAuthRoute =
-    pathname.startsWith("/login") ||
-    pathname.startsWith("/register") ||
-    pathname.startsWith("/forgot-password");
-
-  const isProtectedRoute =
-    pathname.startsWith("/dashboard") ||
-    pathname.startsWith("/websites") ||
-    pathname.startsWith("/categories") ||
-    pathname.startsWith("/recent") ||
-    pathname.startsWith("/settings") ||
-    pathname.startsWith("/admin");
-
-  const isAdminRoute = pathname.startsWith("/admin");
-
-  // Redirect unauthenticated user from protected routes to /login
+  // If token is invalid/expired and route is protected, redirect to login
   if (!user && isProtectedRoute) {
     const redirectUrl = request.nextUrl.clone();
     redirectUrl.pathname = "/login";
@@ -72,27 +90,11 @@ export async function proxy(request: NextRequest) {
     return NextResponse.redirect(redirectUrl);
   }
 
-  // Redirect authenticated user from public auth routes to home page /
+  // If authenticated user visits login/register, redirect to home
   if (user && isAuthRoute) {
     const redirectUrl = request.nextUrl.clone();
     redirectUrl.pathname = "/";
     return NextResponse.redirect(redirectUrl);
-  }
-
-  // Check admin privileges for /admin routes
-  if (user && isAdminRoute) {
-    const { data: profile } = await supabase
-      .from("profiles")
-      .select("role")
-      .eq("id", user.id)
-      .single();
-
-    if (profile?.role !== "admin") {
-      const redirectUrl = request.nextUrl.clone();
-      redirectUrl.pathname = "/";
-      redirectUrl.searchParams.set("error", "unauthorized");
-      return NextResponse.redirect(redirectUrl);
-    }
   }
 
   return supabaseResponse;
@@ -100,13 +102,6 @@ export async function proxy(request: NextRequest) {
 
 export const config = {
   matcher: [
-    /*
-     * Match all request paths except for:
-     * - _next/static (static files)
-     * - _next/image (image optimization files)
-     * - favicon.ico (favicon file)
-     * - public files (svg, png, jpg, etc.)
-     */
     "/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)",
   ],
 };

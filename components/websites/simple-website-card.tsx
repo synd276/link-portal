@@ -4,16 +4,13 @@ import * as React from "react";
 import {
   ExternalLink,
   Star,
-  Globe,
-  Bot,
+    Bot,
   Building2,
-  Landmark,
-  Shield,
-  FileText,
 } from "lucide-react";
 import { toast } from "sonner";
 import { Website } from "@/types/database";
 import { recordVisitAction, toggleFavoriteAction } from "@/app/actions/websites";
+import { getDomainFromUrl } from "@/lib/utils";
 
 interface SimpleWebsiteCardProps {
   website: Website;
@@ -24,11 +21,20 @@ interface SimpleWebsiteCardProps {
 export function SimpleWebsiteCard({
   website,
   currentUserId,
-  isAdmin = false,
+  /* isAdmin */
 }: SimpleWebsiteCardProps) {
   const [isFav, setIsFav] = React.useState(Boolean(website.is_favorite));
   const [isFavLoading, setIsFavLoading] = React.useState(false);
   const [imgError, setImgError] = React.useState(false);
+
+  const domain = React.useMemo(() => getDomainFromUrl(website.url), [website.url]);
+
+  const faviconSrc = React.useMemo(() => {
+    if (website.favicon_url && website.favicon_url.trim().length > 0) {
+      return website.favicon_url.trim();
+    }
+    return `https://www.google.com/s2/favicons?domain=${domain}&sz=128`;
+  }, [website.favicon_url, domain]);
 
   // Fallback category icon
   const getCategoryIcon = () => {
@@ -43,6 +49,7 @@ export function SimpleWebsiteCard({
   };
 
   const handleOpenWebsite = () => {
+    if (!currentUserId) return;
     recordVisitAction(website.id).catch(() => {});
   };
 
@@ -79,10 +86,6 @@ export function SimpleWebsiteCard({
     }
   };
 
-  const faviconSrc =
-    website.favicon_url ||
-    `https://www.google.com/s2/favicons?domain=${new URL(website.url).hostname}&sz=128`;
-
   return (
     <a
       href={website.url}
@@ -118,6 +121,7 @@ export function SimpleWebsiteCard({
               className="h-full w-full object-contain rounded-full"
               onError={() => setImgError(true)}
               loading="lazy"
+              decoding="async"
             />
           ) : (
             getCategoryIcon()
@@ -135,7 +139,7 @@ export function SimpleWebsiteCard({
       {/* Subtle indicator */}
       <div className="w-full pt-1.5 flex items-center justify-center text-[10px] text-muted-foreground/70 group-hover:text-primary transition-colors">
         <span className="truncate max-w-[150px]">
-          {new URL(website.url).hostname.replace("www.", "")}
+          {domain}
         </span>
         <ExternalLink className="h-2.5 w-2.5 ml-1 opacity-0 group-hover:opacity-100 transition-opacity shrink-0" />
       </div>

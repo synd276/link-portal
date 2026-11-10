@@ -5,6 +5,7 @@ import { createClient, isSupabaseConfigured } from "@/lib/supabase/server";
 import { websiteSchema } from "@/lib/validations";
 import { getFaviconUrl } from "@/lib/utils";
 import { Website } from "@/types/database";
+import { invalidateWebsitesCache } from "@/lib/data";
 
 export interface ActionResult<T = unknown> {
   success: boolean;
@@ -70,6 +71,7 @@ export async function createWebsiteAction(values: unknown): Promise<ActionResult
     return { success: false, error: error.message };
   }
 
+  invalidateWebsitesCache();
   revalidatePath("/dashboard");
   revalidatePath("/");
   revalidatePath("/websites");
@@ -156,6 +158,7 @@ export async function updateWebsiteAction(
     return { success: false, error: error.message };
   }
 
+  invalidateWebsitesCache();
   revalidatePath("/dashboard");
   revalidatePath("/");
   revalidatePath("/websites");
@@ -209,6 +212,7 @@ export async function deleteWebsiteAction(id: string): Promise<ActionResult> {
     return { success: false, error: error.message };
   }
 
+  invalidateWebsitesCache();
   revalidatePath("/dashboard");
   revalidatePath("/");
   revalidatePath("/websites");
@@ -251,7 +255,6 @@ export async function toggleFavoriteAction(
     }
 
     revalidatePath("/dashboard");
-  revalidatePath("/");
     revalidatePath("/websites");
     revalidatePath("/websites/favorites");
     return { success: true, data: { isFavorite: false } };
@@ -269,7 +272,6 @@ export async function toggleFavoriteAction(
     }
 
     revalidatePath("/dashboard");
-  revalidatePath("/");
     revalidatePath("/websites");
     revalidatePath("/websites/favorites");
     return { success: true, data: { isFavorite: true } };
@@ -301,8 +303,7 @@ export async function recordVisitAction(websiteId: string): Promise<ActionResult
     return { success: false, error: error.message };
   }
 
-  revalidatePath("/dashboard");
-  revalidatePath("/");
+  // Only revalidate /recent, do not bust the home page / and dashboard cache!
   revalidatePath("/recent");
   return { success: true };
 }

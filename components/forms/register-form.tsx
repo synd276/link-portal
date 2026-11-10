@@ -44,7 +44,7 @@ export function RegisterForm() {
         return;
       }
 
-      if ((res.data as any)?.needsEmailConfirmation) {
+      if ((res.data as { needsEmailConfirmation?: boolean })?.needsEmailConfirmation) {
         setConfirmationNotice(true);
         toast.info("Đăng ký thành công! Vui lòng kiểm tra email để xác nhận.");
         return;

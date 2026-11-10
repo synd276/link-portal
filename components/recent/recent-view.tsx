@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { Clock, ExternalLink, Globe, ArrowUpRight } from "lucide-react";
+import { Clock, Globe, ArrowUpRight } from "lucide-react";
 import { Website } from "@/types/database";
 import { formatDateTime, getDomainFromUrl, getFaviconUrl } from "@/lib/utils";
 import { recordVisitAction } from "@/app/actions/websites";
@@ -60,6 +60,8 @@ export function RecentView({ visits, recentAdded }: RecentViewProps) {
                         src={favicon}
                         alt=""
                         className="h-full w-full object-contain"
+                        loading="lazy"
+                        decoding="async"
                         onError={(e) => {
                           (e.target as HTMLElement).style.display = "none";
                         }}

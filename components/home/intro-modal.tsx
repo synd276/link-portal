@@ -5,13 +5,11 @@ import Link from "next/link";
 import {
   Compass,
   Zap,
-  Clock,
-  Sparkles,
+    Sparkles,
   Layers,
   Star,
   Search,
-  ShieldCheck,
-  ArrowRight,
+    ArrowRight,
   CheckCircle2,
 } from "lucide-react";
 import {
@@ -61,7 +59,10 @@ export function IntroModal({
     try {
       const hasVisited = getIntroCookie();
       if (!hasVisited && !isControlled) {
-        setInternalOpen(true);
+        const timer = setTimeout(() => {
+          setInternalOpen(true);
+        }, 0);
+        return () => clearTimeout(timer);
       }
     } catch {
       // Bỏ qua nếu môi trường không hỗ trợ document.cookie

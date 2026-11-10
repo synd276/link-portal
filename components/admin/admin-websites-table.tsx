@@ -46,9 +46,18 @@ export function AdminWebsitesTable({
 }: AdminWebsitesTableProps) {
   const [websites, setWebsites] = React.useState<Website[]>(initialWebsites);
   const [search, setSearch] = React.useState("");
+  const [debouncedSearch, setDebouncedSearch] = React.useState("");
   const [categoryFilter, setCategoryFilter] = React.useState("all");
   const [scopeFilter, setScopeFilter] = React.useState("all");
   const [currentPage, setCurrentPage] = React.useState(1);
+
+  React.useEffect(() => {
+    const timer = setTimeout(() => {
+      setDebouncedSearch(search);
+      setCurrentPage(1);
+    }, 150);
+    return () => clearTimeout(timer);
+  }, [search]);
   const pageSize = 10;
 
   // Dialogs
@@ -60,7 +69,7 @@ export function AdminWebsitesTable({
   // Filtered
   const filtered = React.useMemo(() => {
     return websites.filter((w) => {
-      const q = search.toLowerCase().trim();
+      const q = debouncedSearch.toLowerCase().trim();
       const matchSearch =
         !q ||
         w.name.toLowerCase().includes(q) ||
@@ -77,7 +86,7 @@ export function AdminWebsitesTable({
 
       return matchSearch && matchCat && matchScope;
     });
-  }, [websites, search, categoryFilter, scopeFilter]);
+  }, [websites, debouncedSearch, categoryFilter, scopeFilter]);
 
   // Pagination
   const totalPages = Math.ceil(filtered.length / pageSize) || 1;
@@ -222,6 +231,8 @@ export function AdminWebsitesTable({
                             src={favicon}
                             alt=""
                             className="h-full w-full object-contain"
+                            loading="lazy"
+                            decoding="async"
                             onError={(e) => {
                               (e.target as HTMLElement).style.display = "none";
                             }}
