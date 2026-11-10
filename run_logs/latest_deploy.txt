@@ -13,48 +13,19 @@ Downloaded project settings to ~/work/link-portal/link-portal/.vercel/project.js
 Vercel CLI 65.14.0
 WARNING! Build not running on Vercel. System environment variables will not be available.
 Installing dependencies...
-npm warn EBADENGINE Unsupported engine {
-npm warn EBADENGINE   package: '@supabase/auth-js@2.119.0',
-npm warn EBADENGINE   required: { node: '>=22.0.0' },
-npm warn EBADENGINE   current: { node: 'v20.20.2', npm: '10.8.2' }
-npm warn EBADENGINE }
-npm warn EBADENGINE Unsupported engine {
-npm warn EBADENGINE   package: '@supabase/functions-js@2.119.0',
-npm warn EBADENGINE   required: { node: '>=22.0.0' },
-npm warn EBADENGINE   current: { node: 'v20.20.2', npm: '10.8.2' }
-npm warn EBADENGINE }
-npm warn EBADENGINE Unsupported engine {
-npm warn EBADENGINE   package: '@supabase/postgrest-js@2.119.0',
-npm warn EBADENGINE   required: { node: '>=22.0.0' },
-npm warn EBADENGINE   current: { node: 'v20.20.2', npm: '10.8.2' }
-npm warn EBADENGINE }
-npm warn EBADENGINE Unsupported engine {
-npm warn EBADENGINE   package: '@supabase/realtime-js@2.119.0',
-npm warn EBADENGINE   required: { node: '>=22.0.0' },
-npm warn EBADENGINE   current: { node: 'v20.20.2', npm: '10.8.2' }
-npm warn EBADENGINE }
-npm warn EBADENGINE Unsupported engine {
-npm warn EBADENGINE   package: '@supabase/storage-js@2.119.0',
-npm warn EBADENGINE   required: { node: '>=22.0.0' },
-npm warn EBADENGINE   current: { node: 'v20.20.2', npm: '10.8.2' }
-npm warn EBADENGINE }
-npm warn EBADENGINE Unsupported engine {
-npm warn EBADENGINE   package: '@supabase/supabase-js@2.119.0',
-npm warn EBADENGINE   required: { node: '>=22.0.0' },
-npm warn EBADENGINE   current: { node: 'v20.20.2', npm: '10.8.2' }
-npm warn EBADENGINE }
 
-up to date in 703ms
+up to date in 493ms
 
 150 packages are looking for funding
   run `npm fund` for details
+Detected Next.js version: 16.4.6
 Running "npm run build"
 
 > link-portal@0.1.0 build
 > next build
 
 ▲ Next.js 16.4.6 (Turbopack)
-✓ Running next.config.ts took 30ms
+✓ Running next.config.ts took 22ms
 Attention: Next.js now collects completely anonymous telemetry regarding usage.
 This information is used to shape Next.js' roadmap and prioritize features.
 You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
@@ -64,18 +35,15 @@ https://nextjs.org/telemetry
 - Partial Prefetching enabled
 
   Creating an optimized production build ...
-✓ Compiled successfully in 5.6s
+✓ Compiled successfully in 5.2s
   Running TypeScript ...
-  Finished TypeScript in 4.6s ...
+  Finished TypeScript in 4.5s ...
   Collecting page data using 3 workers ...
-⚠️  Node.js 20 and below are deprecated and will no longer be supported in future versions of @supabase/supabase-js. Please upgrade to Node.js 22 or later. For more information, visit: https://github.com/orgs/supabase/discussions/45715
-⚠️  Node.js 20 and below are deprecated and will no longer be supported in future versions of @supabase/supabase-js. Please upgrade to Node.js 22 or later. For more information, visit: https://github.com/orgs/supabase/discussions/45715
-⚠️  Node.js 20 and below are deprecated and will no longer be supported in future versions of @supabase/supabase-js. Please upgrade to Node.js 22 or later. For more information, visit: https://github.com/orgs/supabase/discussions/45715
   Generating static pages using 3 workers (0/20) ...
   Generating static pages using 3 workers (5/20) 
   Generating static pages using 3 workers (10/20) 
   Generating static pages using 3 workers (15/20) 
-✓ Generating static pages using 3 workers (20/20) in 758ms
+✓ Generating static pages using 3 workers (20/20) in 644ms
   Finalizing page optimization ...
 
 Route (app)
@@ -104,6 +72,9 @@ Route (app)
 ○  (Static)             prerendered as static content
 ◐  (Partial Prerender)  prerendered as static HTML with dynamic server-streamed content
 
+Traced Next.js server files in: 46.802ms
+Created all serverless functions in: 140.648ms
+Collected static files (public/, static/, .next/static): 4.898ms
 Build Completed in .vercel/output [13s]
 
 === 3. Inspecting .vercel/output ===
@@ -111,13 +82,356 @@ Build Completed in .vercel/output [13s]
 .vercel/output/config.json
 .vercel/output/builds.json
 .vercel/output/static
+.vercel/output/static/404.segments
+.vercel/output/static/404.segments/_tree.segment.rsc.json
+.vercel/output/static/500.segments
+.vercel/output/static/500.segments/_tree.segment.rsc.json
+.vercel/output/static/favicon.ico
+.vercel/output/static/404.html
 .vercel/output/static/globe.svg
 .vercel/output/static/vercel.svg
+.vercel/output/static/500.html
+.vercel/output/static/404.rsc.json
 .vercel/output/static/file.svg
 .vercel/output/static/window.svg
 .vercel/output/static/next.svg
+.vercel/output/static/_next
+.vercel/output/static/_next/__private
+.vercel/output/static/_next/__private/trace
+.vercel/output/static/_next/static
+.vercel/output/static/_next/static/zv7v3AGqeQa_VjoRrPmWg
+.vercel/output/static/_next/static/chunks
+.vercel/output/static/_next/static/not-found.txt
+.vercel/output/static/_next/static/media
+.vercel/output/static/500.rsc.json
+.vercel/output/functions
+.vercel/output/functions/register.rsc.prerender-fallback.rsc
+.vercel/output/functions/categories.rsc.prerender-fallback
+.vercel/output/functions/register.rsc.prerender-config.json
+.vercel/output/functions/_not-found.prerender-fallback.html
+.vercel/output/functions/recent.rsc.func
+.vercel/output/functions/_not-found.prerender-config.json
+.vercel/output/functions/login.prerender-config.json
+.vercel/output/functions/index.rsc.prerender-fallback
+.vercel/output/functions/index.func
+.vercel/output/functions/recent.prefetch.rsc.func
+.vercel/output/functions/admin.rsc.prerender-config.json
+.vercel/output/functions/login.func
+.vercel/output/functions/_global-error.prefetch.rsc.func
+.vercel/output/functions/forgot-password.prerender-fallback.html
+.vercel/output/functions/recent.segments
+.vercel/output/functions/recent.segments/_tree.segment.rsc.func
+.vercel/output/functions/recent.segments/!KHVzZXIp
+.vercel/output/functions/recent.segments/!KHVzZXIp/recent
+.vercel/output/functions/recent.segments/_full.segment.rsc.prerender-fallback.rsc
+.vercel/output/functions/recent.segments/_full.segment.rsc.func
+.vercel/output/functions/recent.segments/_full.segment.rsc.prerender-config.json
+.vercel/output/functions/recent.segments/_tree.segment.rsc.prerender-fallback.rsc
+.vercel/output/functions/recent.segments/_tree.segment.rsc.prerender-config.json
+.vercel/output/functions/dashboard.prerender-fallback
+.vercel/output/functions/_not-found.rsc.prerender-config.json
+.vercel/output/functions/websites.rsc.func
+.vercel/output/functions/dashboard.rsc.prerender-config.json
+.vercel/output/functions/register.segments
+.vercel/output/functions/register.segments/_tree.segment.rsc.func
+.vercel/output/functions/register.segments/_full.segment.rsc.prerender-fallback.rsc
+.vercel/output/functions/register.segments/_full.segment.rsc.func
+.vercel/output/functions/register.segments/!KGF1dGgp
+.vercel/output/functions/register.segments/!KGF1dGgp/register
+.vercel/output/functions/register.segments/_full.segment.rsc.prerender-config.json
+.vercel/output/functions/register.segments/_tree.segment.rsc.prerender-fallback.rsc
+.vercel/output/functions/register.segments/_tree.segment.rsc.prerender-config.json
+.vercel/output/functions/favicon.ico.prefetch.rsc.func
+.vercel/output/functions/forgot-password.prerender-config.json
+.vercel/output/functions/forgot-password.rsc.prerender-config.json
+.vercel/output/functions/register.prerender-fallback.html
+.vercel/output/functions/settings.prerender-config.json
+.vercel/output/functions/forgot-password.segments
+.vercel/output/functions/forgot-password.segments/_tree.segment.rsc.func
+.vercel/output/functions/forgot-password.segments/_full.segment.rsc.prerender-fallback.rsc
+.vercel/output/functions/forgot-password.segments/_full.segment.rsc.func
+.vercel/output/functions/forgot-password.segments/!KGF1dGgp
+.vercel/output/functions/forgot-password.segments/!KGF1dGgp/forgot-password
+.vercel/output/functions/forgot-password.segments/_full.segment.rsc.prerender-config.json
+.vercel/output/functions/forgot-password.segments/_tree.segment.rsc.prerender-fallback.rsc
+.vercel/output/functions/forgot-password.segments/_tree.segment.rsc.prerender-config.json
+.vercel/output/functions/_global-error.rsc.prerender-config.json
+.vercel/output/functions/index.rsc.prerender-config.json
+.vercel/output/functions/index.rsc.func
+.vercel/output/functions/reset-password.prerender-config.json
+.vercel/output/functions/dashboard.func
+.vercel/output/functions/websites.rsc.prerender-fallback
+.vercel/output/functions/forgot-password.func
+.vercel/output/functions/_not-found.segments
+.vercel/output/functions/_not-found.segments/_tree.segment.rsc.func
+.vercel/output/functions/_not-found.segments/_full.segment.rsc.prerender-fallback.rsc
+.vercel/output/functions/_not-found.segments/_full.segment.rsc.func
+.vercel/output/functions/_not-found.segments/_full.segment.rsc.prerender-config.json
+.vercel/output/functions/_not-found.segments/_tree.segment.rsc.prerender-fallback.rsc
+.vercel/output/functions/_not-found.segments/_not-found
+.vercel/output/functions/_not-found.segments/_not-found/__PAGE__.segment.rsc.prerender-config.json
+.vercel/output/functions/_not-found.segments/_not-found/__PAGE__.segment.rsc.func
+.vercel/output/functions/_not-found.segments/_not-found/__PAGE__.segment.rsc.prerender-fallback.rsc
+.vercel/output/functions/_not-found.segments/_tree.segment.rsc.prerender-config.json
+.vercel/output/functions/login.prerender-fallback.html
+.vercel/output/functions/recent.prerender-fallback
+.vercel/output/functions/register.rsc.func
+.vercel/output/functions/dashboard.prerender-config.json
+.vercel/output/functions/settings.prefetch.rsc.func
+.vercel/output/functions/settings.segments
+.vercel/output/functions/settings.segments/_tree.segment.rsc.func
+.vercel/output/functions/settings.segments/!KHVzZXIp
+.vercel/output/functions/settings.segments/!KHVzZXIp/settings
+.vercel/output/functions/settings.segments/_full.segment.rsc.prerender-fallback.rsc
+.vercel/output/functions/settings.segments/_full.segment.rsc.func
+.vercel/output/functions/settings.segments/_full.segment.rsc.prerender-config.json
+.vercel/output/functions/settings.segments/_tree.segment.rsc.prerender-fallback.rsc
+.vercel/output/functions/settings.segments/_tree.segment.rsc.prerender-config.json
+.vercel/output/functions/_not-found.rsc.prerender-fallback.rsc
+.vercel/output/functions/reset-password.rsc.prerender-config.json
+.vercel/output/functions/_global-error.prerender-config.json
+.vercel/output/functions/reset-password.prefetch.rsc.func
+.vercel/output/functions/settings.rsc.prerender-config.json
+.vercel/output/functions/websites.prerender-fallback
+.vercel/output/functions/categories.prerender-fallback
+.vercel/output/functions/forgot-password.rsc.prerender-fallback.rsc
+.vercel/output/functions/admin.rsc.prerender-fallback
+.vercel/output/functions/_not-found.prefetch.rsc.func
+.vercel/output/functions/websites.func
+.vercel/output/functions/categories.prerender-config.json
+.vercel/output/functions/dashboard.segments
+.vercel/output/functions/dashboard.segments/_tree.segment.rsc.func
+.vercel/output/functions/dashboard.segments/!KHVzZXIp
+.vercel/output/functions/dashboard.segments/!KHVzZXIp/dashboard
+.vercel/output/functions/dashboard.segments/_full.segment.rsc.prerender-fallback.rsc
+.vercel/output/functions/dashboard.segments/_full.segment.rsc.func
+.vercel/output/functions/dashboard.segments/_full.segment.rsc.prerender-config.json
+.vercel/output/functions/dashboard.segments/_tree.segment.rsc.prerender-fallback.rsc
+.vercel/output/functions/dashboard.segments/_tree.segment.rsc.prerender-config.json
+.vercel/output/functions/reset-password.func
+.vercel/output/functions/_global-error.func
+.vercel/output/functions/login.prefetch.rsc.func
+.vercel/output/functions/reset-password.prerender-fallback.html
+.vercel/output/functions/login.rsc.func
+.vercel/output/functions/forgot-password.prefetch.rsc.func
+.vercel/output/functions/websites
+.vercel/output/functions/websites/personal.func
+.vercel/output/functions/websites/personal.prerender-config.json
+.vercel/output/functions/websites/personal.segments
+.vercel/output/functions/websites/personal.segments/_tree.segment.rsc.func
+.vercel/output/functions/websites/personal.segments/!KHVzZXIp
+.vercel/output/functions/websites/personal.segments/_full.segment.rsc.prerender-fallback.rsc
+.vercel/output/functions/websites/personal.segments/_full.segment.rsc.func
+.vercel/output/functions/websites/personal.segments/_full.segment.rsc.prerender-config.json
+.vercel/output/functions/websites/personal.segments/_tree.segment.rsc.prerender-fallback.rsc
+.vercel/output/functions/websites/personal.segments/_tree.segment.rsc.prerender-config.json
+.vercel/output/functions/websites/favorites.prerender-fallback
+.vercel/output/functions/websites/personal.rsc.func
+.vercel/output/functions/websites/favorites.func
+.vercel/output/functions/websites/personal.rsc.prerender-config.json
+.vercel/output/functions/websites/favorites.segments
+.vercel/output/functions/websites/favorites.segments/_tree.segment.rsc.func
+.vercel/output/functions/websites/favorites.segments/!KHVzZXIp
+.vercel/output/functions/websites/favorites.segments/_full.segment.rsc.prerender-fallback.rsc
+.vercel/output/functions/websites/favorites.segments/_full.segment.rsc.func
+.vercel/output/functions/websites/favorites.segments/_full.segment.rsc.prerender-config.json
+.vercel/output/functions/websites/favorites.segments/_tree.segment.rsc.prerender-fallback.rsc
+.vercel/output/functions/websites/favorites.segments/_tree.segment.rsc.prerender-config.json
+.vercel/output/functions/websites/favorites.rsc.func
+.vercel/output/functions/websites/personal.prerender-fallback
+.vercel/output/functions/websites/favorites.rsc.prerender-config.json
+.vercel/output/functions/websites/personal.prefetch.rsc.func
+.vercel/output/functions/websites/favorites.prefetch.rsc.func
+.vercel/output/functions/websites/favorites.rsc.prerender-fallback
+.vercel/output/functions/websites/personal.rsc.prerender-fallback
+.vercel/output/functions/websites/favorites.prerender-config.json
+.vercel/output/functions/categories.rsc.prerender-config.json
+.vercel/output/functions/categories.prefetch.rsc.func
+.vercel/output/functions/websites.rsc.prerender-config.json
+.vercel/output/functions/recent.func
+.vercel/output/functions/_global-error.prerender-fallback.html
+.vercel/output/functions/login.segments
+.vercel/output/functions/login.segments/_tree.segment.rsc.func
+.vercel/output/functions/login.segments/_full.segment.rsc.prerender-fallback.rsc
+.vercel/output/functions/login.segments/_full.segment.rsc.func
+.vercel/output/functions/login.segments/!KGF1dGgp
+.vercel/output/functions/login.segments/!KGF1dGgp/login
+.vercel/output/functions/login.segments/_full.segment.rsc.prerender-config.json
+.vercel/output/functions/login.segments/_tree.segment.rsc.prerender-fallback.rsc
+.vercel/output/functions/login.segments/_tree.segment.rsc.prerender-config.json
+.vercel/output/functions/websites.prefetch.rsc.func
+.vercel/output/functions/admin.func
+.vercel/output/functions/login.rsc.prerender-fallback.rsc
+.vercel/output/functions/index.segments
+.vercel/output/functions/index.segments/__PAGE__.segment.rsc.prerender-config.json
+.vercel/output/functions/index.segments/__PAGE__.segment.rsc.func
+.vercel/output/functions/index.segments/_tree.segment.rsc.func
+.vercel/output/functions/index.segments/_full.segment.rsc.prerender-fallback.rsc
+.vercel/output/functions/index.segments/_full.segment.rsc.func
+.vercel/output/functions/index.segments/_full.segment.rsc.prerender-config.json
+.vercel/output/functions/index.segments/_tree.segment.rsc.prerender-fallback.rsc
+.vercel/output/functions/index.segments/__PAGE__.segment.rsc.prerender-fallback.rsc
+.vercel/output/functions/index.segments/_tree.segment.rsc.prerender-config.json
+.vercel/output/functions/register.prerender-config.json
+.vercel/output/functions/settings.rsc.func
+.vercel/output/functions/reset-password.segments
+.vercel/output/functions/reset-password.segments/_tree.segment.rsc.func
+.vercel/output/functions/reset-password.segments/_full.segment.rsc.prerender-fallback.rsc
+.vercel/output/functions/reset-password.segments/_full.segment.rsc.func
+.vercel/output/functions/reset-password.segments/!KGF1dGgp
+.vercel/output/functions/reset-password.segments/!KGF1dGgp/reset-password
+.vercel/output/functions/reset-password.segments/_full.segment.rsc.prerender-config.json
+.vercel/output/functions/reset-password.segments/_tree.segment.rsc.prerender-fallback.rsc
+.vercel/output/functions/reset-password.segments/_tree.segment.rsc.prerender-config.json
+.vercel/output/functions/categories.rsc.func
+.vercel/output/functions/_not-found.rsc.func
+.vercel/output/functions/admin
+.vercel/output/functions/admin/categories.rsc.prerender-fallback
+.vercel/output/functions/admin/users.func
+.vercel/output/functions/admin/users.prerender-fallback
+.vercel/output/functions/admin/websites.rsc.func
+.vercel/output/functions/admin/users.rsc.func
+.vercel/output/functions/admin/settings.prerender-config.json
+.vercel/output/functions/admin/users.rsc.prerender-config.json
+.vercel/output/functions/admin/users.prefetch.rsc.func
+.vercel/output/functions/admin/websites.rsc.prerender-fallback
+.vercel/output/functions/admin/settings.prefetch.rsc.func
+.vercel/output/functions/admin/settings.segments
+.vercel/output/functions/admin/settings.segments/_tree.segment.rsc.func
+.vercel/output/functions/admin/settings.segments/_full.segment.rsc.prerender-fallback.rsc
+.vercel/output/functions/admin/settings.segments/_full.segment.rsc.func
+.vercel/output/functions/admin/settings.segments/_full.segment.rsc.prerender-config.json
+.vercel/output/functions/admin/settings.segments/_tree.segment.rsc.prerender-fallback.rsc
+.vercel/output/functions/admin/settings.segments/!KGFkbWluKQ
+.vercel/output/functions/admin/settings.segments/_tree.segment.rsc.prerender-config.json
+.vercel/output/functions/admin/settings.rsc.prerender-config.json
+.vercel/output/functions/admin/websites.prerender-fallback
+.vercel/output/functions/admin/categories.prerender-fallback
+.vercel/output/functions/admin/websites.func
+.vercel/output/functions/admin/categories.prerender-config.json
+.vercel/output/functions/admin/categories.rsc.prerender-config.json
+.vercel/output/functions/admin/categories.prefetch.rsc.func
+.vercel/output/functions/admin/websites.rsc.prerender-config.json
+.vercel/output/functions/admin/users.rsc.prerender-fallback
+.vercel/output/functions/admin/websites.prefetch.rsc.func
+.vercel/output/functions/admin/settings.rsc.func
+.vercel/output/functions/admin/users.prerender-config.json
+.vercel/output/functions/admin/categories.rsc.func
+.vercel/output/functions/admin/users.segments
+.vercel/output/functions/admin/users.segments/_tree.segment.rsc.func
+.vercel/output/functions/admin/users.segments/_full.segment.rsc.prerender-fallback.rsc
+.vercel/output/functions/admin/users.segments/_full.segment.rsc.func
+.vercel/output/functions/admin/users.segments/_full.segment.rsc.prerender-config.json
+.vercel/output/functions/admin/users.segments/_tree.segment.rsc.prerender-fallback.rsc
+.vercel/output/functions/admin/users.segments/!KGFkbWluKQ
+.vercel/output/functions/admin/users.segments/_tree.segment.rsc.prerender-config.json
+.vercel/output/functions/admin/settings.rsc.prerender-fallback
+.vercel/output/functions/admin/categories.func
+.vercel/output/functions/admin/categories.func/.vc-config.json
+.vercel/output/functions/admin/categories.func/___next_launcher.cjs
+.vercel/output/functions/admin/categories.func/.next
+.vercel/output/functions/admin/websites.segments
+.vercel/output/functions/admin/websites.segments/_tree.segment.rsc.func
+.vercel/output/functions/admin/websites.segments/_full.segment.rsc.prerender-fallback.rsc
+.vercel/output/functions/admin/websites.segments/_full.segment.rsc.func
+.vercel/output/functions/admin/websites.segments/_full.segment.rsc.prerender-config.json
+.vercel/output/functions/admin/websites.segments/_tree.segment.rsc.prerender-fallback.rsc
+.vercel/output/functions/admin/websites.segments/!KGFkbWluKQ
+.vercel/output/functions/admin/websites.segments/_tree.segment.rsc.prerender-config.json
+.vercel/output/functions/admin/categories.segments
+.vercel/output/functions/admin/categories.segments/_tree.segment.rsc.func
+.vercel/output/functions/admin/categories.segments/_full.segment.rsc.prerender-fallback.rsc
+.vercel/output/functions/admin/categories.segments/_full.segment.rsc.func
+.vercel/output/functions/admin/categories.segments/_full.segment.rsc.prerender-config.json
+.vercel/output/functions/admin/categories.segments/_tree.segment.rsc.prerender-fallback.rsc
+.vercel/output/functions/admin/categories.segments/!KGFkbWluKQ
+.vercel/output/functions/admin/categories.segments/_tree.segment.rsc.prerender-config.json
+.vercel/output/functions/admin/settings.prerender-fallback
+.vercel/output/functions/admin/settings.func
+.vercel/output/functions/admin/websites.prerender-config.json
+.vercel/output/functions/reset-password.rsc.prerender-fallback.rsc
+.vercel/output/functions/login.rsc.prerender-config.json
+.vercel/output/functions/settings.rsc.prerender-fallback
+.vercel/output/functions/index.prerender-config.json
+.vercel/output/functions/admin.prerender-config.json
+.vercel/output/functions/categories.func
+.vercel/output/functions/admin.segments
+.vercel/output/functions/admin.segments/_tree.segment.rsc.func
+.vercel/output/functions/admin.segments/_full.segment.rsc.prerender-fallback.rsc
+.vercel/output/functions/admin.segments/_full.segment.rsc.func
+.vercel/output/functions/admin.segments/_full.segment.rsc.prerender-config.json
+.vercel/output/functions/admin.segments/_tree.segment.rsc.prerender-fallback.rsc
+.vercel/output/functions/admin.segments/!KGFkbWluKQ
+.vercel/output/functions/admin.segments/!KGFkbWluKQ/admin
+.vercel/output/functions/admin.segments/_tree.segment.rsc.prerender-config.json
+.vercel/output/functions/admin.rsc.func
+.vercel/output/functions/websites.segments
+.vercel/output/functions/websites.segments/_tree.segment.rsc.func
+.vercel/output/functions/websites.segments/!KHVzZXIp
+.vercel/output/functions/websites.segments/!KHVzZXIp/websites
+.vercel/output/functions/websites.segments/_full.segment.rsc.prerender-fallback.rsc
+.vercel/output/functions/websites.segments/_full.segment.rsc.func
+.vercel/output/functions/websites.segments/_full.segment.rsc.prerender-config.json
+.vercel/output/functions/websites.segments/_tree.segment.rsc.prerender-fallback.rsc
+.vercel/output/functions/websites.segments/_tree.segment.rsc.prerender-config.json
+.vercel/output/functions/_middleware.func
+.vercel/output/functions/_middleware.func/.vc-config.json
+.vercel/output/functions/_middleware.func/___next_launcher.cjs
+.vercel/output/functions/index.prefetch.rsc.func
+.vercel/output/functions/register.func
+.vercel/output/functions/_global-error.segments
+.vercel/output/functions/_global-error.segments/__PAGE__.segment.rsc.prerender-config.json
+.vercel/output/functions/_global-error.segments/__PAGE__.segment.rsc.func
+.vercel/output/functions/_global-error.segments/_tree.segment.rsc.func
+.vercel/output/functions/_global-error.segments/_full.segment.rsc.prerender-fallback.rsc
+.vercel/output/functions/_global-error.segments/_full.segment.rsc.func
+.vercel/output/functions/_global-error.segments/_full.segment.rsc.prerender-config.json
+.vercel/output/functions/_global-error.segments/_tree.segment.rsc.prerender-fallback.rsc
+.vercel/output/functions/_global-error.segments/__PAGE__.segment.rsc.prerender-fallback.rsc
+.vercel/output/functions/_global-error.segments/_tree.segment.rsc.prerender-config.json
+.vercel/output/functions/categories.segments
+.vercel/output/functions/categories.segments/_tree.segment.rsc.func
+.vercel/output/functions/categories.segments/!KHVzZXIp
+.vercel/output/functions/categories.segments/!KHVzZXIp/categories
+.vercel/output/functions/categories.segments/_full.segment.rsc.prerender-fallback.rsc
+.vercel/output/functions/categories.segments/_full.segment.rsc.func
+.vercel/output/functions/categories.segments/_full.segment.rsc.prerender-config.json
+.vercel/output/functions/categories.segments/_tree.segment.rsc.prerender-fallback.rsc
+.vercel/output/functions/categories.segments/_tree.segment.rsc.prerender-config.json
+.vercel/output/functions/admin.prerender-fallback
+.vercel/output/functions/_global-error.rsc.func
+.vercel/output/functions/settings.prerender-fallback
+.vercel/output/functions/settings.func
+.vercel/output/functions/admin.prefetch.rsc.func
+.vercel/output/functions/recent.rsc.prerender-config.json
+.vercel/output/functions/index.prerender-fallback
+.vercel/output/functions/forgot-password.rsc.func
+.vercel/output/functions/_not-found.func
+.vercel/output/functions/reset-password.rsc.func
+.vercel/output/functions/_global-error.rsc.prerender-fallback.rsc
+.vercel/output/functions/dashboard.rsc.func
+.vercel/output/functions/favicon.ico.rsc.func
+.vercel/output/functions/favicon.ico.rsc.func/.vc-config.json
+.vercel/output/functions/favicon.ico.rsc.func/___next_launcher.cjs
+.vercel/output/functions/favicon.ico.rsc.func/.next
+.vercel/output/functions/favicon.ico.rsc.func/.next/routes-manifest.json
+.vercel/output/functions/favicon.ico.rsc.func/.next/server
+.vercel/output/functions/recent.prerender-config.json
+.vercel/output/functions/recent.rsc.prerender-fallback
+.vercel/output/functions/register.prefetch.rsc.func
+.vercel/output/functions/dashboard.rsc.prerender-fallback
+.vercel/output/functions/dashboard.prefetch.rsc.func
+.vercel/output/functions/websites.prerender-config.json
 .vercel/output/diagnostics
+.vercel/output/diagnostics/framework.json
+.vercel/output/diagnostics/project-manifest.json
 .vercel/output/diagnostics/cli_traces.json
+.vercel/output/diagnostics/route-bundle-stats.json
+.vercel/output/diagnostics/trace
+.vercel/output/diagnostics/deploy-manifest.json
+.vercel/output/diagnostics/turbopack
+.vercel/output/diagnostics/build-diagnostics.json
+.vercel/output/diagnostics/trace-build
 
 === 4. .vercel/output/config.json ===
 {
@@ -125,14 +439,702 @@ Build Completed in .vercel/output [13s]
   "daemons": {},
   "routes": [
     {
+      "src": "^(?:/((?:[^/]+?)(?:/(?:[^/]+?))*))/$",
+      "headers": {
+        "Location": "/$1"
+      },
+      "status": 308,
+      "continue": true
+    },
+    {
+      "src": "/_next/__private/trace",
+      "dest": "/404",
+      "status": 404,
+      "continue": true
+    },
+    {
+      "src": "/404/?",
+      "status": 404,
+      "continue": true,
+      "missing": [
+        {
+          "type": "header",
+          "key": "x-prerender-revalidate"
+        }
+      ]
+    },
+    {
+      "src": "/500",
+      "status": 500,
+      "continue": true
+    },
+    {
+      "src": "/(.*)",
+      "has": [
+        {
+          "type": "header",
+          "key": "next-action",
+          "value": "00b4f95f75d7231999a5ddca91ebafb3107d7f76e4"
+        }
+      ],
+      "transforms": [
+        {
+          "type": "request.headers",
+          "op": "set",
+          "target": {
+            "key": "x-server-action-name"
+          },
+          "args": "app/actions/auth.ts#logoutAction"
+        }
+      ]
+    },
+    {
+      "src": "/(.*)",
+      "has": [
+        {
+          "type": "header",
+          "key": "next-action",
+          "value": "405f7545cb581efed5740f991e6e324f8091f344a7"
+        }
+      ],
+      "transforms": [
+        {
+          "type": "request.headers",
+          "op": "set",
+          "target": {
+            "key": "x-server-action-name"
+          },
+          "args": "app/actions/categories.ts#deleteCategoryAction"
+        }
+      ]
+    },
+    {
+      "src": "/(.*)",
+      "has": [
+        {
+          "type": "header",
+          "key": "next-action",
+          "value": "403d7ecc3a9f7f5c7bb9a965fe40738750674efdc2"
+        }
+      ],
+      "transforms": [
+        {
+          "type": "request.headers",
+          "op": "set",
+          "target": {
+            "key": "x-server-action-name"
+          },
+          "args": "app/actions/categories.ts#createCategoryAction"
+        }
+      ]
+    },
+    {
+      "src": "/(.*)",
+      "has": [
+        {
+          "type": "header",
+          "key": "next-action",
+          "value": "607f4769f97cc76c0712c18ad13aba86cd68d654e6"
+        }
+      ],
+      "transforms": [
+        {
+          "type": "request.headers",
+          "op": "set",
+          "target": {
+            "key": "x-server-action-name"
+          },
+          "args": "app/actions/categories.ts#updateCategoryAction"
+        }
+      ]
+    },
+    {
+      "src": "/(.*)",
+      "has": [
+        {
+          "type": "header",
+          "key": "next-action",
+          "value": "60b249fe3290259d131dd79ca197d08b9e5b1fca63"
+        }
+      ],
+      "transforms": [
+        {
+          "type": "request.headers",
+          "op": "set",
+          "target": {
+            "key": "x-server-action-name"
+          },
+          "args": "app/actions/admin.ts#updateUserRoleAction"
+        }
+      ]
+    },
+    {
+      "src": "/(.*)",
+      "has": [
+        {
+          "type": "header",
+          "key": "next-action",
+          "value": "407868245fcf721c9e719d7a20d440549949016e71"
+        }
+      ],
+      "transforms": [
+        {
+          "type": "request.headers",
+          "op": "set",
+          "target": {
+            "key": "x-server-action-name"
+          },
+          "args": "app/actions/admin.ts#deleteUserProfileAction"
+        }
+      ]
+    },
+    {
+      "src": "/(.*)",
+      "has": [
+        {
+          "type": "header",
+          "key": "next-action",
+          "value": "40e944fd54634f210e4414cbd564a9c9c445cc889b"
+        }
+      ],
+      "transforms": [
+        {
+          "type": "request.headers",
+          "op": "set",
+          "target": {
+            "key": "x-server-action-name"
+          },
+          "args": "app/actions/websites.ts#deleteWebsiteAction"
+        }
+      ]
+    },
+    {
+      "src": "/(.*)",
+      "has": [
+        {
+          "type": "header",
+          "key": "next-action",
+          "value": "40cf552c9a518d50e03731841874aa1d2397dccfbf"
+        }
+      ],
+      "transforms": [
+        {
+          "type": "request.headers",
+          "op": "set",
+          "target": {
+            "key": "x-server-action-name"
+          },
+          "args": "app/actions/websites.ts#createWebsiteAction"
+        }
+      ]
+    },
+    {
+      "src": "/(.*)",
+      "has": [
+        {
+          "type": "header",
+          "key": "next-action",
+          "value": "60b1bc06006fb25c74fefc97a2b5f9dd59bc10db6d"
+        }
+      ],
+      "transforms": [
+        {
+          "type": "request.headers",
+          "op": "set",
+          "target": {
+            "key": "x-server-action-name"
+          },
+          "args": "app/actions/websites.ts#updateWebsiteAction"
+        }
+      ]
+    },
+    {
+      "src": "/(.*)",
+      "has": [
+        {
+          "type": "header",
+          "key": "next-action",
+          "value": "407308946afa2886cf4036db0a70ddce5f9d2391a3"
+        }
+      ],
+      "transforms": [
+        {
+          "type": "request.headers",
+          "op": "set",
+          "target": {
+            "key": "x-server-action-name"
+          },
+          "args": "app/actions/auth.ts#forgotPasswordAction"
+        }
+      ]
+    },
+    {
+      "src": "/(.*)",
+      "has": [
+        {
+          "type": "header",
+          "key": "next-action",
+          "value": "40079c376816c45c362eb44d7b032a83946b41fb4f"
+        }
+      ],
+      "transforms": [
+        {
+          "type": "request.headers",
+          "op": "set",
+          "target": {
+            "key": "x-server-action-name"
+          },
+          "args": "app/actions/auth.ts#loginAction"
+        }
+      ]
+    },
+    {
+      "src": "/(.*)",
+      "has": [
+        {
+          "type": "header",
+          "key": "next-action",
+          "value": "401163ecc168dd866dfa07c2a9d67fbfb5aac54dce"
+        }
+      ],
+      "transforms": [
+        {
+          "type": "request.headers",
+          "op": "set",
+          "target": {
+            "key": "x-server-action-name"
+          },
+          "args": "app/actions/auth.ts#registerAction"
+        }
+      ]
+    },
+    {
+      "src": "/(.*)",
+      "has": [
+        {
+          "type": "header",
+          "key": "next-action",
+          "value": "405813e6ad0950dc25811f5771beeb64f32a3e5337"
+        }
+      ],
+      "transforms": [
+        {
+          "type": "request.headers",
+          "op": "set",
+          "target": {
+            "key": "x-server-action-name"
+          },
+          "args": "app/actions/auth.ts#resetPasswordAction"
+        }
+      ]
+    },
+    {
+      "src": "/(.*)",
+      "has": [
+        {
+          "type": "header",
+          "key": "next-action",
+          "value": "4041da8c0eda7e2d7d74473bf3d9ef4878c80e6029"
+        }
+      ],
+      "transforms": [
+        {
+          "type": "request.headers",
+          "op": "set",
+          "target": {
+            "key": "x-server-action-name"
+          },
+          "args": "app/actions/notes.ts#createNoteAction"
+        }
+      ]
+    },
+    {
+      "src": "/(.*)",
+      "has": [
+        {
+          "type": "header",
+          "key": "next-action",
+          "value": "601c26c899ed039ea5ab2c67698dcb4e01c1e836e0"
+        }
+      ],
+      "transforms": [
+        {
+          "type": "request.headers",
+          "op": "set",
+          "target": {
+            "key": "x-server-action-name"
+          },
+          "args": "app/actions/notes.ts#updateNoteAction"
+        }
+      ]
+    },
+    {
+      "src": "/(.*)",
+      "has": [
+        {
+          "type": "header",
+          "key": "next-action",
+          "value": "40efeaca2f31dae6b63a5f81306073a549772b78e0"
+        }
+      ],
+      "transforms": [
+        {
+          "type": "request.headers",
+          "op": "set",
+          "target": {
+            "key": "x-server-action-name"
+          },
+          "args": "app/actions/notes.ts#deleteNoteAction"
+        }
+      ]
+    },
+    {
+      "src": "/(.*)",
+      "has": [
+        {
+          "type": "header",
+          "key": "next-action",
+          "value": "4017db54f14c93287ae5faa1d30930738af43548c6"
+        }
+      ],
+      "transforms": [
+        {
+          "type": "request.headers",
+          "op": "set",
+          "target": {
+            "key": "x-server-action-name"
+          },
+          "args": "app/actions/websites.ts#recordVisitAction"
+        }
+      ]
+    },
+    {
+      "src": "/(.*)",
+      "has": [
+        {
+          "type": "header",
+          "key": "next-action",
+          "value": "40e2008f43ce2f033b7e70bd6fdd7255ac13285e9e"
+        }
+      ],
+      "transforms": [
+        {
+          "type": "request.headers",
+          "op": "set",
+          "target": {
+            "key": "x-server-action-name"
+          },
+          "args": "app/actions/settings.ts#updateUserSettingsAction"
+        }
+      ]
+    },
+    {
+      "src": "/(.*)",
+      "has": [
+        {
+          "type": "header",
+          "key": "next-action",
+          "value": "40da0fc0c902e48897fa375da85cbfd812567276b6"
+        }
+      ],
+      "transforms": [
+        {
+          "type": "request.headers",
+          "op": "set",
+          "target": {
+            "key": "x-server-action-name"
+          },
+          "args": "app/actions/websites.ts#toggleFavoriteAction"
+        }
+      ]
+    },
+    {
+      "src": "/(.*)",
+      "has": [
+        {
+          "type": "header",
+          "key": "next-action",
+          "value": "40a8e11387b7c97c7da4200d8e9679e4e34751d98b"
+        }
+      ],
+      "transforms": [
+        {
+          "type": "request.headers",
+          "op": "set",
+          "target": {
+            "key": "x-server-action-name"
+          },
+          "args": "app/actions/auth.ts#updateProfileAction"
+        }
+      ]
+    },
+    {
+      "src": "/(.*)",
+      "has": [
+        {
+          "type": "header",
+          "key": "next-action",
+          "value": "4013e1e8d43083b5a6c5f71f64d379a80603f00540"
+        }
+      ],
+      "transforms": [
+        {
+          "type": "request.headers",
+          "op": "set",
+          "target": {
+            "key": "x-server-action-name"
+          },
+          "args": "app/actions/auth.ts#changePasswordAction"
+        }
+      ]
+    },
+    {
+      "continue": true,
+      "src": "^(?:\\/(_next\\/data\\/[^/]{1,}))?(?:\\/((?!_next\\/static|_next\\/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*))(\\.json|\\.rsc|\\.segments\\/.+\\.segment\\.rsc)?[\\/#\\?]?$",
+      "missing": [
+        {
+          "type": "header",
+          "key": "x-prerender-revalidate",
+          "value": "688437af2d1dfc97cdf2a554e357397a"
+        }
+      ],
+      "middlewarePath": "/_middleware",
+      "middlewareRawSrc": [
+        "/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)"
+      ],
+      "override": true
+    },
+    {
+      "src": "/(?<path>.+?)(?:/)?$",
+      "dest": "/$path.segments/$segmentPath.segment.rsc",
+      "has": [
+        {
+          "type": "header",
+          "key": "rsc",
+          "value": "1"
+        },
+        {
+          "type": "header",
+          "key": "next-router-prefetch",
+          "value": "1"
+        },
+        {
+          "type": "header",
+          "key": "next-router-segment-prefetch",
+          "value": "/(?<segmentPath>.+)"
+        }
+      ],
+      "continue": true,
+      "override": true
+    },
+    {
+      "src": "^/?$",
+      "dest": "/index.segments/$segmentPath.segment.rsc",
+      "has": [
+        {
+          "type": "header",
+          "key": "rsc",
+          "value": "1"
+        },
+        {
+          "type": "header",
+          "key": "next-router-prefetch",
+          "value": "1"
+        },
+        {
+          "type": "header",
+          "key": "next-router-segment-prefetch",
+          "value": "/(?<segmentPath>.+)"
+        }
+      ],
+      "continue": true,
+      "override": true
+    },
+    {
+      "src": "^/?",
+      "has": [
+        {
+          "type": "header",
+          "key": "rsc",
+          "value": "1"
+        }
+      ],
+      "dest": "/index.rsc",
+      "headers": {
+        "vary": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch"
+      },
+      "continue": true,
+      "override": true
+    },
+    {
+      "src": "^/((?!.+\\.rsc).+?)(?:/)?$",
+      "has": [
+        {
+          "type": "header",
+          "key": "rsc",
+          "value": "1"
+        }
+      ],
+      "dest": "/$1.rsc",
+      "headers": {
+        "vary": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch"
+      },
+      "continue": true,
+      "override": true
+    },
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/index(\\.action|\\.rsc)",
+      "dest": "/",
+      "continue": true
+    },
+    {
+      "src": "/\\.rsc$",
+      "dest": "/index.rsc",
+      "check": true
+    },
+    {
+      "src": "/(.+)/\\.rsc$",
+      "dest": "/$1.rsc",
+      "check": true
+    },
+    {
+      "handle": "resource"
+    },
+    {
+      "src": "/.*",
+      "status": 404
+    },
+    {
+      "handle": "miss"
+    },
+    {
+      "src": "/_next/static/.+",
+      "status": 404,
+      "check": true,
+      "dest": "/_next/static/not-found.txt",
+      "headers": {
+        "content-type": "text/plain; charset=utf-8"
+      }
+    },
+    {
+      "handle": "hit"
+    },
+    {
+      "src": "/_next/static/(?:[^/]+/pages|pages|chunks|runtime|css|image|media|zv7v3AGqeQa_VjoRrPmWg)/.+",
+      "headers": {
+        "cache-control": "public,max-age=31536000,immutable"
+      },
+      "continue": true,
+      "important": true
+    },
+    {
+      "src": "/index(?:/)?",
+      "headers": {
+        "x-matched-path": "/"
+      },
+      "continue": true,
+      "important": true
+    },
+    {
+      "src": "/((?!index$).*?)(?:/)?",
+      "headers": {
+        "x-matched-path": "/$1"
+      },
+      "continue": true,
+      "important": true
+    },
+    {
       "handle": "error"
     },
     {
+      "src": "/.*",
+      "dest": "/404",
       "status": 404,
-      "src": "^(?!/api).*$",
-      "dest": "/404.html"
+      "headers": {
+        "x-next-error-status": "404"
+      }
+    },
+    {
+      "src": "/.*",
+      "dest": "/500",
+      "status": 500,
+      "headers": {
+        "x-next-error-status": "500"
+      }
     }
   ],
+  "images": {
+    "domains": [],
+    "sizes": [
+      640,
+      750,
+      828,
+      1080,
+      1200,
+      1920,
+      2048,
+      3840,
+      32,
+      48,
+      64,
+      96,
+      128,
+      256,
+      384
+    ],
+    "qualities": [
+      75
+    ],
+    "remotePatterns": [],
+    "localPatterns": [
+      {
+        "pathname": "^(?:(?!(?:^|\\/)\\.{1,2}(?:\\/|$))(?:(?:(?!(?:^|\\/)\\.{1,2}(?:\\/|$)).)*?)\\/?)$",
+        "search": ""
+      }
+    ],
+    "minimumCacheTTL": 14400,
+    "formats": [
+      "image/webp"
+    ],
+    "dangerouslyAllowSVG": false,
+    "contentSecurityPolicy": "script-src 'none'; frame-src 'none'; sandbox;",
+    "contentDispositionType": "attachment"
+  },
+  "overrides": {
+    "404.html": {
+      "path": "404",
+      "contentType": "text/html; charset=utf-8"
+    },
+    "500.html": {
+      "path": "500",
+      "contentType": "text/html; charset=utf-8"
+    },
+    "404.rsc.json": {
+      "path": "404.rsc",
+      "contentType": "application/json"
+    },
+    "404.segments/_tree.segment.rsc.json": {
+      "path": "404.segments/_tree.segment.rsc",
+      "contentType": "application/json"
+    },
+    "500.rsc.json": {
+      "path": "500.rsc",
+      "contentType": "application/json"
+    },
+    "500.segments/_tree.segment.rsc.json": {
+      "path": "500.segments/_tree.segment.rsc",
+      "contentType": "application/json"
+    },
+    "favicon.ico": {
+      "contentType": "image/x-icon"
+    },
+    "_next/static/not-found.txt": {
+      "contentType": "text/plain"
+    }
+  },
   "framework": {
     "slug": "nextjs",
     "version": "16.4.6"
@@ -144,17 +1146,28 @@ Build Completed in .vercel/output [13s]
 Vercel CLI 65.14.0
 Retrieving project…
 Deploying vy-8173/link-portal
-Uploading [--------------------] (0.0B/5.8KB)
-Uploading [====================] (5.8KB/5.8KB)
-  Inspect         https://vercel.com/vy-8173/link-portal/GULLUfHBqk63kg2mQJRGqv238rAr
-  Production      https://link-portal-3rwizd2kx-vy-8173.vercel.app
-https://link-portal-3rwizd2kx-vy-8173.vercel.appBuilding…
+Uploading [--------------------] (0.0B/4.5MB)
+Uploading [=====---------------] (1.1MB/4.5MB)
+Uploading [==========----------] (2.3MB/4.5MB)
+Uploading [===============-----] (3.4MB/4.5MB)
+Uploading [====================] (4.5MB/4.5MB)
+  Inspect         https://vercel.com/vy-8173/link-portal/7rnHbMdWhiTZ3CdnVtzMikU8EBxU
+  Production      https://link-portal-98f7o61ks-vy-8173.vercel.app
+https://link-portal-98f7o61ks-vy-8173.vercel.appBuilding…
 Building…
-[2K[1A[2K[G  Production      https://link-portal-3rwizd2kx-vy-8173.vercel.app
+Running build in Washington, D.C., USA (East) – iad1
+Build machine configuration: 2 cores, 8 GB
+Retrieving list of deployment files...
+Previous build caches not available.
+Downloading 772 deployment files...
+Using prebuilt build artifacts from .vercel/output
+Learn more: https://vercel.link/build-output-api
+Deploying outputs...
+[2K[1A[2K[G  Production      https://link-portal-98f7o61ks-vy-8173.vercel.app
 Completing…
 ▲ Aliased         https://quanlydachucnang.vercel.app
 
-✓ Ready in 4s
+✓ Ready in 13s
 
 Next steps:
 - Automatically deploy changes on every push by connecting Git:
@@ -162,48 +1175,60 @@ Next steps:
 - Check the production response:
   vercel curl https://quanlydachucnang.vercel.app
 - View build logs:
-  vercel inspect link-portal-3rwizd2kx-vy-8173.vercel.app --logs
+  vercel inspect link-portal-98f7o61ks-vy-8173.vercel.app --logs
 - Create a new deployment from the same source:
-  vercel redeploy link-portal-3rwizd2kx-vy-8173.vercel.app
-DEPLOY_URL: https://link-portal-3rwizd2kx-vy-8173.vercel.app
+  vercel redeploy link-portal-98f7o61ks-vy-8173.vercel.app
+DEPLOY_URL: https://link-portal-98f7o61ks-vy-8173.vercel.app
 
 === 6. Setting Aliases ===
 Vercel CLI 65.14.0
-> Assigning alias quanlydachucnang.vercel.app to https://link-portal-3rwizd2kx-vy-8173.vercel.app
+> Assigning alias quanlydachucnang.vercel.app to https://link-portal-98f7o61ks-vy-8173.vercel.app
 Creating alias
-> Success! https://quanlydachucnang.vercel.app now points to https://link-portal-3rwizd2kx-vy-8173.vercel.app [379ms]
+> Success! https://quanlydachucnang.vercel.app now points to https://link-portal-98f7o61ks-vy-8173.vercel.app [398ms]
 Vercel CLI 65.14.0
-> Assigning alias link-portal-vy-8173.vercel.app to https://link-portal-3rwizd2kx-vy-8173.vercel.app
+> Assigning alias link-portal-vy-8173.vercel.app to https://link-portal-98f7o61ks-vy-8173.vercel.app
 Creating alias
-> Success! https://link-portal-vy-8173.vercel.app now points to https://link-portal-3rwizd2kx-vy-8173.vercel.app [401ms]
+> Success! https://link-portal-vy-8173.vercel.app now points to https://link-portal-98f7o61ks-vy-8173.vercel.app [484ms]
 
 === 7. Connectivity Tests ===
---- Test DEPLOY_URL (https://link-portal-3rwizd2kx-vy-8173.vercel.app) ---
-HTTP/2 404 
+--- Test DEPLOY_URL (https://link-portal-98f7o61ks-vy-8173.vercel.app) ---
+HTTP/2 200 
+accept-ranges: bytes
+access-control-allow-origin: *
+age: 2
 cache-control: public, max-age=0, must-revalidate
-content-type: text/plain; charset=utf-8
-date: Tue, 10 Nov 2026 07:58:55 GMT
+content-disposition: inline
+content-type: text/html; charset=utf-8
+date: Tue, 10 Nov 2026 08:11:34 GMT
+link: </_next/static/media/07a39a8a4660cc7c-s.p.0r6juujl39pe6.woff2>; rel=preload; as="font"; crossorigin=""; type="font/woff2", </_next/static/media/605ce01b664af129-s.p.0wgildi0cnwt9.woff2>; rel=preload; as="font"; crossorigin=""; type="font/woff2"
 server: Vercel
 strict-transport-security: max-age=63072000; includeSubDomains; preload
+vary: rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch
+x-matched-path: /
+x-nextjs-prerender: 1
+x-nextjs-stale-time: 300
 x-robots-tag: noindex
-x-vercel-error: NOT_FOUND
-x-vercel-id: sfo1::zdfr8-1794297535805-90e9d4a4d465
-content-length: 79
+x-vercel-cache: HIT
+x-vercel-id: pdx1::f2b2r-1794298293890-219542ea045e
 
 --- Content of DEPLOY_URL ---
-The page could not be found
-
-NOT_FOUND
-
-sfo1::rr4q5-1794297535928-88f62973c0ba
---- Test quanlydachucnang.vercel.app ---
-HTTP/2 404 
+<!DOCTYPE html><html lang="vi"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="/_next/static/chunks/127nl_1ahyabo.css" data-precedence="next"/><link rel="preload" as="script" fetchPriority="low" href="/_next/static/chunks/310vm2bl3xxpt.js"/><script src="/_next/static/chunks/3de5or95vd2ok.js" async=""></script><script src="/_next/static/chunks/0-8wrlnoxdvi7.js" async=""></script><script src="/_next/static/chunks/01t2i9pe5vz2-.js" async=""></script><script src="/_next/static/chunks/3hfss7l9vn436.js" async=""></script><script src="/_next/static/chunks/turbopack-2u1d16houkiyo.js" async=""></script><script src="/_next/static/chunks/32x0f6mo42936.js" async=""></script><script src="/_next/static/chunks/0ib0b09j2ry2_.js" async=""></script><script src="/_next/static/chunks/3ire-qjnv51-x.js" async=""></script><script src="/_next/static/chunks/3hrqbu9k6k26_.js" async=""></script><script src="/_next/static/chunks/0ww48t3gqvxh1.js" async=""></script><script src="/_next/static/chunks/0st-ljrdahdi9.js" async=""></script><script src="/_next/static/chunks/1w30m7z1-jv6e.js" async=""></script><meta name="next-size-adjust" content=""/><title>Link Portal – Quản lý liên kết tập trung</title><meta name="description" content="Nền tảng quản lý và truy cập các website tập trung chuyên nghiệp"/><link rel="icon" href="/favicon.ico?favicon.117ezoe8m31dk.ico" sizes="48x48" type="image/x-icon"/><script src="/_next/static/chunks/0cz1d0mv5g_q7.js" noModule=""></script></head><body class="T19VSG_variable _8Li5zG_variable min-h-screen bg-background font-sans antialiased text-foreground"><div hidden=""><!--$--><!--/$--></div><script>((a,b,c,d,e,f,g,h)=>{let i=document.documentElement,j=["light","dark"];function k(b){var c;(Array.isArray(a)?a:[a]).forEach(a=>{let c="class"===a,d=c&&f?e.map(a=>f[a]||a):e;c?(i.classList.remove(...d),i.classList.add(f&&f[b]?f[b]:b)):i.setAttribute(a,b)}),c=b,h&&j.includes(c)&&(i.style.colorScheme=c)}if(d)k(d);else try{let a=localStorage.getItem(b)||c,d=g&&"system"===a?window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light":a;k(d)}catch(a){}})("class","theme","system",null,["light","dark"],null,true,true)</script><!--&--><!--$?--><template id="B:0"></template><div class="space-y-6 p-6"><div class="flex items-center justify-between"><div class="space-y-2"><div class="animate-pulse rounded-md bg-muted/70 h-8 w-48"></div><div class="animate-pulse rounded-md bg-muted/70 h-4 w-72"></div></div><div class="animate-pulse rounded-md bg-muted/70 h-9 w-32"></div></div><div class="grid grid-cols-2 lg:grid-cols-4 gap-4"><div class="animate-pulse bg-muted/70 h-24 rounded-xl"></div><div class="animate-pulse bg-muted/70 h-24 rounded-xl"></div><div class="animate-pulse bg-muted/70 h-24 rounded-xl"></div><div class="animate-pulse bg-muted/70 h-24 rounded-xl"></div></div><div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"><div class="animate-pulse bg-muted/70 h-36 rounded-xl"></div><div class="animate-pulse bg-muted/70 h-36 rounded-xl"></div><div class="animate-pulse bg-muted/70 h-36 rounded-xl"></div><div class="animate-pulse bg-muted/70 h-36 rounded-xl"></div><div class="animate-pulse bg-muted/70 h-36 rounded-xl"></div><div class="animate-pulse bg-muted/70 h-36 rounded-xl"></div></div></div><!--/$--><!--/&--><section aria-label="Notifications alt+T" tabindex="-1" aria-live="polite" aria-relevant="additions text" aria-atomic="false" data-react-aria-top-layer="true"></section><script>requestAnimationFrame(function(){$RT=performance.now()});</script><script src="/_next/static/chunks/310vm2bl3xxpt.js" id="_R_" async=""></script><div hidden id="S:0"><template id="P:1"></template><!--$--><!--/$--></div><script>(globalThis["TURBOPACK"] || (globalThis["TURBOPACK"] = [])).push({"otherChunks":["static/chunks/310vm2bl3xxpt.js","static/chunks/3de5or95vd2ok.js","static/chunks/0-8wrlnoxdvi7.js","static/chunks/01t2i9pe5vz2-.js","static/chunks/3hfss7l9vn436.js"],"runtimeModuleIds":[94553]});</script><script src="/_next/static/chunks/0cz1d0mv5g_q7.js" noModule=""></script><div hidden id="S:1"><div class="min-h-screen flex flex-col bg-background"><header class="border-b bg-background/80 backdrop-blur-md sticky top-0 z-40"><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between"><div class="flex items-center gap-3"><div class="h-9 w-9 rounded-xl bg-primary text-primary-foreground flex items-center justify-center shadow-xs"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-compass h-5 w-5" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="m16.24 7.76-1.804 5.411a2 2 0 0 1-1.265 1.265L7.76 16.24l1.804-5.411a2 2 0 0 1 1.265-1.265z"></path></svg></div><span class="font-bold text-lg tracking-tight">Link Portal</span></div><div class="flex items-center gap-3"><button class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 cursor-pointer hover:bg-accent hover:text-accent-foreground h-9 w-9 rounded-lg" type="button" id="radix-_R_clfdb_" aria-haspopup="menu" aria-expanded="false" data-state="closed"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sun h-4 w-4 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-moon absolute h-4 w-4 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" aria-hidden="true"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"></path></svg><span class="sr-only">Đổi giao diện</span></button><a class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 cursor-pointer hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2" href="/login">Đăng nhập</a><a class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 cursor-pointer bg-primary text-primary-foreground shadow hover:bg-primary/90 h-9 px-4 py-2" href="/register">Bắt đầu ngay<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right ml-1.5 h-4 w-4" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a></div></div></header><main class="flex-1"><section class="py-20 sm:py-28 text-center max-w-4xl mx-auto px-4"><div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary mb-6"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zap h-3.5 w-3.5" aria-hidden="true"><path d="M15.914 4a1.5 1.5 0 00-2.474-1.561l-9 9A1.5 1.5 0 005.5 14h4.002a.5.5 0 01.471.666L8.086 20a1.5 1.5 0 002.475 1.56l9-9A1.5 1.5 0 0018.5 10h-3.997a.5.5 0 01-.472-.667z"></path></svg>Nền tảng quản lý liên kết tập trung thế hệ mới</div><h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-foreground leading-tight">Quản lý &amp; truy cập mọi website của bạn tại một nơi</h1><p class="mt-6 text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">Link Portal giúp bạn lưu trữ, phân loại danh mục, đánh dấu yêu thích và tìm kiếm nhanh chóng các website quan trọng cho công việc và học tập.</p><div class="mt-10 flex flex-wrap items-center justify-center gap-4"><a class="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 cursor-pointer bg-primary text-primary-foreground hover:bg-primary/90 rounded-md h-12 px-8 text-base shadow-md" href="/register">Tạo tài khoản miễn phí<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right ml-2 h-4 w-4" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a><a class="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 cursor-pointer border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground rounded-md h-12 px-8 text-base" href="/login">Đăng nhập hệ thống</a></div></section><section class="py-16 bg-muted/40 border-y"><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><div class="grid grid-cols-1 md:grid-cols-3 gap-8"><div class="p-6 rounded-2xl bg-card border shadow-xs space-y-3"><div class="h-10 w-10 rounded-lg bg-blue-500/10 text-blue-600 flex items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-layout-grid h-5 w-5" aria-hidden="true"><rect width="7" height="7" x="3" y="3" rx="1"></rect><rect width="7" height="7" x="14" y="3" rx="1"></rect><rect width="7" height="7" x="14" y="14" rx="1"></rect><rect width="7" height="7" x="3" y="14" rx="1"></rect></svg></div><h3 class="font-semibold text-lg">Bố cục 3 cột hiện đại</h3><p class="text-sm text-muted-foreground leading-relaxed">Trải nghiệm SaaS chuẩn mực với thanh điều hướng bên trái, lưới website trung tâm và thanh tiện ích ghi chú nhanh bên phải.</p></div><div class="p-6 rounded-2xl bg-card border shadow-xs space-y-3"><div class="h-10 w-10 rounded-lg bg-amber-500/10 text-amber-600 flex items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bookmark h-5 w-5" aria-hidden="true"><path d="M17 3a2 2 0 0 1 2 2v15a1 1 0 0 1-1.496.868l-4.512-2.578a2 2 0 0 0-1.984 0l-4.512 2.578A1 1 0 0 1 5 20V5a2 2 0 0 1 2-2z"></path></svg></div><h3 class="font-semibold text-lg">Phân loại &amp; Yêu thích</h3><p class="text-sm text-muted-foreground leading-relaxed">Tự động đồng bộ website toàn hệ thống (Global) kết hợp với kho liên kết cá nhân (Personal) bảo mật riêng tư.</p></div><div class="p-6 rounded-2xl bg-card border shadow-xs space-y-3"><div class="h-10 w-10 rounded-lg bg-emerald-500/10 text-emerald-600 flex items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shield-check h-5 w-5" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg></div><h3 class="font-semibold text-lg">Bảo mật cấp cơ sở dữ liệu</h3><p class="text-sm text-muted-foreground leading-relaxed">Supabase Row Level Security (RLS) bảo vệ từng liên kết, xác thực quyền Admin an toàn và phân quyền người dùng chặt chẽ.</p></div></div></div></section></main><footer class="border-t py-8 text-center text-sm text-muted-foreground"><div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4"><div class="flex items-center gap-2 font-medium"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-compass h-4 w-4 text-primary" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="m16.24 7.76-1.804 5.411a2 2 0 0 1-1.265 1.265L7.76 16.24l1.804-5.411a2 2 0 0 1 1.265-1.265z"></path></svg><span>Link Portal</span></div><p>© 2026 Link Portal. Xây dựng với Next.js, Supabase &amp; Tailwind CSS.</p></div></footer></div></div><script>$RS=function(a,b){a=document.getElementById(a);b=document.getElementById(b);for(a.parentNode.removeChild(a);a.firstChild;)b.parentNode.insertBefore(a.firstChild,b);b.parentNode.removeChild(b)};$RS("S:1","P:1")</script><script>$RB=[];$RV=function(a){$RT=performance.now();for(var b=0;b<a.length;b+=2){var c=a[b],e=a[b+1];null!==e.parentNode&&e.parentNode.removeChild(e);var f=c.parentNode;if(f){var g=c.previousSibling,h=0;do{if(c&&8===c.nodeType){var d=c.data;if("/$"===d||"/&"===d)if(0===h)break;else h--;else"$"!==d&&"$?"!==d&&"$~"!==d&&"$!"!==d&&"&"!==d||h++}d=c.nextSibling;f.removeChild(c);c=d}while(c);for(;e.firstChild;)f.insertBefore(e.firstChild,c);g.data="$";g._reactRetry&&requestAnimationFrame(g._reactRetry)}}a.length=0};
+$RC=function(a,b){if(b=document.getElementById(b))(a=document.getElementById(a))?(a.previousSibling.data="$~",$RB.push(a,b),2===$RB.length&&("number"!==typeof $RT?requestAnimationFrame($RV.bind(null,$RB)):(a=performance.now(),setTimeout($RV.bind(null,$RB),2300>a&&2E3<a?2300-a:$RT+300-a)))):b.parentNode.removeChild(b)};$RC("B:0","S:0")</script><script>(self.__next_f=self.__next_f||[]).push([0])</script><script>self.__next_f.push([1,"1:\"/_next/static/chunks/32x0f6mo42936.js\"\n2:\"/_next/static/chunks/0ib0b09j2ry2_.js\"\n3:\"LoadingBoundaryProvider\"\n4:I[39756,[\"$1\",\"$2\"],\"$3\"]\n5:\"$Sreact.fragment\"\n6:I[89554,[\"$1\",\"$2\"],\"ThemeProvider\"]\n7:I[39756,[\"$1\",\"$2\"],\"default\"]\n8:\"/_next/static/chunks/3ire-qjnv51-x.js\"\n9:\"/_next/static/chunks/3hrqbu9k6k26_.js\"\na:I[8821,[\"$1\",\"$2\",\"$8\",\"$9\"],\"default\"]\nb:I[37457,[\"$1\",\"$2\"],\"default\"]\nc:\"/_next/static/chunks/0ww48t3gqvxh1.js\"\nd:\"/_next/static/chunks/0st-ljrdahdi9.js\"\ne:\"/_next/static/chunks/1w30m7z1-jv6e.js\"\nf:I[5014,[\"$1\",\"$2\",\"$c\",\"$9\",\"$d\",\"$e\"],\"default\"]\n10:I[22016,[\"$1\",\"$2\",\"$c\",\"$9\",\"$d\",\"$e\"],\"\"]\n11:I[3484,[\"$1\",\"$2\"],\"Toaster\"]\n1b:\"ViewportBoundary\"\n1c:I[97367,[\"$1\",\"$2\"],\"$1b\"]\n1e:\"MetadataBoundary\"\n1f:I[97367,[\"$1\",\"$2\"],\"$1e\"]\n24:I[68027,[\"$1\",\"$2\"],\"default\",1]\n:HL[\"/_next/static/chunks/127nl_1ahyabo.css\",\"style\"]\n:HL[\"/_next/static/media/07a39a8a4660cc7c-s.p.0r6juujl39pe6.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\n:HL[\"/_next/static/media/605ce01b664af129-s.p.0wgildi0cnwt9.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\n12:X\n1a:X\n13:[[\"children\",{\"s\":\"__PAGE__\",\"h\":162,\"d\":{\"r\":[\"$\",\"$5\",\"c\",{\"children\":[\"$L14\",[\"$L15\",\"$L16\",\"$L17\",\"$L18\"],\"$L19\"]}],\"p\":false,\"v\":\"$1a\"}}]]\n23:X\n26:X\n27:X\n2a:R\n"])</script><script>self.__next_f.push([1,"0:{\"P\":null,\"c\":[\"\",\"\"],\"q\":\"\",\"i\":false,\"t\":{\"t\":{\"s\":\"\",\"h\":86,\"d\":{\"r\":[\"$\",\"$L4\",null,{\"loading\":[[\"$\",\"div\",\"l\",{\"className\":\"space-y-6 p-6\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-center justify-between\",\"children\":[[\"$\",\"div\",null,{\"className\":\"space-y-2\",\"children\":[[\"$\",\"div\",null,{\"className\":\"animate-pulse rounded-md bg-muted/70 h-8 w-48\"}],[\"$\",\"div\",null,{\"className\":\"animate-pulse rounded-md bg-muted/70 h-4 w-72\"}]]}],[\"$\",\"div\",null,{\"className\":\"animate-pulse rounded-md bg-muted/70 h-9 w-32\"}]]}],[\"$\",\"div\",null,{\"className\":\"grid grid-cols-2 lg:grid-cols-4 gap-4\",\"children\":[[\"$\",\"div\",\"0\",{\"className\":\"animate-pulse bg-muted/70 h-24 rounded-xl\"}],[\"$\",\"div\",\"1\",{\"className\":\"animate-pulse bg-muted/70 h-24 rounded-xl\"}],[\"$\",\"div\",\"2\",{\"className\":\"animate-pulse bg-muted/70 h-24 rounded-xl\"}],[\"$\",\"div\",\"3\",{\"className\":\"animate-pulse bg-muted/70 h-24 rounded-xl\"}]]}],[\"$\",\"div\",null,{\"className\":\"grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4\",\"children\":[[\"$\",\"div\",\"0\",{\"className\":\"animate-pulse bg-muted/70 h-36 rounded-xl\"}],[\"$\",\"div\",\"1\",{\"className\":\"animate-pulse bg-muted/70 h-36 rounded-xl\"}],[\"$\",\"div\",\"2\",{\"className\":\"animate-pulse bg-muted/70 h-36 rounded-xl\"}],[\"$\",\"div\",\"3\",{\"className\":\"animate-pulse bg-muted/70 h-36 rounded-xl\"}],[\"$\",\"div\",\"4\",{\"className\":\"animate-pulse bg-muted/70 h-36 rounded-xl\"}],[\"$\",\"div\",\"5\",{\"className\":\"animate-pulse bg-muted/70 h-36 rounded-xl\"}]]}]]}],[],null],\"children\":[\"$\",\"$5\",\"c\",{\"children\":[[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/_next/static/chunks/127nl_1ahyabo.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\",\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-0\",{\"src\":\"/_next/static/chunks/32x0f6mo42936.js\",\"async\":true,\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-1\",{\"src\":\"/_next/static/chunks/0ib0b09j2ry2_.js\",\"async\":true,\"nonce\":\"$undefined\"}]],[\"$\",\"html\",null,{\"lang\":\"vi\",\"suppressHydrationWarning\":true,\"children\":[\"$\",\"body\",null,{\"className\":\"T19VSG_variable _8Li5zG_variable min-h-screen bg-background font-sans antialiased text-foreground\",\"children\":[\"$\",\"$L6\",null,{\"attribute\":\"class\",\"defaultTheme\":\"system\",\"enableSystem\":true,\"disableTransitionOnChange\":true,\"children\":[[\"$\",\"$L7\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$a\",\"errorStyles\":[],\"errorScripts\":[[\"$\",\"script\",\"script-0\",{\"src\":\"/_next/static/chunks/3ire-qjnv51-x.js\",\"async\":true,\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-1\",{\"src\":\"/_next/static/chunks/3hrqbu9k6k26_.js\",\"async\":true,\"nonce\":\"$undefined\"}]],\"template\":[\"$\",\"$Lb\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":[[\"$\",\"div\",null,{\"className\":\"min-h-screen flex flex-col items-center justify-center p-4 text-center bg-background\",\"children\":[[\"$\",\"div\",null,{\"className\":\"h-16 w-16 rounded-2xl bg-primary/10 text-primary flex items-center justify-center mb-6\",\"children\":[\"$\",\"$Lf\",null,{\"ref\":\"$undefined\",\"icon\":{\"name\":\"compass\",\"size\":24,\"node\":[[\"circle\",{\"cx\":\"12\",\"cy\":\"12\",\"r\":\"10\",\"key\":\"1mglay\"}],[\"path\",{\"d\":\"m16.24 7.76-1.804 5.411a2 2 0 0 1-1.265 1.265L7.76 16.24l1.804-5.411a2 2 0 0 1 1.265-1.265z\",\"key\":\"9ktpf1\"}]]},\"className\":\"h-8 w-8\"}]}],[\"$\",\"h1\",null,{\"className\":\"text-4xl font-extrabold tracking-tight mb-2\",\"children\":\"404\"}],[\"$\",\"h2\",null,{\"className\":\"text-xl font-semibold mb-3\",\"children\":\"Không tìm thấy trang\"}],[\"$\",\"p\",null,{\"className\":\"text-sm text-muted-foreground max-w-md mb-8\",\"children\":\"Trang bạn đang tìm kiếm không tồn tại hoặc đã bị di chuyển. Hãy quay lại bảng điều khiển để tiếp tục.\"}],[\"$\",\"$L10\",null,{\"href\":\"/dashboard\",\"children\":[[\"$\",\"$Lf\",null,{\"ref\":\"$undefined\",\"icon\":{\"name\":\"arrow-left\",\"size\":24,\"node\":[[\"path\",{\"d\":\"m12 19-7-7 7-7\",\"key\":\"1l729n\"}],[\"path\",{\"d\":\"M19 12H5\",\"key\":\"x3x0zl\"}]]},\"className\":\"mr-2 h-4 w-4\"}],\" Quay lại Dashboard\"],\"className\":\"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [\u0026_svg]:pointer-events-none [\u0026_svg]:size-4 [\u0026_svg]:shrink-0 cursor-pointer bg-primary text-primary-foreground shadow hover:bg-primary/90 h-9 px-4 py-2\",\"ref\":null}]]}],[]],\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}],[\"$\",\"$L11\",null,{\"richColors\":true,\"position\":\"top-right\"}]]}]}]}]]}]}],\"p\":false,\"v\":\"$12\"},\"c\":\"$Q13\"},\"h\":{\"r\":[\"$\",\"$5\",\"h\",{\"children\":[null,[\"$\",\"$L1c\",null,{\"children\":\"$L1d\"}],[\"$\",\"$L1f\",null,{\"children\":[\"$L20\",\"$L21\"]}],\"$L22\"]}],\"p\":false,\"v\":\"$23\"}},\"m\":\"$undefined\",\"G\":[\"$24\",[\"$L25\"]],\"S\":true,\"r\":\"$26\",\"s\":\"$27\",\"a\":\"$@28\",\"l\":\"$@29\",\"p\":\"$2a\",\"d\":\"$undefined\",\"b\":\"zv7v3AGqeQa_VjoRrPmWg\"}\n"])</script><script>self.__next_f.push([1,"2b:I[97367,[\"$1\",\"$2\"],\"OutletBoundary\"]\n2c:\"$Sreact.suspense\"\n15:[\"$\",\"script\",\"script-0\",{\"src\":\"/_next/static/chunks/0ww48t3gqvxh1.js\",\"async\":true,\"nonce\":\"$undefined\"}]\n16:[\"$\",\"script\",\"script-1\",{\"src\":\"/_next/static/chunks/3hrqbu9k6k26_.js\",\"async\":true,\"nonce\":\"$undefined\"}]\n17:[\"$\",\"script\",\"script-2\",{\"src\":\"/_next/static/chunks/0st-ljrdahdi9.js\",\"async\":true,\"nonce\":\"$undefined\"}]\n18:[\"$\",\"script\",\"script-3\",{\"src\":\"/_next/static/chunks/1w30m7z1-jv6e.js\",\"async\":true,\"nonce\":\"$undefined\"}]\n19:[\"$\",\"$L2b\",null,{\"children\":[\"$\",\"$2c\",null,{\"name\":\"Next.MetadataOutlet\",\"children\":\"$@2d\"}]}]\n20:[\"$\",\"div\",null,{\"hidden\":true,\"children\":[\"$\",\"$2c\",null,{\"name\":\"Next.Metadata\",\"children\":\"$L2e\"}]}]\n21:null\n22:[\"$\",\"meta\",null,{\"name\":\"next-size-adjust\",\"content\":\"\"}]\n25:[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/_next/static/chunks/127nl_1ahyabo.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\",\"nonce\":\"$undefined\"}]\n"])</script><script>self.__next_f.push([1,"27:300\n1d:[[\"$\",\"meta\",\"0\",{\"charSet\":\"utf-8\"}],[\"$\",\"meta\",\"1\",{\"name\":\"viewport\",\"content\":\"width=device-width, initial-scale=1\"}]]\n"])</script><script>self.__next_f.push([1,"2f:I[27201,[\"$1\",\"$2\"],\"IconMark\"]\n2d:null\n2e:[[\"$\",\"title\",\"0\",{\"children\":\"Link Portal – Quản lý liên kết tập trung\"}],[\"$\",\"meta\",\"1\",{\"name\":\"description\",\"content\":\"Nền tảng quản lý và truy cập các website tập trung chuyên nghiệp\"}],[\"$\",\"link\",\"2\",{\"rel\":\"icon\",\"href\":\"/favicon.ico?favicon.117ezoe8m31dk.ico\",\"sizes\":\"48x48\",\"type\":\"image/x-icon\"}],[\"$\",\"$L2f\",\"3\",{}]]\n"])</script><script>self.__next_f.push([1,"27:C\n23:C\n26:C\n1a:C\n12:C\n"])</script><script>self.__next_f.push([1,"30:I[93539,[\"$1\",\"$2\",\"$c\",\"$9\",\"$d\",\"$e\"],\"ThemeToggle\"]\n29:7531\n28:7506\n"])</script><script>self.__next_f.push([1,"14:[\"$\",\"div\",null,{\"className\":\"min-h-screen flex flex-col bg-background\",\"children\":[[\"$\",\"header\",null,{\"className\":\"border-b bg-background/80 backdrop-blur-md sticky top-0 z-40\",\"children\":[\"$\",\"div\",null,{\"className\":\"max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-center gap-3\",\"children\":[[\"$\",\"div\",null,{\"className\":\"h-9 w-9 rounded-xl bg-primary text-primary-foreground flex items-center justify-center shadow-xs\",\"children\":[\"$\",\"$Lf\",null,{\"ref\":\"$undefined\",\"icon\":\"$0:t:t:d:r:props:children:props:children:1:props:children:props:children:props:children:0:props:notFound:0:props:children:0:props:children:props:icon\",\"className\":\"h-5 w-5\"}]}],[\"$\",\"span\",null,{\"className\":\"font-bold text-lg tracking-tight\",\"children\":\"Link Portal\"}]]}],[\"$\",\"div\",null,{\"className\":\"flex items-center gap-3\",\"children\":[[\"$\",\"$L30\",null,{}],[\"$\",\"$L10\",null,{\"href\":\"/login\",\"children\":\"Đăng nhập\",\"className\":\"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [\u0026_svg]:pointer-events-none [\u0026_svg]:size-4 [\u0026_svg]:shrink-0 cursor-pointer hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2\",\"ref\":null}],[\"$\",\"$L10\",null,{\"href\":\"/register\",\"children\":[\"Bắt đầu ngay\",[\"$\",\"$Lf\",null,{\"ref\":\"$undefined\",\"icon\":{\"name\":\"arrow-right\",\"size\":24,\"node\":[[\"path\",{\"d\":\"M5 12h14\",\"key\":\"1ays0h\"}],[\"path\",{\"d\":\"m12 5 7 7-7 7\",\"key\":\"xquz4c\"}]]},\"className\":\"ml-1.5 h-4 w-4\"}]],\"className\":\"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [\u0026_svg]:pointer-events-none [\u0026_svg]:size-4 [\u0026_svg]:shrink-0 cursor-pointer bg-primary text-primary-foreground shadow hover:bg-primary/90 h-9 px-4 py-2\",\"ref\":null}]]}]]}]}],[\"$\",\"main\",null,{\"className\":\"flex-1\",\"children\":[[\"$\",\"section\",null,{\"className\":\"py-20 sm:py-28 text-center max-w-4xl mx-auto px-4\",\"children\":[[\"$\",\"div\",null,{\"className\":\"inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary mb-6\",\"children\":[[\"$\",\"$Lf\",null,{\"ref\":\"$undefined\",\"icon\":{\"name\":\"zap\",\"size\":24,\"node\":[[\"path\",{\"d\":\"M15.914 4a1.5 1.5 0 00-2.474-1.561l-9 9A1.5 1.5 0 005.5 14h4.002a.5.5 0 01.471.666L8.086 20a1.5 1.5 0 002.475 1.56l9-9A1.5 1.5 0 0018.5 10h-3.997a.5.5 0 01-.472-.667z\",\"key\":\"1v7up4\"}]]},\"className\":\"h-3.5 w-3.5\"}],\"Nền tảng quản lý liên kết tập trung thế hệ mới\"]}],[\"$\",\"h1\",null,{\"className\":\"text-4xl sm:text-6xl font-extrabold tracking-tight text-foreground leading-tight\",\"children\":\"Quản lý \u0026 truy cập mọi website của bạn tại một nơi\"}],[\"$\",\"p\",null,{\"className\":\"mt-6 text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed\",\"children\":\"Link Portal giúp bạn lưu trữ, phân loại danh mục, đánh dấu yêu thích và tìm kiếm nhanh chóng các website quan trọng cho công việc và học tập.\"}],[\"$\",\"div\",null,{\"className\":\"mt-10 flex flex-wrap items-center justify-center gap-4\",\"children\":[[\"$\",\"$L10\",null,{\"href\":\"/register\",\"children\":[\"Tạo tài khoản miễn phí\",[\"$\",\"$Lf\",null,{\"ref\":\"$undefined\",\"icon\":\"$14:props:children:0:props:children:props:children:1:props:children:2:props:children:1:props:icon\",\"className\":\"ml-2 h-4 w-4\"}]],\"className\":\"inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [\u0026_svg]:pointer-events-none [\u0026_svg]:size-4 [\u0026_svg]:shrink-0 cursor-pointer bg-primary text-primary-foreground hover:bg-primary/90 rounded-md h-12 px-8 text-base shadow-md\",\"ref\":null}],[\"$\",\"$L10\",null,{\"href\":\"/login\",\"children\":\"Đăng nhập hệ thống\",\"className\":\"inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [\u0026_svg]:pointer-events-none [\u0026_svg]:size-4 [\u0026_svg]:shrink-0 cursor-pointer border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground rounded-md h-12 px-8 text-base\",\"ref\":null}]]}]]}],\"$L31\"]}],\"$L32\"]}]\n"])</script><script>self.__next_f.push([1,"31:[\"$\",\"section\",null,{\"className\":\"py-16 bg-muted/40 border-y\",\"children\":[\"$\",\"div\",null,{\"className\":\"max-w-7xl mx-auto px-4 sm:px-6 lg:px-8\",\"children\":[\"$\",\"div\",null,{\"className\":\"grid grid-cols-1 md:grid-cols-3 gap-8\",\"children\":[[\"$\",\"div\",null,{\"className\":\"p-6 rounded-2xl bg-card border shadow-xs space-y-3\",\"children\":[[\"$\",\"div\",null,{\"className\":\"h-10 w-10 rounded-lg bg-blue-500/10 text-blue-600 flex items-center justify-center\",\"children\":[\"$\",\"$Lf\",null,{\"ref\":\"$undefined\",\"icon\":{\"name\":\"layout-grid\",\"size\":24,\"node\":[[\"rect\",{\"width\":\"7\",\"height\":\"7\",\"x\":\"3\",\"y\":\"3\",\"rx\":\"1\",\"key\":\"1g98yp\"}],[\"rect\",{\"width\":\"7\",\"height\":\"7\",\"x\":\"14\",\"y\":\"3\",\"rx\":\"1\",\"key\":\"6d4xhi\"}],[\"rect\",{\"width\":\"7\",\"height\":\"7\",\"x\":\"14\",\"y\":\"14\",\"rx\":\"1\",\"key\":\"nxv5o0\"}],[\"rect\",{\"width\":\"7\",\"height\":\"7\",\"x\":\"3\",\"y\":\"14\",\"rx\":\"1\",\"key\":\"1bb6yr\"}]]},\"className\":\"h-5 w-5\"}]}],[\"$\",\"h3\",null,{\"className\":\"font-semibold text-lg\",\"children\":\"Bố cục 3 cột hiện đại\"}],[\"$\",\"p\",null,{\"className\":\"text-sm text-muted-foreground leading-relaxed\",\"children\":\"Trải nghiệm SaaS chuẩn mực với thanh điều hướng bên trái, lưới website trung tâm và thanh tiện ích ghi chú nhanh bên phải.\"}]]}],[\"$\",\"div\",null,{\"className\":\"p-6 rounded-2xl bg-card border shadow-xs space-y-3\",\"children\":[[\"$\",\"div\",null,{\"className\":\"h-10 w-10 rounded-lg bg-amber-500/10 text-amber-600 flex items-center justify-center\",\"children\":[\"$\",\"$Lf\",null,{\"ref\":\"$undefined\",\"icon\":{\"name\":\"bookmark\",\"size\":24,\"node\":[[\"path\",{\"d\":\"M17 3a2 2 0 0 1 2 2v15a1 1 0 0 1-1.496.868l-4.512-2.578a2 2 0 0 0-1.984 0l-4.512 2.578A1 1 0 0 1 5 20V5a2 2 0 0 1 2-2z\",\"key\":\"oz39mx\"}]]},\"className\":\"h-5 w-5\"}]}],[\"$\",\"h3\",null,{\"className\":\"font-semibold text-lg\",\"children\":\"Phân loại \u0026 Yêu thích\"}],[\"$\",\"p\",null,{\"className\":\"text-sm text-muted-foreground leading-relaxed\",\"children\":\"Tự động đồng bộ website toàn hệ thống (Global) kết hợp với kho liên kết cá nhân (Personal) bảo mật riêng tư.\"}]]}],[\"$\",\"div\",null,{\"className\":\"p-6 rounded-2xl bg-card border shadow-xs space-y-3\",\"children\":[[\"$\",\"div\",null,{\"className\":\"h-10 w-10 rounded-lg bg-emerald-500/10 text-emerald-600 flex items-center justify-center\",\"children\":[\"$\",\"$Lf\",null,{\"ref\":\"$undefined\",\"icon\":{\"name\":\"shield-check\",\"size\":24,\"node\":[[\"path\",{\"d\":\"M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z\",\"key\":\"oel41y\"}],[\"path\",{\"d\":\"m9 12 2 2 4-4\",\"key\":\"dzmm74\"}]]},\"className\":\"h-5 w-5\"}]}],[\"$\",\"h3\",null,{\"className\":\"font-semibold text-lg\",\"children\":\"Bảo mật cấp cơ sở dữ liệu\"}],[\"$\",\"p\",null,{\"className\":\"text-sm text-muted-foreground leading-relaxed\",\"children\":\"Supabase Row Level Security (RLS) bảo vệ từng liên kết, xác thực quyền Admin an toàn và phân quyền người dùng chặt chẽ.\"}]]}]]}]}]}]\n"])</script><script>self.__next_f.push([1,"32:[\"$\",\"footer\",null,{\"className\":\"border-t py-8 text-center text-sm text-muted-foreground\",\"children\":[\"$\",\"div\",null,{\"className\":\"max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-center gap-2 font-medium\",\"children\":[[\"$\",\"$Lf\",null,{\"ref\":\"$undefined\",\"icon\":\"$0:t:t:d:r:props:children:props:children:1:props:children:props:children:props:children:0:props:notFound:0:props:children:0:props:children:props:icon\",\"className\":\"h-4 w-4 text-primary\"}],[\"$\",\"span\",null,{\"children\":\"Link Portal\"}]]}],[\"$\",\"p\",null,{\"children\":\"© 2026 Link Portal. Xây dựng với Next.js, Supabase \u0026 Tailwind CSS.\"}]]}]}]\n"])</script><script>self.__next_f.push([1,"2a:o1,#2a:o329,2:\"/_next/static/chunks/32x0f6mo42936.js\"\n3:\"/_next/static/chunks/0ib0b09j2ry2_.js\"\n4:\"LoadingBoundaryProvider\"\n5:I[39756,[\"$2\",\"$3\"],\"$4\"]\n6:\"$Sreact.fragment\"\n7:I[89554,[\"$2\",\"$3\"],\"ThemeProvider\"]\n8:I[39756,[\"$2\",\"$3\"],\"default\"]\n9:\"/_next/static/chunks/3ire-qjnv51-x.js\"\na:\"/_next/static/chunks/3hrqbu9k6k26_.js\"\nb:I[8821,[\"$2\",\"$3\",\"$9\",\"$a\"],\"default\"]\nc:I[37457,[\"$2\",\"$3\"],\"default\"]\nd:\"/_next/static/chunks/0ww48t3gqvxh1.js\"\ne:\"/_next/static/chunks/0st-ljrdahdi9.js\"\nf:\"/_next/static/chunks/1w30m7z1-jv6e.js\"\n10:I[5014,[\"$2\",\"$3\",\"$d\",\"$a\",\"$e\",\"$f\"],\"default\"]\n11:I[22016,[\"$2\",\"$3\",\"$d\",\"$a\",\"$e\",\"$f\"],\"\"]\n12:I[3484,[\"$2\",\"$3\"],\"Toaster\"]\n:HL[\"/_next/static/chunks/127nl_1ahyabo.css\",\"style\"]\n1:X\n13:X\n16:X\n14:[[\"children\",{\"s\":\"__PAGE__\",\"h\":162,\"d\":{\"r\":\"$L15\",\"p\":false,\"v\":\"$16\"}}]]\n1a:X\n1b:X\n2a:o120a,"])</script><script>self.__next_f.push([1,"0:{\"q\":\"\",\"i\":false,\"S\":true,\"r\":\"$1\",\"b\":\"zv7v3AGqeQa_VjoRrPmWg\",\"t\":{\"t\":{\"s\":\"\",\"h\":86,\"d\":{\"r\":[\"$\",\"$L5\",null,{\"loading\":[[\"$\",\"div\",\"l\",{\"className\":\"space-y-6 p-6\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-center justify-between\",\"children\":[[\"$\",\"div\",null,{\"className\":\"space-y-2\",\"children\":[[\"$\",\"div\",null,{\"className\":\"animate-pulse rounded-md bg-muted/70 h-8 w-48\"}],[\"$\",\"div\",null,{\"className\":\"animate-pulse rounded-md bg-muted/70 h-4 w-72\"}]]}],[\"$\",\"div\",null,{\"className\":\"animate-pulse rounded-md bg-muted/70 h-9 w-32\"}]]}],[\"$\",\"div\",null,{\"className\":\"grid grid-cols-2 lg:grid-cols-4 gap-4\",\"children\":[[\"$\",\"div\",\"0\",{\"className\":\"animate-pulse bg-muted/70 h-24 rounded-xl\"}],[\"$\",\"div\",\"1\",{\"className\":\"animate-pulse bg-muted/70 h-24 rounded-xl\"}],[\"$\",\"div\",\"2\",{\"className\":\"animate-pulse bg-muted/70 h-24 rounded-xl\"}],[\"$\",\"div\",\"3\",{\"className\":\"animate-pulse bg-muted/70 h-24 rounded-xl\"}]]}],[\"$\",\"div\",null,{\"className\":\"grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4\",\"children\":[[\"$\",\"div\",\"0\",{\"className\":\"animate-pulse bg-muted/70 h-36 rounded-xl\"}],[\"$\",\"div\",\"1\",{\"className\":\"animate-pulse bg-muted/70 h-36 rounded-xl\"}],[\"$\",\"div\",\"2\",{\"className\":\"animate-pulse bg-muted/70 h-36 rounded-xl\"}],[\"$\",\"div\",\"3\",{\"className\":\"animate-pulse bg-muted/70 h-36 rounded-xl\"}],[\"$\",\"div\",\"4\",{\"className\":\"animate-pulse bg-muted/70 h-36 rounded-xl\"}],[\"$\",\"div\",\"5\",{\"className\":\"animate-pulse bg-muted/70 h-36 rounded-xl\"}]]}]]}],[],null],\"children\":[\"$\",\"$6\",\"c\",{\"children\":[[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/_next/static/chunks/127nl_1ahyabo.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\",\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-0\",{\"src\":\"/_next/static/chunks/32x0f6mo42936.js\",\"async\":true,\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-1\",{\"src\":\"/_next/static/chunks/0ib0b09j2ry2_.js\",\"async\":true,\"nonce\":\"$undefined\"}]],[\"$\",\"html\",null,{\"lang\":\"vi\",\"suppressHydrationWarning\":true,\"children\":[\"$\",\"body\",null,{\"className\":\"T19VSG_variable _8Li5zG_variable min-h-screen bg-background font-sans antialiased text-foreground\",\"children\":[\"$\",\"$L7\",null,{\"attribute\":\"class\",\"defaultTheme\":\"system\",\"enableSystem\":true,\"disableTransitionOnChange\":true,\"children\":[[\"$\",\"$L8\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$b\",\"errorStyles\":[],\"errorScripts\":[[\"$\",\"script\",\"script-0\",{\"src\":\"/_next/static/chunks/3ire-qjnv51-x.js\",\"async\":true,\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-1\",{\"src\":\"/_next/static/chunks/3hrqbu9k6k26_.js\",\"async\":true,\"nonce\":\"$undefined\"}]],\"template\":[\"$\",\"$Lc\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":[[\"$\",\"div\",null,{\"className\":\"min-h-screen flex flex-col items-center justify-center p-4 text-center bg-background\",\"children\":[[\"$\",\"div\",null,{\"className\":\"h-16 w-16 rounded-2xl bg-primary/10 text-primary flex items-center justify-center mb-6\",\"children\":[\"$\",\"$L10\",null,{\"ref\":\"$undefined\",\"icon\":{\"name\":\"compass\",\"size\":24,\"node\":[[\"circle\",{\"cx\":\"12\",\"cy\":\"12\",\"r\":\"10\",\"key\":\"1mglay\"}],[\"path\",{\"d\":\"m16.24 7.76-1.804 5.411a2 2 0 0 1-1.265 1.265L7.76 16.24l1.804-5.411a2 2 0 0 1 1.265-1.265z\",\"key\":\"9ktpf1\"}]]},\"className\":\"h-8 w-8\"}]}],[\"$\",\"h1\",null,{\"className\":\"text-4xl font-extrabold tracking-tight mb-2\",\"children\":\"404\"}],[\"$\",\"h2\",null,{\"className\":\"text-xl font-semibold mb-3\",\"children\":\"Không tìm thấy trang\"}],[\"$\",\"p\",null,{\"className\":\"text-sm text-muted-foreground max-w-md mb-8\",\"children\":\"Trang bạn đang tìm kiếm không tồn tại hoặc đã bị di chuyển. Hãy quay lại bảng điều khiển để tiếp tục.\"}],[\"$\",\"$L11\",null,{\"href\":\"/dashboard\",\"children\":[[\"$\",\"$L10\",null,{\"ref\":\"$undefined\",\"icon\":{\"name\":\"arrow-left\",\"size\":24,\"node\":[[\"path\",{\"d\":\"m12 19-7-7 7-7\",\"key\":\"1l729n\"}],[\"path\",{\"d\":\"M19 12H5\",\"key\":\"x3x0zl\"}]]},\"className\":\"mr-2 h-4 w-4\"}],\" Quay lại Dashboard\"],\"className\":\"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [\u0026_svg]:pointer-events-none [\u0026_svg]:size-4 [\u0026_svg]:shrink-0 cursor-pointer bg-primary text-primary-foreground shadow hover:bg-primary/90 h-9 px-4 py-2\",\"ref\":null}]]}],[]],\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}],[\"$\",\"$L12\",null,{\"richColors\":true,\"position\":\"top-right\"}]]}]}]}]]}]}],\"p\":false,\"v\":\"$13\"},\"c\":\"$Q14\"},\"h\":{\"r\":[\"$\",\"$6\",\"h\",{\"children\":[\"$L17\",\"$L18\",\"$L19\"]}],\"p\":false,\"v\":\"$1a\"}},\"s\":\"$1b\",\"a\":\"$@1c\",\"w\":\"$@1d\"}\n"])</script><script>self.__next_f.push([1,"2a:o3cc,1f:I[97367,[\"$2\",\"$3\"],\"OutletBoundary\"]\n20:\"$Sreact.suspense\"\n22:\"ViewportBoundary\"\n23:I[97367,[\"$2\",\"$3\"],\"$22\"]\n25:\"MetadataBoundary\"\n26:I[97367,[\"$2\",\"$3\"],\"$25\"]\n15:[\"$\",\"$6\",\"c\",{\"children\":[\"$L1e\",[[\"$\",\"script\",\"script-0\",{\"src\":\"/_next/static/chunks/0ww48t3gqvxh1.js\",\"async\":true,\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-1\",{\"src\":\"/_next/static/chunks/3hrqbu9k6k26_.js\",\"async\":true,\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-2\",{\"src\":\"/_next/static/chunks/0st-ljrdahdi9.js\",\"async\":true,\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-3\",{\"src\":\"/_next/static/chunks/1w30m7z1-jv6e.js\",\"async\":true,\"nonce\":\"$undefined\"}]],[\"$\",\"$L1f\",null,{\"children\":[\"$\",\"$20\",null,{\"name\":\"Next.MetadataOutlet\",\"children\":\"$@21\"}]}]]}]\n17:null\n18:[\"$\",\"$L23\",\"O9_pAuHmq_uWCXrIUEkP7v\",{\"children\":\"$L24\"}]\n19:[\"$\",\"$L26\",\"O9_pAuHmq_uWCXrIUEkP7m\",{\"children\":[[\"$\",\"div\",null,{\"hidden\":true,\"children\":[\"$\",\"$20\",null,{\"name\":\"Next.Metadata\",\"children\":\"$L27\"}]}],null]}]\n2a:o86,1b:300\n24:[[\"$\",\"meta\",\"0\",{\"charSet\":\"utf-8\"}],[\"$\",\"meta\",\"1\",{\"name\":\"viewport\",\"content\":\"width=device-width, initial-scale=1\"}]]\n2a:o193,28:I[27201,[\"$2\",\"$3\"],\"IconMark\"]\n21:null\n27:[[\"$\",\"title\",\"0\",{\"children\":\"Link Portal – Quản lý liên kết tập trung\"}],[\"$\",\"meta\",\"1\",{\"name\":\"description\",\"content\":\"Nền tảng quản lý và truy cập các website tập trung chuyên nghiệp\"}],[\"$\",\"link\",\"2\",{\"rel\":\"icon\",\"href\":\"/favicon.ico?favicon.117ezoe8m31dk.ico\",\"sizes\":\"48x48\",\"type\":\"image/x-icon\"}],[\"$\",\"$L28\",\"3\",{}]]\n2a:o3a,29:I[93539,[\"$2\",\"$3\",\"$d\",\"$a\",\"$e\",\"$f\"],\"ThemeToggle\"]\n2a:o122f,"])</script><script>self.__next_f.push([1,"1e:[\"$\",\"div\",null,{\"className\":\"min-h-screen flex flex-col bg-background\",\"children\":[[\"$\",\"header\",null,{\"className\":\"border-b bg-background/80 backdrop-blur-md sticky top-0 z-40\",\"children\":[\"$\",\"div\",null,{\"className\":\"max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-center gap-3\",\"children\":[[\"$\",\"div\",null,{\"className\":\"h-9 w-9 rounded-xl bg-primary text-primary-foreground flex items-center justify-center shadow-xs\",\"children\":[\"$\",\"$L10\",null,{\"ref\":\"$undefined\",\"icon\":\"$0:t:t:d:r:props:children:props:children:1:props:children:props:children:props:children:0:props:notFound:0:props:children:0:props:children:props:icon\",\"className\":\"h-5 w-5\"}]}],[\"$\",\"span\",null,{\"className\":\"font-bold text-lg tracking-tight\",\"children\":\"Link Portal\"}]]}],[\"$\",\"div\",null,{\"className\":\"flex items-center gap-3\",\"children\":[[\"$\",\"$L29\",null,{}],[\"$\",\"$L11\",null,{\"href\":\"/login\",\"children\":\"Đăng nhập\",\"className\":\"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [\u0026_svg]:pointer-events-none [\u0026_svg]:size-4 [\u0026_svg]:shrink-0 cursor-pointer hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2\",\"ref\":null}],[\"$\",\"$L11\",null,{\"href\":\"/register\",\"children\":[\"Bắt đầu ngay\",[\"$\",\"$L10\",null,{\"ref\":\"$undefined\",\"icon\":{\"name\":\"arrow-right\",\"size\":24,\"node\":[[\"path\",{\"d\":\"M5 12h14\",\"key\":\"1ays0h\"}],[\"path\",{\"d\":\"m12 5 7 7-7 7\",\"key\":\"xquz4c\"}]]},\"className\":\"ml-1.5 h-4 w-4\"}]],\"className\":\"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [\u0026_svg]:pointer-events-none [\u0026_svg]:size-4 [\u0026_svg]:shrink-0 cursor-pointer bg-primary text-primary-foreground shadow hover:bg-primary/90 h-9 px-4 py-2\",\"ref\":null}]]}]]}]}],[\"$\",\"main\",null,{\"className\":\"flex-1\",\"children\":[[\"$\",\"section\",null,{\"className\":\"py-20 sm:py-28 text-center max-w-4xl mx-auto px-4\",\"children\":[[\"$\",\"div\",null,{\"className\":\"inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary mb-6\",\"children\":[[\"$\",\"$L10\",null,{\"ref\":\"$undefined\",\"icon\":{\"name\":\"zap\",\"size\":24,\"node\":[[\"path\",{\"d\":\"M15.914 4a1.5 1.5 0 00-2.474-1.561l-9 9A1.5 1.5 0 005.5 14h4.002a.5.5 0 01.471.666L8.086 20a1.5 1.5 0 002.475 1.56l9-9A1.5 1.5 0 0018.5 10h-3.997a.5.5 0 01-.472-.667z\",\"key\":\"1v7up4\"}]]},\"className\":\"h-3.5 w-3.5\"}],\"Nền tảng quản lý liên kết tập trung thế hệ mới\"]}],[\"$\",\"h1\",null,{\"className\":\"text-4xl sm:text-6xl font-extrabold tracking-tight text-foreground leading-tight\",\"children\":\"Quản lý \u0026 truy cập mọi website của bạn tại một nơi\"}],[\"$\",\"p\",null,{\"className\":\"mt-6 text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed\",\"children\":\"Link Portal giúp bạn lưu trữ, phân loại danh mục, đánh dấu yêu thích và tìm kiếm nhanh chóng các website quan trọng cho công việc và học tập.\"}],[\"$\",\"div\",null,{\"className\":\"mt-10 flex flex-wrap items-center justify-center gap-4\",\"children\":[[\"$\",\"$L11\",null,{\"href\":\"/register\",\"children\":[\"Tạo tài khoản miễn phí\",[\"$\",\"$L10\",null,{\"ref\":\"$undefined\",\"icon\":\"$1e:props:children:0:props:children:props:children:1:props:children:2:props:children:1:props:icon\",\"className\":\"ml-2 h-4 w-4\"}]],\"className\":\"inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [\u0026_svg]:pointer-events-none [\u0026_svg]:size-4 [\u0026_svg]:shrink-0 cursor-pointer bg-primary text-primary-foreground hover:bg-primary/90 rounded-md h-12 px-8 text-base shadow-md\",\"ref\":null}],[\"$\",\"$L11\",null,{\"href\":\"/login\",\"children\":\"Đăng nhập hệ thống\",\"className\":\"inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [\u0026_svg]:pointer-events-none [\u0026_svg]:size-4 [\u0026_svg]:shrink-0 cursor-pointer border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground rounded-md h-12 px-8 text-base\",\"ref\":null}]]}]]}],\"$L2a\"]}],\"$L2b\"]}]\n"])</script><script>self.__next_f.push([1,"2a:ob94,2a:[\"$\",\"section\",null,{\"className\":\"py-16 bg-muted/40 border-y\",\"children\":[\"$\",\"div\",null,{\"className\":\"max-w-7xl mx-auto px-4 sm:px-6 lg:px-8\",\"children\":[\"$\",\"div\",null,{\"className\":\"grid grid-cols-1 md:grid-cols-3 gap-8\",\"children\":[[\"$\",\"div\",null,{\"className\":\"p-6 rounded-2xl bg-card border shadow-xs space-y-3\",\"children\":[[\"$\",\"div\",null,{\"className\":\"h-10 w-10 rounded-lg bg-blue-500/10 text-blue-600 flex items-center justify-center\",\"children\":[\"$\",\"$L10\",null,{\"ref\":\"$undefined\",\"icon\":{\"name\":\"layout-grid\",\"size\":24,\"node\":[[\"rect\",{\"width\":\"7\",\"height\":\"7\",\"x\":\"3\",\"y\":\"3\",\"rx\":\"1\",\"key\":\"1g98yp\"}],[\"rect\",{\"width\":\"7\",\"height\":\"7\",\"x\":\"14\",\"y\":\"3\",\"rx\":\"1\",\"key\":\"6d4xhi\"}],[\"rect\",{\"width\":\"7\",\"height\":\"7\",\"x\":\"14\",\"y\":\"14\",\"rx\":\"1\",\"key\":\"nxv5o0\"}],[\"rect\",{\"width\":\"7\",\"height\":\"7\",\"x\":\"3\",\"y\":\"14\",\"rx\":\"1\",\"key\":\"1bb6yr\"}]]},\"className\":\"h-5 w-5\"}]}],[\"$\",\"h3\",null,{\"className\":\"font-semibold text-lg\",\"children\":\"Bố cục 3 cột hiện đại\"}],[\"$\",\"p\",null,{\"className\":\"text-sm text-muted-foreground leading-relaxed\",\"children\":\"Trải nghiệm SaaS chuẩn mực với thanh điều hướng bên trái, lưới website trung tâm và thanh tiện ích ghi chú nhanh bên phải.\"}]]}],[\"$\",\"div\",null,{\"className\":\"p-6 rounded-2xl bg-card border shadow-xs space-y-3\",\"children\":[[\"$\",\"div\",null,{\"className\":\"h-10 w-10 rounded-lg bg-amber-500/10 text-amber-600 flex items-center justify-center\",\"children\":[\"$\",\"$L10\",null,{\"ref\":\"$undefined\",\"icon\":{\"name\":\"bookmark\",\"size\":24,\"node\":[[\"path\",{\"d\":\"M17 3a2 2 0 0 1 2 2v15a1 1 0 0 1-1.496.868l-4.512-2.578a2 2 0 0 0-1.984 0l-4.512 2.578A1 1 0 0 1 5 20V5a2 2 0 0 1 2-2z\",\"key\":\"oz39mx\"}]]},\"className\":\"h-5 w-5\"}]}],[\"$\",\"h3\",null,{\"className\":\"font-semibold text-lg\",\"children\":\"Phân loại \u0026 Yêu thích\"}],[\"$\",\"p\",null,{\"className\":\"text-sm text-muted-foreground leading-relaxed\",\"children\":\"Tự động đồng bộ website toàn hệ thống (Global) kết hợp với kho liên kết cá nhân (Personal) bảo mật riêng tư.\"}]]}],[\"$\",\"div\",null,{\"className\":\"p-6 rounded-2xl bg-card border shadow-xs space-y-3\",\"children\":[[\"$\",\"div\",null,{\"className\":\"h-10 w-10 rounded-lg bg-emerald-500/10 text-emerald-600 flex items-center justify-center\",\"children\":[\"$\",\"$L10\",null,{\"ref\":\"$undefined\",\"icon\":{\"name\":\"shield-check\",\"size\":24,\"node\":[[\"path\",{\"d\":\"M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z\",\"key\":\"oel41y\"}],[\"path\",{\"d\":\"m9 12 2 2 4-4\",\"key\":\"dzmm74\"}]]},\"className\":\"h-5 w-5\"}]}],[\"$\",\"h3\",null,{\"className\":\"font-semibold text-lg\",\"children\":\"Bảo mật cấp cơ sở dữ liệu\"}],[\"$\",\"p\",null,{\"className\":\"text-sm text-muted-foreground leading-relaxed\",\"children\":\"Supabase Row Level Security (RLS) bảo vệ từng liên kết, xác thực quyền Admin an toàn và phân quyền người dùng chặt chẽ.\"}]]}]]}]}]}]\n2a:o2bb,2b:[\"$\",\"footer\",null,{\"className\":\"border-t py-8 text-center text-sm text-muted-foreground\",\"children\":[\"$\",\"div\",null,{\"className\":\"max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-center gap-2 font-medium\",\"children\":[[\"$\",\"$L10\",null,{\"ref\":\"$undefined\",\"icon\":\"$0:t:t:d:r:props:children:props:children:1:props:children:props:children:props:children:0:props:notFound:0:props:children:0:props:children:props:icon\",\"className\":\"h-4 w-4 text-primary\"}],[\"$\",\"span\",null,{\"children\":\"Link Portal\"}]]}],[\"$\",\"p\",null,{\"children\":\"© 2026 Link Portal. Xây dựng với Next.js, Supabase \u0026 Tailwind CSS.\"}]]}]}]\n2a:oa,1a:0\n16:0\n2a:o11,1d:true\n1c:15312\n2a:o18,1b:C\n1a:C\n1:C\n16:C\n13:C\n2a:C\n"])</script></body></html>--- Test quanlydachucnang.vercel.app ---
+HTTP/2 200 
+accept-ranges: bytes
+access-control-allow-origin: *
+age: 0
 cache-control: public, max-age=0, must-revalidate
-content-type: text/plain; charset=utf-8
-date: Tue, 10 Nov 2026 07:58:56 GMT
+content-disposition: inline
+content-type: text/html; charset=utf-8
+date: Tue, 10 Nov 2026 08:11:34 GMT
+link: </_next/static/media/07a39a8a4660cc7c-s.p.0r6juujl39pe6.woff2>; rel=preload; as="font"; crossorigin=""; type="font/woff2", </_next/static/media/605ce01b664af129-s.p.0wgildi0cnwt9.woff2>; rel=preload; as="font"; crossorigin=""; type="font/woff2"
 server: Vercel
 strict-transport-security: max-age=63072000; includeSubDomains; preload
-x-vercel-error: NOT_FOUND
-x-vercel-id: sfo1::c79qr-1794297536035-37021f4bc9e9
-content-length: 79
+vary: rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch
+x-matched-path: /
+x-nextjs-prerender: 1
+x-nextjs-stale-time: 300
+x-vercel-cache: PRERENDER
+x-vercel-id: pdx1::kmtfq-1794298294633-5ea3e4e650e2
 
