@@ -30,8 +30,8 @@ export default function ErrorBoundary({
           <RotateCcw className="h-4 w-4" /> Thử lại
         </Button>
         <Button asChild className="gap-2">
-          <Link href="/dashboard">
-            <Home className="h-4 w-4" /> Về Dashboard
+          <Link href="/">
+            <Home className="h-4 w-4" /> Về Trang chủ
           </Link>
         </Button>
       </div>

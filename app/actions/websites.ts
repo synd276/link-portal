@@ -71,6 +71,7 @@ export async function createWebsiteAction(values: unknown): Promise<ActionResult
   }
 
   revalidatePath("/dashboard");
+  revalidatePath("/");
   revalidatePath("/websites");
   revalidatePath("/admin/websites");
   return { success: true, data };
@@ -156,6 +157,7 @@ export async function updateWebsiteAction(
   }
 
   revalidatePath("/dashboard");
+  revalidatePath("/");
   revalidatePath("/websites");
   revalidatePath("/admin/websites");
   return { success: true, data };
@@ -208,6 +210,7 @@ export async function deleteWebsiteAction(id: string): Promise<ActionResult> {
   }
 
   revalidatePath("/dashboard");
+  revalidatePath("/");
   revalidatePath("/websites");
   revalidatePath("/admin/websites");
   return { success: true };
@@ -248,6 +251,7 @@ export async function toggleFavoriteAction(
     }
 
     revalidatePath("/dashboard");
+  revalidatePath("/");
     revalidatePath("/websites");
     revalidatePath("/websites/favorites");
     return { success: true, data: { isFavorite: false } };
@@ -265,6 +269,7 @@ export async function toggleFavoriteAction(
     }
 
     revalidatePath("/dashboard");
+  revalidatePath("/");
     revalidatePath("/websites");
     revalidatePath("/websites/favorites");
     return { success: true, data: { isFavorite: true } };
@@ -297,6 +302,7 @@ export async function recordVisitAction(websiteId: string): Promise<ActionResult
   }
 
   revalidatePath("/dashboard");
+  revalidatePath("/");
   revalidatePath("/recent");
   return { success: true };
 }

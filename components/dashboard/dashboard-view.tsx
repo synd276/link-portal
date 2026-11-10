@@ -96,7 +96,7 @@ export function DashboardView({
               <p className="text-xs text-muted-foreground font-medium">Tổng website</p>
               <p className="text-2xl font-bold text-foreground">{stats.totalWebsites}</p>
             </div>
-            <div className="h-10 w-10 rounded-xl bg-blue-500/10 text-blue-600 dark:text-blue-400 flex items-center justify-center">
+            <div className="h-10 w-10 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center">
               <Globe className="h-5 w-5" />
             </div>
           </CardContent>

@@ -63,7 +63,7 @@ export async function updateSession(request: NextRequest) {
 
   if (user && isAuthRoute) {
     const redirectUrl = request.nextUrl.clone();
-    redirectUrl.pathname = "/dashboard";
+    redirectUrl.pathname = "/";
     return NextResponse.redirect(redirectUrl);
   }
 
@@ -76,16 +76,10 @@ export async function updateSession(request: NextRequest) {
 
     if (profile?.role !== "admin") {
       const redirectUrl = request.nextUrl.clone();
-      redirectUrl.pathname = "/dashboard";
+      redirectUrl.pathname = "/";
       redirectUrl.searchParams.set("error", "unauthorized");
       return NextResponse.redirect(redirectUrl);
     }
-  }
-
-  if (pathname === "/") {
-    const redirectUrl = request.nextUrl.clone();
-    redirectUrl.pathname = user ? "/dashboard" : "/login";
-    return NextResponse.redirect(redirectUrl);
   }
 
   return supabaseResponse;

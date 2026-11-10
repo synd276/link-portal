@@ -37,7 +37,7 @@ export function AdminDashboardView({
             Bảng điều khiển Quản trị viên
           </h1>
           <p className="text-sm text-muted-foreground mt-0.5">
-            Tổng quan dữ liệu, người dùng và hệ thống liên kết toàn Link Portal
+            Tổng quan dữ liệu, người dùng và hệ thống liên kết toàn Hệ thống quản lý đa chức năng
           </p>
         </div>
 
@@ -52,11 +52,11 @@ export function AdminDashboardView({
 
       {/* 5 Stats Cards as specified in 3.4 */}
       <div className="grid grid-cols-2 lg:grid-cols-5 gap-4">
-        <Card className="border-l-4 border-l-blue-500">
+        <Card className="border-l-4 border-l-emerald-600">
           <CardContent className="p-4 space-y-1">
             <div className="flex items-center justify-between">
               <p className="text-xs text-muted-foreground font-medium">Tổng người dùng</p>
-              <Users className="h-4 w-4 text-blue-500" />
+              <Users className="h-4 w-4 text-emerald-600" />
             </div>
             <p className="text-2xl font-bold">{stats.totalUsers}</p>
           </CardContent>
@@ -142,7 +142,7 @@ export function AdminDashboardView({
                   </div>
                   <div className="flex items-center gap-2">
                     {w.is_global ? (
-                      <Badge variant="outline" className="text-blue-600 border-blue-500/30">
+                      <Badge variant="outline" className="text-emerald-600 border-emerald-500/30">
                         Global
                       </Badge>
                     ) : (

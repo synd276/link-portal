@@ -3,8 +3,8 @@ import { Suspense } from "react";
 import { LoginForm } from "@/components/forms/login-form";
 
 export const metadata: Metadata = {
-  title: "Đăng nhập | Link Portal",
-  description: "Đăng nhập vào Link Portal để quản lý các website của bạn",
+  title: "Đăng nhập | Hệ thống quản lý đa chức năng",
+  description: "Đăng nhập vào Hệ thống quản lý đa chức năng để quản lý các website của bạn",
 };
 
 export default function LoginPage() {

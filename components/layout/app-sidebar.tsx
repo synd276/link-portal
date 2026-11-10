@@ -80,7 +80,7 @@ export function AppSidebar({
         <div className="flex flex-col">
           <div className="h-16 flex items-center justify-between px-3.5 border-b">
             <Link
-              href="/dashboard"
+              href="/"
               onClick={handleLinkClick}
               className="flex items-center gap-2.5 overflow-hidden"
             >
@@ -90,10 +90,10 @@ export function AppSidebar({
               {!collapsed && (
                 <div className="flex flex-col truncate">
                   <span className="font-bold text-base leading-tight tracking-tight">
-                    Link Portal
+                    Hệ thống quản lý đa chức năng
                   </span>
-                  <span className="text-[10px] text-muted-foreground font-medium">
-                    Quản lý liên kết
+                  <span className="text-[10px] text-muted-foreground font-medium truncate">
+                    Quản lý đa chức năng
                   </span>
                 </div>
               )}

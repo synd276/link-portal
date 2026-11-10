@@ -15,7 +15,7 @@ export default function AuthLayout({
           <div className="h-8 w-8 rounded-lg bg-primary text-primary-foreground flex items-center justify-center">
             <Compass className="h-5 w-5" />
           </div>
-          <span>Link Portal</span>
+          <span>Hệ thống quản lý đa chức năng</span>
         </Link>
         <ThemeToggle />
       </header>
@@ -27,7 +27,7 @@ export default function AuthLayout({
       </main>
 
       <footer className="w-full max-w-7xl mx-auto px-4 py-4 text-center text-xs text-muted-foreground">
-        © 2026 Link Portal. Nền tảng quản lý liên kết tập trung.
+        © 2026 Hệ thống quản lý đa chức năng. Nền tảng quản lý liên kết tập trung.
       </footer>
     </div>
   );

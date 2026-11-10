@@ -51,7 +51,7 @@ export function RegisterForm() {
       }
 
       toast.success("Tạo tài khoản thành công! Đang chuyển hướng...");
-      router.push("/dashboard");
+      router.push("/");
       router.refresh();
     } catch {
       setServerError("Có lỗi xảy ra trong quá trình xử lý.");

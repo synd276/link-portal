@@ -3,7 +3,7 @@ import { getRecentVisits, getWebsites } from "@/lib/data";
 import { RecentView } from "@/components/recent/recent-view";
 
 export const metadata: Metadata = {
-  title: "Lịch sử truy cập | Link Portal",
+  title: "Lịch sử truy cập | Hệ thống quản lý đa chức năng",
   description: "Các website truy cập gần đây và website mới thêm",
 };
 

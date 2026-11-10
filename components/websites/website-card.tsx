@@ -227,7 +227,7 @@ export function WebsiteCard({
             )}
 
             {website.is_global ? (
-              <Badge variant="outline" className="text-[10px] text-blue-600 dark:text-blue-400 border-blue-500/30 px-1.5 py-0">
+              <Badge variant="outline" className="text-[10px] text-emerald-600 dark:text-emerald-400 border-emerald-500/30 bg-emerald-500/5 px-1.5 py-0">
                 Toàn hệ thống
               </Badge>
             ) : (

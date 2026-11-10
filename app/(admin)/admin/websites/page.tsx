@@ -3,7 +3,7 @@ import { getWebsites, getCategories } from "@/lib/data";
 import { AdminWebsitesTable } from "@/components/admin/admin-websites-table";
 
 export const metadata: Metadata = {
-  title: "Quản lý Website | Admin Link Portal",
+  title: "Quản lý Website | Admin Hệ thống quản lý đa chức năng",
   description: "Trang quản trị toàn bộ website hệ thống",
 };
 

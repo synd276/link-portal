@@ -48,6 +48,7 @@ export async function createNoteAction(values: unknown): Promise<ActionResult<Us
   }
 
   revalidatePath("/dashboard");
+  revalidatePath("/");
   return { success: true, data };
 }
 
@@ -93,6 +94,7 @@ export async function updateNoteAction(
   }
 
   revalidatePath("/dashboard");
+  revalidatePath("/");
   return { success: true, data };
 }
 
@@ -121,5 +123,6 @@ export async function deleteNoteAction(id: string): Promise<ActionResult> {
   }
 
   revalidatePath("/dashboard");
+  revalidatePath("/");
   return { success: true };
 }

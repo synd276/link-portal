@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Link Portal – Quản lý liên kết tập trung",
+  title: "Hệ thống quản lý đa chức năng",
   description: "Nền tảng quản lý và truy cập các website tập trung chuyên nghiệp",
 };
 
@@ -31,8 +31,8 @@ export default function RootLayout({
       >
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
-          enableSystem
+          defaultTheme="light"
+          enableSystem={false}
           disableTransitionOnChange
         >
           {children}

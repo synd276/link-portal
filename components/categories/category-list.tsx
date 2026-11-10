@@ -121,7 +121,7 @@ export function CategoryList({
                       </h3>
                       <div className="flex items-center gap-1.5 mt-0.5">
                         {cat.is_global ? (
-                          <Badge variant="outline" className="text-[10px] text-blue-600 dark:text-blue-400 border-blue-500/30 px-1.5 py-0">
+                          <Badge variant="outline" className="text-[10px] text-emerald-600 dark:text-emerald-400 border-emerald-500/30 px-1.5 py-0">
                             Toàn hệ thống
                           </Badge>
                         ) : (

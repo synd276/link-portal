@@ -143,7 +143,7 @@ export function SettingsView({ profile, settings, userEmail }: SettingsViewProps
             <CardHeader>
               <CardTitle>Thông tin cá nhân</CardTitle>
               <CardDescription>
-                Cập nhật họ tên và ảnh đại diện hiển thị trên Link Portal
+                Cập nhật họ tên và ảnh đại diện hiển thị trên Hệ thống quản lý đa chức năng
               </CardDescription>
             </CardHeader>
             <CardContent>
@@ -262,7 +262,7 @@ export function SettingsView({ profile, settings, userEmail }: SettingsViewProps
                       : "hover:border-foreground/30 bg-card"
                   }`}
                 >
-                  <div className="h-6 w-6 rounded-md bg-blue-500/20 text-blue-600 flex items-center justify-center font-bold">
+                  <div className="h-6 w-6 rounded-md bg-emerald-500/20 text-emerald-600 flex items-center justify-center font-bold">
                     ⚙
                   </div>
                   <div>

@@ -251,7 +251,7 @@ export function AdminWebsitesTable({
                     </td>
                     <td className="py-3 px-4">
                       {w.is_global ? (
-                        <Badge variant="outline" className="text-blue-600 border-blue-500/30 text-[11px]">
+                        <Badge variant="outline" className="text-emerald-600 border-emerald-500/30 text-[11px]">
                           Global
                         </Badge>
                       ) : (

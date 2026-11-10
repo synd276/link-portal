@@ -3,7 +3,7 @@ import { getUserProfile, getCategories, getWebsites } from "@/lib/data";
 import { WebsiteGrid } from "@/components/websites/website-grid";
 
 export const metadata: Metadata = {
-  title: "Website cá nhân | Link Portal",
+  title: "Website cá nhân | Hệ thống quản lý đa chức năng",
   description: "Các liên kết website do chính bạn tự thêm và quản lý",
 };
 

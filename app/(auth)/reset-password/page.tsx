@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import { ResetPasswordForm } from "@/components/forms/reset-password-form";
 
 export const metadata: Metadata = {
-  title: "Đặt lại mật khẩu | Link Portal",
+  title: "Đặt lại mật khẩu | Hệ thống quản lý đa chức năng",
   description: "Nhập mật khẩu mới cho tài khoản của bạn",
 };
 

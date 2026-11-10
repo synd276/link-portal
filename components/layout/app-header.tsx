@@ -74,7 +74,7 @@ export function AppHeader({
     if (pathname === "/admin/categories") return "Admin / Quản lý Danh mục";
     if (pathname === "/admin/users") return "Admin / Quản lý Người dùng";
     if (pathname === "/admin/settings") return "Admin / Cấu hình Hệ thống";
-    return "Link Portal";
+    return "Hệ thống quản lý đa chức năng";
   };
 
   return (

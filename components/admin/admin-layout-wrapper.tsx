@@ -59,7 +59,7 @@ export function AdminLayoutWrapper({
                 <Shield className="h-4 w-4" />
               </div>
               <span className="font-bold text-sm tracking-tight text-foreground">
-                Cổng quản trị Link Portal
+                Cổng quản trị Hệ thống quản lý đa chức năng
               </span>
             </div>
           </div>

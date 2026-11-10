@@ -3,8 +3,8 @@ import { getUserProfile, getCategories, getWebsites } from "@/lib/data";
 import { WebsiteGrid } from "@/components/websites/website-grid";
 
 export const metadata: Metadata = {
-  title: "Tất cả website | Link Portal",
-  description: "Danh sách tất cả các website trên Link Portal",
+  title: "Tất cả website | Hệ thống quản lý đa chức năng",
+  description: "Danh sách tất cả các website trên Hệ thống quản lý đa chức năng",
 };
 
 interface PageProps {

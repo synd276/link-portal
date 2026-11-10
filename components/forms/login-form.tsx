@@ -17,7 +17,7 @@ import { Label } from "@/components/ui/label";
 export function LoginForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const redirectedFrom = searchParams.get("redirectedFrom") || "/dashboard";
+  const redirectedFrom = searchParams.get("redirectedFrom") || "/";
   const [showPassword, setShowPassword] = React.useState(false);
   const [serverError, setServerError] = React.useState<string | null>(null);
 
@@ -60,7 +60,7 @@ export function LoginForm() {
         </div>
         <h1 className="text-2xl font-bold tracking-tight">Chào mừng quay trở lại</h1>
         <p className="text-sm text-muted-foreground">
-          Đăng nhập vào Link Portal để truy cập các liên kết của bạn
+          Đăng nhập vào Hệ thống quản lý đa chức năng để truy cập các liên kết của bạn
         </p>
       </div>
 

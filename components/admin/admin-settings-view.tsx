@@ -49,13 +49,13 @@ WHERE id = (SELECT id FROM auth.users WHERE email = 'YOUR_EMAIL@example.com');`;
 
         <Card>
           <CardContent className="p-4 flex items-center gap-3">
-            <div className="h-10 w-10 rounded-xl bg-blue-500/10 text-blue-600 flex items-center justify-center shrink-0">
+            <div className="h-10 w-10 rounded-xl bg-emerald-500/10 text-emerald-600 flex items-center justify-center shrink-0">
               <ShieldCheck className="h-5 w-5" />
             </div>
             <div>
               <p className="text-xs text-muted-foreground font-medium">Row Level Security</p>
               <p className="text-sm font-bold text-foreground">RLS Bật toàn diện</p>
-              <Badge variant="outline" className="text-[10px] text-blue-600 border-blue-500/30 mt-1">
+              <Badge variant="outline" className="text-[10px] text-emerald-600 border-emerald-500/30 mt-1">
                 7 / 7 Bảng bảo vệ
               </Badge>
             </div>

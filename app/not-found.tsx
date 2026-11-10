@@ -14,8 +14,8 @@ export default function NotFound() {
         Trang bạn đang tìm kiếm không tồn tại hoặc đã bị di chuyển. Hãy quay lại bảng điều khiển để tiếp tục.
       </p>
       <Button asChild>
-        <Link href="/dashboard">
-          <ArrowLeft className="mr-2 h-4 w-4" /> Quay lại Dashboard
+        <Link href="/">
+          <ArrowLeft className="mr-2 h-4 w-4" /> Quay lại Trang chủ
         </Link>
       </Button>
     </div>

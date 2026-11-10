@@ -3,7 +3,7 @@ import { getUserProfile, getCategories } from "@/lib/data";
 import { CategoryList } from "@/components/categories/category-list";
 
 export const metadata: Metadata = {
-  title: "Danh mục | Link Portal",
+  title: "Danh mục | Hệ thống quản lý đa chức năng",
   description: "Quản lý danh mục website",
 };
 

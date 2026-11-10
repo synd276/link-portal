@@ -72,10 +72,10 @@ export async function proxy(request: NextRequest) {
     return NextResponse.redirect(redirectUrl);
   }
 
-  // Redirect authenticated user from public auth routes to /dashboard
+  // Redirect authenticated user from public auth routes to home page /
   if (user && isAuthRoute) {
     const redirectUrl = request.nextUrl.clone();
-    redirectUrl.pathname = "/dashboard";
+    redirectUrl.pathname = "/";
     return NextResponse.redirect(redirectUrl);
   }
 
@@ -89,17 +89,10 @@ export async function proxy(request: NextRequest) {
 
     if (profile?.role !== "admin") {
       const redirectUrl = request.nextUrl.clone();
-      redirectUrl.pathname = "/dashboard";
+      redirectUrl.pathname = "/";
       redirectUrl.searchParams.set("error", "unauthorized");
       return NextResponse.redirect(redirectUrl);
     }
-  }
-
-  // If logged in and on root landing page, redirect to dashboard
-  if (pathname === "/" && user) {
-    const redirectUrl = request.nextUrl.clone();
-    redirectUrl.pathname = "/dashboard";
-    return NextResponse.redirect(redirectUrl);
   }
 
   return supabaseResponse;

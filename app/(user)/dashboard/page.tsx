@@ -8,8 +8,8 @@ import {
 import { DashboardView } from "@/components/dashboard/dashboard-view";
 
 export const metadata: Metadata = {
-  title: "Dashboard | Link Portal",
-  description: "Trang tổng quan Link Portal",
+  title: "Dashboard | Hệ thống quản lý đa chức năng",
+  description: "Trang tổng quan Hệ thống quản lý đa chức năng",
 };
 
 export default async function DashboardPage() {

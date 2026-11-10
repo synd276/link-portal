@@ -63,6 +63,7 @@ export async function createCategoryAction(values: unknown): Promise<ActionResul
 
   revalidatePath("/categories");
   revalidatePath("/dashboard");
+  revalidatePath("/");
   revalidatePath("/admin/categories");
   return { success: true, data };
 }
@@ -139,6 +140,7 @@ export async function updateCategoryAction(
 
   revalidatePath("/categories");
   revalidatePath("/dashboard");
+  revalidatePath("/");
   revalidatePath("/admin/categories");
   return { success: true, data };
 }
@@ -191,6 +193,7 @@ export async function deleteCategoryAction(id: string): Promise<ActionResult> {
 
   revalidatePath("/categories");
   revalidatePath("/dashboard");
+  revalidatePath("/");
   revalidatePath("/admin/categories");
   return { success: true };
 }

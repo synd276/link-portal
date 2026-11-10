@@ -42,7 +42,7 @@ export function ResetPasswordForm() {
       }
 
       toast.success("Mật khẩu đã được cập nhật thành công!");
-      router.push("/dashboard");
+      router.push("/");
       router.refresh();
     } catch {
       setServerError("Có lỗi xảy ra, vui lòng thử lại sau.");

@@ -3,8 +3,8 @@ import { getAdminStats, getWebsites, getAdminUsers } from "@/lib/data";
 import { AdminDashboardView } from "@/components/admin/admin-dashboard-view";
 
 export const metadata: Metadata = {
-  title: "Admin Dashboard | Link Portal",
-  description: "Trang tổng quan quản trị Link Portal",
+  title: "Admin Dashboard | Hệ thống quản lý đa chức năng",
+  description: "Trang tổng quan quản trị Hệ thống quản lý đa chức năng",
 };
 
 export default async function AdminDashboardPage() {
