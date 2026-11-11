@@ -16,6 +16,7 @@ import { Category } from "@/types/database";
 import { deleteCategoryAction } from "@/app/actions/categories";
 import { formatDate } from "@/lib/utils";
 import { CategoryDialog } from "@/components/categories/category-dialog";
+import { CategoryIcon } from "@/components/categories/category-icon";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
@@ -180,7 +181,7 @@ export function AdminCategoriesTable({
               {paginated.map((c) => (
                 <tr key={c.id} className="hover:bg-muted/30 transition-colors">
                   <td className="py-3 px-4 font-semibold text-foreground flex items-center gap-2">
-                    <Folder className="h-4 w-4 text-primary shrink-0" />
+                    <CategoryIcon icon={c.icon} className="h-4 w-4 text-primary shrink-0" />
                     <span>{c.name}</span>
                   </td>
                   <td className="py-3 px-4 text-xs text-muted-foreground max-w-xs truncate">

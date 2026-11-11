@@ -7,6 +7,7 @@ import { toast } from "sonner";
 import { Category } from "@/types/database";
 import { deleteCategoryAction } from "@/app/actions/categories";
 import { CategoryDialog } from "./category-dialog";
+import { CategoryIcon } from "./category-icon";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -113,7 +114,7 @@ export function CategoryList({
                 <div className="flex items-start justify-between gap-3">
                   <div className="flex items-center gap-3">
                     <div className="h-10 w-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center shrink-0">
-                      <Folder className="h-5 w-5" />
+                      <CategoryIcon icon={cat.icon} className="h-5 w-5" />
                     </div>
                     <div>
                       <h3 className="font-semibold text-base text-foreground group-hover:text-primary transition-colors">

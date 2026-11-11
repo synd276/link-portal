@@ -67,7 +67,7 @@ export type WebsiteInput = z.infer<typeof websiteSchema>;
 export const categorySchema = z.object({
   name: z.string().min(1, "Tên danh mục không được để trống").max(50, "Tối đa 50 ký tự"),
   description: z.string().max(200, "Mô tả tối đa 200 ký tự").optional().or(z.literal("")),
-  icon: z.string().max(50).optional().or(z.literal("")),
+  icon: z.string().max(4000, "Biểu tượng tối đa 4000 ký tự").optional().or(z.literal("")),
   is_global: z.boolean(),
   sort_order: z.number().int().min(0, "Thứ tự phải lớn hơn hoặc bằng 0"),
 });
