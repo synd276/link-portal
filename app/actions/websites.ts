@@ -3,9 +3,9 @@
 import { revalidatePath } from "next/cache";
 import { createClient, isSupabaseConfigured } from "@/lib/supabase/server";
 import { websiteSchema } from "@/lib/validations";
-import { getFaviconUrl } from "@/lib/utils";
+import { getFaviconUrl, getDeterministicWebsiteUuid } from "@/lib/utils";
 import { Website } from "@/types/database";
-import { invalidateWebsitesCache } from "@/lib/data";
+import { invalidateWebsitesCache, DEFAULT_WEBSITES } from "@/lib/data";
 import { logAdminAction, logError } from "@/lib/logger";
 
 export interface ActionResult<T = unknown> {
@@ -330,6 +330,83 @@ export async function deleteWebsiteAction(id: string): Promise<ActionResult> {
   return { success: true };
 }
 
+/**
+ * Đảm bảo websiteId luôn là một UUID hợp lệ đối với cơ sở dữ liệu Supabase / PostgreSQL.
+ * Nếu websiteId là ID tĩnh (như dang-001, ai-001) hoặc website chưa được lưu vào bảng websites,
+ * hàm sẽ tự động phân giải và chèn bản ghi vào bảng websites để thỏa mãn ràng buộc khóa ngoại (Foreign Key).
+ */
+async function resolveAndEnsureWebsiteId(
+  supabase: any,
+  websiteId: string
+): Promise<string> {
+  const resolvedId = getDeterministicWebsiteUuid(websiteId);
+
+  // 1. Kiểm tra xem ID đã tồn tại trong bảng websites chưa
+  const { data: dbWebsite } = await supabase
+    .from("websites")
+    .select("id")
+    .eq("id", resolvedId)
+    .maybeSingle();
+
+  if (dbWebsite) {
+    return dbWebsite.id;
+  }
+
+  // 2. Nếu chưa có, tìm thông tin website từ DEFAULT_WEBSITES
+  const defaultItem = DEFAULT_WEBSITES.find(
+    (w) => w.id === websiteId || w.id === resolvedId
+  );
+
+  if (defaultItem) {
+    // Kiểm tra xem website này đã có trong DB qua URL chưa (tránh trùng lặp)
+    const { data: byUrl } = await supabase
+      .from("websites")
+      .select("id")
+      .eq("url", defaultItem.url)
+      .maybeSingle();
+
+    if (byUrl) {
+      return byUrl.id;
+    }
+
+    // Tự động chèn bản ghi vào bảng websites với ID UUID chuẩn
+    const { data: inserted, error: insertError } = await supabase
+      .from("websites")
+      .insert({
+        id: resolvedId,
+        name: defaultItem.name,
+        url: defaultItem.url,
+        description: defaultItem.description,
+        favicon_url: defaultItem.favicon_url,
+        category_id: defaultItem.category_id,
+        is_global: true,
+        is_featured: defaultItem.is_featured,
+        sort_order: defaultItem.sort_order,
+      })
+      .select("id")
+      .single();
+
+    if (inserted) {
+      invalidateWebsitesCache();
+      return inserted.id;
+    }
+
+    if (insertError) {
+      // Trường hợp có conflict thì tra cứu lại qua URL
+      const { data: retryByUrl } = await supabase
+        .from("websites")
+        .select("id")
+        .eq("url", defaultItem.url)
+        .maybeSingle();
+      if (retryByUrl) {
+        return retryByUrl.id;
+      }
+    }
+  }
+
+  return resolvedId;
+}
+
 export async function toggleFavoriteAction(
   websiteId: string
 ): Promise<ActionResult<{ isFavorite: boolean }>> {
@@ -346,11 +423,14 @@ export async function toggleFavoriteAction(
     return { success: false, error: "Vui lòng đăng nhập để lưu yêu thích." };
   }
 
+  // Khắc phục triệt để lỗi invalid input syntax for type uuid: "dang-001"
+  const targetWebsiteId = await resolveAndEnsureWebsiteId(supabase, websiteId);
+
   const { data: existing } = await supabase
     .from("user_favorites")
     .select("id")
     .eq("user_id", user.id)
-    .eq("website_id", websiteId)
+    .eq("website_id", targetWebsiteId)
     .maybeSingle();
 
   if (existing) {
@@ -366,13 +446,14 @@ export async function toggleFavoriteAction(
     revalidatePath("/dashboard");
     revalidatePath("/websites");
     revalidatePath("/websites/favorites");
+    revalidatePath("/");
     return { success: true, data: { isFavorite: false } };
   } else {
     const { error } = await supabase
       .from("user_favorites")
       .insert({
         user_id: user.id,
-        website_id: websiteId,
+        website_id: targetWebsiteId,
       });
 
     if (error) {
@@ -382,6 +463,7 @@ export async function toggleFavoriteAction(
     revalidatePath("/dashboard");
     revalidatePath("/websites");
     revalidatePath("/websites/favorites");
+    revalidatePath("/");
     return { success: true, data: { isFavorite: true } };
   }
 }
@@ -400,9 +482,11 @@ export async function recordVisitAction(websiteId: string): Promise<ActionResult
     return { success: false, error: "Chưa đăng nhập" };
   }
 
+  const targetWebsiteId = await resolveAndEnsureWebsiteId(supabase, websiteId);
+
   const { error } = await supabase.from("user_visits").insert({
     user_id: user.id,
-    website_id: websiteId,
+    website_id: targetWebsiteId,
     visited_at: new Date().toISOString(),
   });
 
@@ -410,6 +494,5 @@ export async function recordVisitAction(websiteId: string): Promise<ActionResult
     return { success: false, error: error.message };
   }
 
-  revalidatePath("/recent");
   return { success: true };
 }

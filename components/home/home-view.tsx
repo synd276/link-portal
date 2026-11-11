@@ -81,14 +81,14 @@ export function HomeView({
         catName.includes("ai") ||
         catName.includes("trí tuệ nhân tạo") ||
         catId === "11111111-1111-1111-1111-111111111101" ||
-        w.id.startsWith("ai-")
+        w.id.startsWith("ai-") || w.id.startsWith("33333333-0001-")
       ) {
         ai.push(w);
       } else if (
         catName === "đảng" ||
         catName.includes("đảng") ||
         catId === "11111111-1111-1111-1111-111111111102" ||
-        w.id.startsWith("dang-")
+        w.id.startsWith("dang-") || w.id.startsWith("33333333-0002-")
       ) {
         dang.push(w);
       } else {

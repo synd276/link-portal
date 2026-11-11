@@ -1,3 +1,4 @@
+import { getDeterministicWebsiteUuid } from "@/lib/utils";
 import { cache } from "react";
 import { cookies } from "next/headers";
 import { createClient, isSupabaseConfigured } from "@/lib/supabase/server";
@@ -52,7 +53,7 @@ export const DEFAULT_CATEGORIES: Category[] = [
 
 export const DEFAULT_WEBSITES: Website[] = [
   {
-    "id": "ai-001",
+    "id": "33333333-0001-0000-0000-000000000001",
     "name": "CHATGPT",
     "url": "https://chatgpt.com",
     "description": "Trợ lý AI đàm thoại hàng đầu của OpenAI",
@@ -78,7 +79,7 @@ export const DEFAULT_WEBSITES: Website[] = [
     }
   },
   {
-    "id": "ai-002",
+    "id": "33333333-0001-0000-0000-000000000002",
     "name": "CLAUDE AI",
     "url": "https://claude.ai",
     "description": "Trợ lý AI thông minh từ Anthropic",
@@ -104,7 +105,7 @@ export const DEFAULT_WEBSITES: Website[] = [
     }
   },
   {
-    "id": "ai-003",
+    "id": "33333333-0001-0000-0000-000000000003",
     "name": "GOOGLE GEMINI",
     "url": "https://gemini.google.com",
     "description": "Mô hình AI đa phương thức thông minh của Google",
@@ -130,7 +131,7 @@ export const DEFAULT_WEBSITES: Website[] = [
     }
   },
   {
-    "id": "ai-004",
+    "id": "33333333-0001-0000-0000-000000000004",
     "name": "MICROSOFT COPILOT",
     "url": "https://copilot.microsoft.com",
     "description": "Trợ lý AI hỗ trợ công việc từ Microsoft",
@@ -156,7 +157,7 @@ export const DEFAULT_WEBSITES: Website[] = [
     }
   },
   {
-    "id": "ai-005",
+    "id": "33333333-0001-0000-0000-000000000005",
     "name": "DEEPSEEK",
     "url": "https://chat.deepseek.com",
     "description": "Mô hình AI suy luận và lập trình mã nguồn mở thế hệ mới",
@@ -182,7 +183,7 @@ export const DEFAULT_WEBSITES: Website[] = [
     }
   },
   {
-    "id": "ai-006",
+    "id": "33333333-0001-0000-0000-000000000006",
     "name": "PERPLEXITY AI",
     "url": "https://www.perplexity.ai",
     "description": "Công cụ tìm kiếm thông minh và trích dẫn nguồn bằng AI",
@@ -208,7 +209,7 @@ export const DEFAULT_WEBSITES: Website[] = [
     }
   },
   {
-    "id": "ai-007",
+    "id": "33333333-0001-0000-0000-000000000007",
     "name": "MIDJOURNEY",
     "url": "https://www.midjourney.com",
     "description": "Sáng tạo nghệ thuật và tạo ảnh chuyên nghiệp bằng AI",
@@ -234,7 +235,7 @@ export const DEFAULT_WEBSITES: Website[] = [
     }
   },
   {
-    "id": "ai-008",
+    "id": "33333333-0001-0000-0000-000000000008",
     "name": "POE AI",
     "url": "https://poe.com",
     "description": "Nền tảng trải nghiệm đa mô hình AI từ Quora",
@@ -260,7 +261,7 @@ export const DEFAULT_WEBSITES: Website[] = [
     }
   },
   {
-    "id": "ai-009",
+    "id": "33333333-0001-0000-0000-000000000009",
     "name": "CANVA AI",
     "url": "https://www.canva.com",
     "description": "Công cụ thiết kế đồ họa với tính năng AI Magic Studio",
@@ -286,7 +287,7 @@ export const DEFAULT_WEBSITES: Website[] = [
     }
   },
   {
-    "id": "ai-010",
+    "id": "33333333-0001-0000-0000-00000000000a",
     "name": "SUNO AI",
     "url": "https://suno.com",
     "description": "Tạo nhạc và bài hát tự động bằng trí tuệ nhân tạo",
@@ -312,7 +313,7 @@ export const DEFAULT_WEBSITES: Website[] = [
     }
   },
   {
-    "id": "ai-011",
+    "id": "33333333-0001-0000-0000-00000000000b",
     "name": "GOOGLE AI STUDIO",
     "url": "https://aistudio.google.com",
     "description": "Môi trường phát triển và thử nghiệm các mô hình Gemini",
@@ -338,7 +339,7 @@ export const DEFAULT_WEBSITES: Website[] = [
     }
   },
   {
-    "id": "ai-012",
+    "id": "33333333-0001-0000-0000-00000000000c",
     "name": "PHIND",
     "url": "https://www.phind.com",
     "description": "Công cụ tìm kiếm AI chuyên sâu dành cho lập trình viên",
@@ -364,7 +365,7 @@ export const DEFAULT_WEBSITES: Website[] = [
     }
   },
   {
-    "id": "dang-001",
+    "id": "33333333-0002-0000-0000-000000000001",
     "name": "BÁO ĐIỆN TỬ ĐẢNG CỘNG SẢN VIỆT NAM",
     "url": "https://dangcongsan.vn",
     "description": "Tiếng nói của Đảng, Nhà nước và Nhân dân Việt Nam",
@@ -390,7 +391,7 @@ export const DEFAULT_WEBSITES: Website[] = [
     }
   },
   {
-    "id": "dang-002",
+    "id": "33333333-0002-0000-0000-000000000002",
     "name": "TẠP CHÍ CỘNG SẢN",
     "url": "https://www.tapchicongsan.org.vn",
     "description": "Cơ quan lý luận chính trị của Ban Chấp hành Trung ương Đảng",
@@ -416,7 +417,7 @@ export const DEFAULT_WEBSITES: Website[] = [
     }
   },
   {
-    "id": "dang-003",
+    "id": "33333333-0002-0000-0000-000000000003",
     "name": "CỔNG THÔNG TIN ĐIỆN TỬ TRUNG ƯƠNG ĐẢNG",
     "url": "https://vpubdtw.vnpt.vn",
     "description": "Văn phòng Trung ương Đảng Cộng sản Việt Nam",
@@ -442,7 +443,7 @@ export const DEFAULT_WEBSITES: Website[] = [
     }
   },
   {
-    "id": "dang-004",
+    "id": "33333333-0002-0000-0000-000000000004",
     "name": "TƯ LIỆU VĂN KIỆN ĐẢNG",
     "url": "https://tulieuvankien.dangcongsan.vn",
     "description": "Hệ thống văn kiện, nghị quyết của Đảng qua các thời kỳ",
@@ -468,7 +469,7 @@ export const DEFAULT_WEBSITES: Website[] = [
     }
   },
   {
-    "id": "dang-005",
+    "id": "33333333-0002-0000-0000-000000000005",
     "name": "TẠP CHÍ XÂY DỰNG ĐẢNG",
     "url": "https://xaydungdang.org.vn",
     "description": "Cơ quan của Ban Tổ chức Trung ương Đảng",
@@ -494,7 +495,7 @@ export const DEFAULT_WEBSITES: Website[] = [
     }
   },
   {
-    "id": "dang-006",
+    "id": "33333333-0002-0000-0000-000000000006",
     "name": "BAN TUYÊN GIÁO TRUNG ƯƠNG",
     "url": "https://tuyengiao.vn",
     "description": "Trang thông tin điện tử Ban Tuyên giáo Trung ương",
@@ -520,7 +521,7 @@ export const DEFAULT_WEBSITES: Website[] = [
     }
   },
   {
-    "id": "dang-007",
+    "id": "33333333-0002-0000-0000-000000000007",
     "name": "BÁO NHÂN DÂN",
     "url": "https://nhandan.vn",
     "description": "Cơ quan Trung ương của Đảng Cộng sản Việt Nam",
@@ -546,7 +547,7 @@ export const DEFAULT_WEBSITES: Website[] = [
     }
   },
   {
-    "id": "dang-008",
+    "id": "33333333-0002-0000-0000-000000000008",
     "name": "HỌC VIỆN CHÍNH TRỊ QUỐC GIA HỒ CHÍ MINH",
     "url": "https://hcma.vn",
     "description": "Trung tâm quốc gia đào tạo cán bộ lãnh đạo, quản lý của Đảng",
@@ -572,7 +573,7 @@ export const DEFAULT_WEBSITES: Website[] = [
     }
   },
   {
-    "id": "dang-009",
+    "id": "33333333-0002-0000-0000-000000000009",
     "name": "CỔNG THÔNG TIN TỈNH ỦY ĐỒNG THÁP",
     "url": "https://dongthap.dcs.vn",
     "description": "Trang thông tin chính thức của Tỉnh ủy Đồng Tháp",
@@ -598,7 +599,7 @@ export const DEFAULT_WEBSITES: Website[] = [
     }
   },
   {
-    "id": "dang-010",
+    "id": "33333333-0002-0000-0000-00000000000a",
     "name": "BAN DÂN VẬN TRUNG ƯƠNG",
     "url": "https://danvan.vn",
     "description": "Trang tin điện tử Ban Dân vận Trung ương",
@@ -624,7 +625,7 @@ export const DEFAULT_WEBSITES: Website[] = [
     }
   },
   {
-    "id": "dang-011",
+    "id": "33333333-0002-0000-0000-00000000000b",
     "name": "ỦY BAN KIỂM TRA TRUNG ƯƠNG",
     "url": "https://ubkttw.vn",
     "description": "Cơ quan kiểm tra, giám sát chuyên trách của Đảng",
@@ -650,7 +651,7 @@ export const DEFAULT_WEBSITES: Website[] = [
     }
   },
   {
-    "id": "dang-012",
+    "id": "33333333-0002-0000-0000-00000000000c",
     "name": "BAN NỘI CHÍNH TRUNG ƯƠNG",
     "url": "https://noichinh.vn",
     "description": "Cơ quan tham mưu về công tác nội chính và phòng chống tham nhũng",
@@ -676,7 +677,7 @@ export const DEFAULT_WEBSITES: Website[] = [
     }
   },
   {
-    "id": "chinhquyen-001",
+    "id": "33333333-0003-0000-0000-000000000001",
     "name": "CỔNG THÔNG TIN SỞ NÔNG NGHIỆP VÀ MÔI TRƯỜNG",
     "url": "https://snnmt.dongthap.gov.vn/trang-chu",
     "description": "Hệ thống chuyên ngành: CỔNG THÔNG TIN SỞ NÔNG NGHIỆP VÀ MÔI TRƯỜNG",
@@ -702,7 +703,7 @@ export const DEFAULT_WEBSITES: Website[] = [
     }
   },
   {
-    "id": "chinhquyen-002",
+    "id": "33333333-0003-0000-0000-000000000002",
     "name": "HỆ SINH THÁI NỀN TẢNG NÔNG NGHIỆP SỐ VIỆT NAM",
     "url": "https://vdapes.com",
     "description": "Hệ thống chuyên ngành: HỆ SINH THÁI NỀN TẢNG NÔNG NGHIỆP SỐ VIỆT NAM",
@@ -728,7 +729,7 @@ export const DEFAULT_WEBSITES: Website[] = [
     }
   },
   {
-    "id": "chinhquyen-003",
+    "id": "33333333-0003-0000-0000-000000000003",
     "name": "HỆ THỐNG THÔNG TIN QUẢN LÝ ĐẤT ĐAI ILIS",
     "url": "https://ilis-cadas.dongthap.gov.vn",
     "description": "Hệ thống chuyên ngành: HỆ THỐNG THÔNG TIN QUẢN LÝ ĐẤT ĐAI ILIS",
@@ -754,7 +755,7 @@ export const DEFAULT_WEBSITES: Website[] = [
     }
   },
   {
-    "id": "chinhquyen-004",
+    "id": "33333333-0003-0000-0000-000000000004",
     "name": "CƠ SỞ DỮ LIỆU THỔ NHƯỠNG",
     "url": "https://csdldatnongnghiep.dongthap.gov.vn",
     "description": "Hệ thống chuyên ngành: CƠ SỞ DỮ LIỆU THỔ NHƯỠNG",
@@ -780,7 +781,7 @@ export const DEFAULT_WEBSITES: Website[] = [
     }
   },
   {
-    "id": "chinhquyen-005",
+    "id": "33333333-0003-0000-0000-000000000005",
     "name": "BAN CHỈ HUY PHÒNG CHỐNG THIÊN TAI VÀ TÌM KIẾM CỨU NẠN TỈNH ĐỒNG THÁP",
     "url": "https://phongchongthientaitiengiang.vn/",
     "description": "Hệ thống chuyên ngành: BAN CHỈ HUY PHÒNG CHỐNG THIÊN TAI VÀ TÌM KIẾM CỨU NẠN TỈNH ĐỒNG THÁP",
@@ -806,7 +807,7 @@ export const DEFAULT_WEBSITES: Website[] = [
     }
   },
   {
-    "id": "chinhquyen-006",
+    "id": "33333333-0003-0000-0000-000000000006",
     "name": "HỆ THỐNG THÔNG TIN NÔNG NGHIỆP",
     "url": "https://htttnongnghiep.tiengiang.gov.vn/",
     "description": "Hệ thống chuyên ngành: HỆ THỐNG THÔNG TIN NÔNG NGHIỆP",
@@ -832,7 +833,7 @@ export const DEFAULT_WEBSITES: Website[] = [
     }
   },
   {
-    "id": "chinhquyen-007",
+    "id": "33333333-0003-0000-0000-000000000007",
     "name": "CƠ SỞ DỮ LIỆU NÔNG NGHIỆP",
     "url": "https://dulieunongnghiep.dongthap.gov.vn/",
     "description": "Hệ thống chuyên ngành: CƠ SỞ DỮ LIỆU NÔNG NGHIỆP",
@@ -858,7 +859,7 @@ export const DEFAULT_WEBSITES: Website[] = [
     }
   },
   {
-    "id": "chinhquyen-008",
+    "id": "33333333-0003-0000-0000-000000000008",
     "name": "HỆ THỐNG QUẢN LÝ THÔNG TIN TÀU CÁ",
     "url": "https://qltc.ttcntnmt.com.vn/",
     "description": "Hệ thống chuyên ngành: HỆ THỐNG QUẢN LÝ THÔNG TIN TÀU CÁ",
@@ -884,7 +885,7 @@ export const DEFAULT_WEBSITES: Website[] = [
     }
   },
   {
-    "id": "chinhquyen-009",
+    "id": "33333333-0003-0000-0000-000000000009",
     "name": "PHẦN MỀM QUẢN LÝ DẠY NGHỀ",
     "url": "http://qldn.vpdttg.vn/Login.aspx",
     "description": "Hệ thống chuyên ngành: PHẦN MỀM QUẢN LÝ DẠY NGHỀ",
@@ -910,7 +911,7 @@ export const DEFAULT_WEBSITES: Website[] = [
     }
   },
   {
-    "id": "chinhquyen-010",
+    "id": "33333333-0003-0000-0000-00000000000a",
     "name": "PHẦN MỀM QUẢN LÝ TÀI NGUYÊN NƯỚC TỈNH ĐỒNG THÁP",
     "url": "https://tnn.ttcntnmt.com.vn",
     "description": "Hệ thống chuyên ngành: PHẦN MỀM QUẢN LÝ TÀI NGUYÊN NƯỚC TỈNH ĐỒNG THÁP",
@@ -936,7 +937,7 @@ export const DEFAULT_WEBSITES: Website[] = [
     }
   },
   {
-    "id": "chinhquyen-011",
+    "id": "33333333-0003-0000-0000-00000000000b",
     "name": "PHẦN MỀM QUẢN LÝ DỮ LIỆU QUAN TRẮC TỰ ĐỘNG",
     "url": "https://dongthap-envisoft.tedp.vn",
     "description": "Hệ thống chuyên ngành: PHẦN MỀM QUẢN LÝ DỮ LIỆU QUAN TRẮC TỰ ĐỘNG",
@@ -962,7 +963,7 @@ export const DEFAULT_WEBSITES: Website[] = [
     }
   },
   {
-    "id": "chinhquyen-012",
+    "id": "33333333-0003-0000-0000-00000000000c",
     "name": "PHẦN MỀM GIÁM SÁT KHAI THÁC CÁT",
     "url": "https://ktks.ttcntnmt.com.vn",
     "description": "Hệ thống chuyên ngành: PHẦN MỀM GIÁM SÁT KHAI THÁC CÁT",
@@ -988,7 +989,7 @@ export const DEFAULT_WEBSITES: Website[] = [
     }
   },
   {
-    "id": "chinhquyen-013",
+    "id": "33333333-0003-0000-0000-00000000000d",
     "name": "PHẦN MỀM KHO HỒ SƠ CHỈNH LÝ",
     "url": "https://hs.ttcntnmt.com.vn",
     "description": "Hệ thống chuyên ngành: PHẦN MỀM KHO HỒ SƠ CHỈNH LÝ",
@@ -1014,7 +1015,7 @@ export const DEFAULT_WEBSITES: Website[] = [
     }
   },
   {
-    "id": "chinhquyen-014",
+    "id": "33333333-0003-0000-0000-00000000000e",
     "name": "PHẦN MỀM KHO LƯU TRỮ ĐIỆN TỬ (MỚI)",
     "url": "https://khosohoa.ttcntnmt.com.vn",
     "description": "Hệ thống chuyên ngành: PHẦN MỀM KHO LƯU TRỮ ĐIỆN TỬ (MỚI)",
@@ -1040,7 +1041,7 @@ export const DEFAULT_WEBSITES: Website[] = [
     }
   },
   {
-    "id": "chinhquyen-015",
+    "id": "33333333-0003-0000-0000-00000000000f",
     "name": "HỆ THỐNG KHAI THÁC TÀI LIỆU LƯU TRỮ ĐIỆN TỬ",
     "url": "https://digital.ttcntnmt.com.vn",
     "description": "Hệ thống chuyên ngành: HỆ THỐNG KHAI THÁC TÀI LIỆU LƯU TRỮ ĐIỆN TỬ",
@@ -1066,7 +1067,7 @@ export const DEFAULT_WEBSITES: Website[] = [
     }
   },
   {
-    "id": "chinhquyen-016",
+    "id": "33333333-0003-0000-0000-000000000010",
     "name": "PHẦN MỀM QUẢN LÝ ĐẤT CÔNG",
     "url": "http://ttcntnmt.com.vn:8060",
     "description": "Hệ thống chuyên ngành: PHẦN MỀM QUẢN LÝ ĐẤT CÔNG",
@@ -1092,7 +1093,7 @@ export const DEFAULT_WEBSITES: Website[] = [
     }
   },
   {
-    "id": "chinhquyen-017",
+    "id": "33333333-0003-0000-0000-000000000011",
     "name": "PHẦN MỀM QUẢN LÝ ĐIỂM LẤY MẪU MÔI TRƯỜNG",
     "url": "https://dlm.ttcntnmt.com.vn",
     "description": "Hệ thống chuyên ngành: PHẦN MỀM QUẢN LÝ ĐIỂM LẤY MẪU MÔI TRƯỜNG",
@@ -1118,7 +1119,7 @@ export const DEFAULT_WEBSITES: Website[] = [
     }
   },
   {
-    "id": "chinhquyen-018",
+    "id": "33333333-0003-0000-0000-000000000012",
     "name": "CƠ SỞ DỮ LIỆU MÔI TRƯỜNG",
     "url": "https://moitruong.ttcntnmt.com.vn",
     "description": "Hệ thống chuyên ngành: CƠ SỞ DỮ LIỆU MÔI TRƯỜNG",
@@ -1144,7 +1145,7 @@ export const DEFAULT_WEBSITES: Website[] = [
     }
   },
   {
-    "id": "chinhquyen-019",
+    "id": "33333333-0003-0000-0000-000000000013",
     "name": "CƠ SỞ DỮ LIỆU BIẾN ĐỔI KHÍ HẬU",
     "url": "https://bdkh.ttcntnmt.com.vn",
     "description": "Hệ thống chuyên ngành: CƠ SỞ DỮ LIỆU BIẾN ĐỔI KHÍ HẬU",
@@ -1170,7 +1171,7 @@ export const DEFAULT_WEBSITES: Website[] = [
     }
   },
   {
-    "id": "chinhquyen-020",
+    "id": "33333333-0003-0000-0000-000000000014",
     "name": "CƠ SỞ DỮ LIỆU VỀ TÀI NGUYÊN, MÔI TRƯỜNG BIỂN VÀ HẢI ĐẢO TỈNH ĐỒNG THÁP",
     "url": "https://giaobien.vasi.gov.vn/",
     "description": "Hệ thống chuyên ngành: CƠ SỞ DỮ LIỆU VỀ TÀI NGUYÊN, MÔI TRƯỜNG BIỂN VÀ HẢI ĐẢO TỈNH ĐỒNG THÁP",
@@ -1196,7 +1197,7 @@ export const DEFAULT_WEBSITES: Website[] = [
     }
   },
   {
-    "id": "chinhquyen-021",
+    "id": "33333333-0003-0000-0000-000000000015",
     "name": "VBDLIS-HỆ THỐNG QUẢN LÝ ĐẤT ĐAI",
     "url": "https://tgi.mplis.gov.vn/dc/",
     "description": "Hệ thống chuyên ngành: VBDLIS-HỆ THỐNG QUẢN LÝ ĐẤT ĐAI",
@@ -1222,7 +1223,7 @@ export const DEFAULT_WEBSITES: Website[] = [
     }
   },
   {
-    "id": "chinhquyen-022",
+    "id": "33333333-0003-0000-0000-000000000016",
     "name": "VBDLIS-KHAI THÁC DỮ LIỆU BẢN ĐỒ",
     "url": "https://tgi.mplis.gov.vn/bi/",
     "description": "Hệ thống chuyên ngành: VBDLIS-KHAI THÁC DỮ LIỆU BẢN ĐỒ",
@@ -1248,7 +1249,7 @@ export const DEFAULT_WEBSITES: Website[] = [
     }
   },
   {
-    "id": "chinhquyen-023",
+    "id": "33333333-0003-0000-0000-000000000017",
     "name": "THỐNG KÊ NÔNG NGHIỆP",
     "url": "https://tknn.ttcntnmt.com.vn/",
     "description": "Hệ thống chuyên ngành: THỐNG KÊ NÔNG NGHIỆP",
@@ -1274,7 +1275,7 @@ export const DEFAULT_WEBSITES: Website[] = [
     }
   },
   {
-    "id": "chinhquyen-024",
+    "id": "33333333-0003-0000-0000-000000000018",
     "name": "CÔNG CỤ KIỂM TRA THÔNG TIN, DỮ LIỆU TÀI NGUYÊN MÔI TRƯỜNG",
     "url": "https://check.ttcntnmt.com.vn/client",
     "description": "Hệ thống chuyên ngành: CÔNG CỤ KIỂM TRA THÔNG TIN, DỮ LIỆU TÀI NGUYÊN MÔI TRƯỜNG",
@@ -1300,7 +1301,7 @@ export const DEFAULT_WEBSITES: Website[] = [
     }
   },
   {
-    "id": "chinhquyen-025",
+    "id": "33333333-0003-0000-0000-000000000019",
     "name": "HỆ THỐNG GIÁM SÁT TÀU CÁ - VMS (CỤC THUỶ SẢN VÀ KIỂM NGƯ)",
     "url": "https://gstc.tongcucthuysan.gov.vn",
     "description": "Hệ thống chuyên ngành: HỆ THỐNG GIÁM SÁT TÀU CÁ - VMS (CỤC THUỶ SẢN VÀ KIỂM NGƯ)",
@@ -1326,7 +1327,7 @@ export const DEFAULT_WEBSITES: Website[] = [
     }
   },
   {
-    "id": "chinhquyen-026",
+    "id": "33333333-0003-0000-0000-00000000001a",
     "name": "HỆ THỐNG QUẢN LÝ TÀU CÁ CỤC THỦY SẢN VÀ KIỂM NGƯ VNFISBASE",
     "url": "http://vnf.tongcucthuysan.gov.vn/",
     "description": "Hệ thống chuyên ngành: HỆ THỐNG QUẢN LÝ TÀU CÁ CỤC THỦY SẢN VÀ KIỂM NGƯ VNFISBASE",
@@ -1352,7 +1353,7 @@ export const DEFAULT_WEBSITES: Website[] = [
     }
   },
   {
-    "id": "chinhquyen-027",
+    "id": "33333333-0003-0000-0000-00000000001b",
     "name": "THÔNG TIN DỊCH BỆNH ĐỘNG VẬT (THUỶ SẢN)",
     "url": "https://vahis.vn",
     "description": "Hệ thống chuyên ngành: THÔNG TIN DỊCH BỆNH ĐỘNG VẬT (THUỶ SẢN)",
@@ -1378,7 +1379,7 @@ export const DEFAULT_WEBSITES: Website[] = [
     }
   },
   {
-    "id": "chinhquyen-028",
+    "id": "33333333-0003-0000-0000-00000000001c",
     "name": "CƠ SỞ DỮ LIỆU CÁ TRA",
     "url": "http://dulieucatra.mard.gov.vn",
     "description": "Hệ thống chuyên ngành: CƠ SỞ DỮ LIỆU CÁ TRA",
@@ -1404,7 +1405,7 @@ export const DEFAULT_WEBSITES: Website[] = [
     }
   },
   {
-    "id": "chinhquyen-029",
+    "id": "33333333-0003-0000-0000-00000000001d",
     "name": "CƠ SỞ DỮ LIỆU NUÔI TRỒNG THỦY SẢN",
     "url": "https://ntts.tongcucthuysan.gov.vn",
     "description": "Hệ thống chuyên ngành: CƠ SỞ DỮ LIỆU NUÔI TRỒNG THỦY SẢN",
@@ -1430,7 +1431,7 @@ export const DEFAULT_WEBSITES: Website[] = [
     }
   },
   {
-    "id": "chinhquyen-030",
+    "id": "33333333-0003-0000-0000-00000000001e",
     "name": "CƠ SỞ DỮ LIỆU GIỐNG THỦY SẢN, THỨC ĂN THỦY SẢN, SẢN PHẨM XỬ LÝ MÔI TRƯỜNG NUÔI TRỒNG THỦY SẢN",
     "url": "https://csdl.tongcucthuysan.gov.vn",
     "description": "Hệ thống chuyên ngành: CƠ SỞ DỮ LIỆU GIỐNG THỦY SẢN, THỨC ĂN THỦY SẢN, SẢN PHẨM XỬ LÝ MÔI TRƯỜNG NUÔI TRỒNG THỦY SẢN",
@@ -1456,7 +1457,7 @@ export const DEFAULT_WEBSITES: Website[] = [
     }
   },
   {
-    "id": "chinhquyen-031",
+    "id": "33333333-0003-0000-0000-00000000001f",
     "name": "KÊNH THÔNG TIN THỦY SẢN",
     "url": "http://csdlquantrac.tongcucthuysan.gov.vn:85",
     "description": "Hệ thống chuyên ngành: KÊNH THÔNG TIN THỦY SẢN",
@@ -1482,7 +1483,7 @@ export const DEFAULT_WEBSITES: Website[] = [
     }
   },
   {
-    "id": "chinhquyen-032",
+    "id": "33333333-0003-0000-0000-000000000020",
     "name": "CSDL QUẢN LÝ MÃ SỐ VÙNG TRỒNG XUẤT KHẨU",
     "url": "https://msvt-csdg.ppd.gov.vn/",
     "description": "Hệ thống chuyên ngành: CSDL QUẢN LÝ MÃ SỐ VÙNG TRỒNG XUẤT KHẨU",
@@ -1508,7 +1509,7 @@ export const DEFAULT_WEBSITES: Website[] = [
     }
   },
   {
-    "id": "chinhquyen-033",
+    "id": "33333333-0003-0000-0000-000000000021",
     "name": "CSDL VỀ BỐ TRÍ DÂN CƯ NÔNG THÔN, HỢP TÁC XÃ, TRANG TRẠI, CƠ GIỚI HOÁ, LIÊN KẾT SẢN XUẤT, NGÀNH NGHỀ LÀNG NGHỀ, ĐÀO TẠO NGHỀ, OCOP",
     "url": "http://gsdgdcrd.vn/cms.nc",
     "description": "Hệ thống chuyên ngành: CSDL VỀ BỐ TRÍ DÂN CƯ NÔNG THÔN, HỢP TÁC XÃ, TRANG TRẠI, CƠ GIỚI HOÁ, LIÊN KẾT SẢN XUẤT, NGÀNH NGHỀ LÀNG NGHỀ, ĐÀO TẠO NGHỀ, OCOP",
@@ -1534,7 +1535,7 @@ export const DEFAULT_WEBSITES: Website[] = [
     }
   },
   {
-    "id": "chinhquyen-034",
+    "id": "33333333-0003-0000-0000-000000000022",
     "name": "QUẢN LÝ THU, CHI QUỸ PHÒNG CHỐNG THIÊN TAI CỦA TỈNH",
     "url": "http://quypctttiengiang.netplus.vn/",
     "description": "Hệ thống chuyên ngành: QUẢN LÝ THU, CHI QUỸ PHÒNG CHỐNG THIÊN TAI CỦA TỈNH",
@@ -1560,7 +1561,7 @@ export const DEFAULT_WEBSITES: Website[] = [
     }
   },
   {
-    "id": "chinhquyen-035",
+    "id": "33333333-0003-0000-0000-000000000023",
     "name": "THỐNG KÊ THIỆT HẠI PHỤC VỤ QUẢN LÝ, BÁO CÁO VÀ RA QUYẾT ĐỊNH",
     "url": "https://sotandantiengiang.vn/",
     "description": "Hệ thống chuyên ngành: THỐNG KÊ THIỆT HẠI PHỤC VỤ QUẢN LÝ, BÁO CÁO VÀ RA QUYẾT ĐỊNH",
@@ -1586,7 +1587,7 @@ export const DEFAULT_WEBSITES: Website[] = [
     }
   },
   {
-    "id": "chinhquyen-036",
+    "id": "33333333-0003-0000-0000-000000000024",
     "name": "HỆ THỐNG QUẢN LÝ THÔNG TIN DỊCH BỆNH ĐỘNG VẬT VIỆT NAM (VAHIS)",
     "url": "https://vahis.vn/home/login.aspx",
     "description": "Hệ thống chuyên ngành: HỆ THỐNG QUẢN LÝ THÔNG TIN DỊCH BỆNH ĐỘNG VẬT VIỆT NAM (VAHIS)",
@@ -1612,7 +1613,7 @@ export const DEFAULT_WEBSITES: Website[] = [
     }
   },
   {
-    "id": "chinhquyen-037",
+    "id": "33333333-0003-0000-0000-000000000025",
     "name": "CƠ SỞ DỮ LIỆU QUỐC GIA VỀ CHĂN NUÔI VÀ THÚ Y",
     "url": "http://csdlchannuoi.mae.gov.vn",
     "description": "Hệ thống chuyên ngành: CƠ SỞ DỮ LIỆU QUỐC GIA VỀ CHĂN NUÔI VÀ THÚ Y",
@@ -1638,7 +1639,7 @@ export const DEFAULT_WEBSITES: Website[] = [
     }
   },
   {
-    "id": "chinhquyen-038",
+    "id": "33333333-0003-0000-0000-000000000026",
     "name": "CƠ SỞ DỮ LIỆU THEO DÕI DIỄN BIẾN RỪNG",
     "url": "https://frms.vnforest.gov.vn",
     "description": "Hệ thống chuyên ngành: CƠ SỞ DỮ LIỆU THEO DÕI DIỄN BIẾN RỪNG",
@@ -1664,7 +1665,7 @@ export const DEFAULT_WEBSITES: Website[] = [
     }
   },
   {
-    "id": "chinhquyen-039",
+    "id": "33333333-0003-0000-0000-000000000027",
     "name": "HỆ THỐNG CHIA SẺ THÔNG TIN NGÀNH LÂM NGHIỆP FORESTRY 4.0",
     "url": "https://tnr.vnforest.gov.vn",
     "description": "Hệ thống chuyên ngành: HỆ THỐNG CHIA SẺ THÔNG TIN NGÀNH LÂM NGHIỆP FORESTRY 4.0",
@@ -1690,7 +1691,7 @@ export const DEFAULT_WEBSITES: Website[] = [
     }
   },
   {
-    "id": "chinhquyen-040",
+    "id": "33333333-0003-0000-0000-000000000028",
     "name": "HỆ THỐNG TRUY XUẤT NGUỒN GỐC NÔNG SẢN",
     "url": "https://txng.mae.gov.vn",
     "description": "Hệ thống chuyên ngành: HỆ THỐNG TRUY XUẤT NGUỒN GỐC NÔNG SẢN",
@@ -1716,7 +1717,7 @@ export const DEFAULT_WEBSITES: Website[] = [
     }
   },
   {
-    "id": "chinhquyen-041",
+    "id": "33333333-0003-0000-0000-000000000029",
     "name": "HỆ THỐNG TRUY XUẤT NGUỒN GỐC HÀNG HÓA VERIGOODS",
     "url": "https://www.verigoods.vn/",
     "description": "Hệ thống chuyên ngành: HỆ THỐNG TRUY XUẤT NGUỒN GỐC HÀNG HÓA VERIGOODS",
@@ -1742,7 +1743,7 @@ export const DEFAULT_WEBSITES: Website[] = [
     }
   },
   {
-    "id": "chinhquyen-042",
+    "id": "33333333-0003-0000-0000-00000000002a",
     "name": "Bản đồ tỉnh Đồng Tháp",
     "url": "https://geo226.ttcntnmt.com.vn/searchbando",
     "description": "Hệ thống chuyên ngành: Bản đồ tỉnh Đồng Tháp",
@@ -1768,7 +1769,7 @@ export const DEFAULT_WEBSITES: Website[] = [
     }
   },
   {
-    "id": "chinhquyen-043",
+    "id": "33333333-0003-0000-0000-00000000002b",
     "name": "CỔNG DỊCH VỤ CÔNG QUỐC GIA",
     "url": "https://dichvucong.gov.vn",
     "description": "Cổng dịch vụ công quốc gia của Chính phủ Việt Nam",
@@ -1794,7 +1795,7 @@ export const DEFAULT_WEBSITES: Website[] = [
     }
   },
   {
-    "id": "chinhquyen-044",
+    "id": "33333333-0003-0000-0000-00000000002c",
     "name": "CỔNG THÔNG TIN ĐIỆN TỬ CHÍNH PHỦ",
     "url": "https://chinhphu.vn",
     "description": "Cổng thông tin điện tử Chính phủ nước CHXHCN Việt Nam",
@@ -2095,7 +2096,7 @@ export const getWebsites = cache(
 
       return rows.map((item) => ({
         ...item,
-        is_favorite: favoriteIds.has(item.id),
+        is_favorite: favoriteIds.has(item.id) || favoriteIds.has(getDeterministicWebsiteUuid(item.id)),
       }));
     }
 
@@ -2107,7 +2108,7 @@ export const getWebsites = cache(
 
     return rows.map((item) => ({
       ...item,
-      is_favorite: favoriteIds.has(item.id),
+      is_favorite: favoriteIds.has(item.id) || favoriteIds.has(getDeterministicWebsiteUuid(item.id)),
     }));
   }
 );

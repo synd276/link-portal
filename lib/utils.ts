@@ -61,3 +61,45 @@ export function formatRelativeTime(dateString: string | null | undefined): strin
   if (diffDays < 30) return `${diffDays} ngày trước`;
   return formatDate(dateString);
 }
+
+
+export function isUuid(str: string | null | undefined): boolean {
+  if (!str) return false;
+  return /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(str.trim());
+}
+
+/**
+ * Chuyển đổi an toàn bất kỳ định danh website nào (kể cả ID tĩnh dạng "dang-001", "ai-001", "chinhquyen-001")
+ * thành UUID chuẩn, hợp lệ với cột UUID trong cơ sở dữ liệu PostgreSQL / Supabase.
+ */
+export function getDeterministicWebsiteUuid(idOrSlug: string | null | undefined): string {
+  if (!idOrSlug) return "33333333-0000-0000-0000-000000000000";
+  const trimmed = idOrSlug.trim();
+  if (isUuid(trimmed)) return trimmed;
+
+  const aiMatch = trimmed.match(/^ai-(\d+)$/i);
+  if (aiMatch) {
+    const num = parseInt(aiMatch[1], 10);
+    return `33333333-0001-0000-0000-${num.toString(16).padStart(12, "0")}`;
+  }
+
+  const dangMatch = trimmed.match(/^dang-(\d+)$/i);
+  if (dangMatch) {
+    const num = parseInt(dangMatch[1], 10);
+    return `33333333-0002-0000-0000-${num.toString(16).padStart(12, "0")}`;
+  }
+
+  const cqMatch = trimmed.match(/^chinhquyen-(\d+)$/i);
+  if (cqMatch) {
+    const num = parseInt(cqMatch[1], 10);
+    return `33333333-0003-0000-0000-${num.toString(16).padStart(12, "0")}`;
+  }
+
+  let hash = 0;
+  for (let i = 0; i < trimmed.length; i++) {
+    hash = (hash << 5) - hash + trimmed.charCodeAt(i);
+    hash |= 0;
+  }
+  const hex = Math.abs(hash).toString(16).padStart(12, "0").slice(0, 12);
+  return `33333333-ffff-0000-0000-${hex}`;
+}
