@@ -7,14 +7,14 @@ Downloading
 ✓ Created         .vercel/.env.production.local file
 
 > Downloading project settings
-Downloaded project settings to ~/work/link-portal/link-portal/.vercel/project.json [1ms]
+Downloaded project settings to ~/work/link-portal/link-portal/.vercel/project.json [0ms]
 
 === 2. Vercel Build ===
 Vercel CLI 65.14.0
 WARNING! Build not running on Vercel. System environment variables will not be available.
 Installing dependencies...
 
-up to date in 362ms
+up to date in 463ms
 
 150 packages are looking for funding
   run `npm fund` for details
@@ -25,7 +25,7 @@ Running "npm run build"
 > next build
 
 ▲ Next.js 16.4.6 (Turbopack)
-✓ Running next.config.ts took 17ms
+✓ Running next.config.ts took 20ms
 Attention: Next.js now collects completely anonymous telemetry regarding usage.
 This information is used to shape Next.js' roadmap and prioritize features.
 You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
@@ -35,15 +35,15 @@ https://nextjs.org/telemetry
 - Partial Prefetching enabled
 
   Creating an optimized production build ...
-✓ Compiled successfully in 4.1s
+✓ Compiled successfully in 5.1s
   Running TypeScript ...
-  Finished TypeScript in 4.2s ...
+  Finished TypeScript in 5.1s ...
   Collecting page data using 3 workers ...
   Generating static pages using 3 workers (0/22) ...
   Generating static pages using 3 workers (5/22) 
   Generating static pages using 3 workers (10/22) 
   Generating static pages using 3 workers (16/22) 
-✓ Generating static pages using 3 workers (22/22) in 622ms
+✓ Generating static pages using 3 workers (22/22) in 750ms
   Finalizing page optimization ...
 
 Route (app)
@@ -75,10 +75,10 @@ Route (app)
 ◐  (Partial Prerender)  prerendered as static HTML with dynamic server-streamed content
 ƒ  (Dynamic)            server-rendered on demand
 
-Traced Next.js server files in: 37.12ms
-Created all serverless functions in: 110.091ms
-Collected static files (public/, static/, .next/static): 2.915ms
-Build Completed in .vercel/output [11s]
+Traced Next.js server files in: 45.191ms
+Created all serverless functions in: 139.689ms
+Collected static files (public/, static/, .next/static): 4.555ms
+Build Completed in .vercel/output [13s]
 
 === 3. Inspecting .vercel/output ===
 .vercel/output
@@ -103,7 +103,7 @@ Build Completed in .vercel/output [11s]
 .vercel/output/static/_next/__private/trace
 .vercel/output/static/_next/static
 .vercel/output/static/_next/static/chunks
-.vercel/output/static/_next/static/ITgYYAqXL2gn2m48pElkh
+.vercel/output/static/_next/static/KfpETs3amhvbpKep_xjja
 .vercel/output/static/_next/static/not-found.txt
 .vercel/output/static/_next/static/media
 .vercel/output/static/500.rsc.json
@@ -506,7 +506,7 @@ Build Completed in .vercel/output [11s]
         {
           "type": "header",
           "key": "next-action",
-          "value": "00d1e658f27f949beb99163c3654c9fa326684dec6"
+          "value": "0073eaf7085956bb898cbffb5006424d44f95dbba8"
         }
       ],
       "transforms": [
@@ -526,7 +526,7 @@ Build Completed in .vercel/output [11s]
         {
           "type": "header",
           "key": "next-action",
-          "value": "4021244aa9b0796ba2656231e9a43d459bb06a911b"
+          "value": "40f782f59daaeb6ecbeafa336a9f16d4773b540bfb"
         }
       ],
       "transforms": [
@@ -546,7 +546,7 @@ Build Completed in .vercel/output [11s]
         {
           "type": "header",
           "key": "next-action",
-          "value": "6080f5c6ed0121673b451b868cf2b06b2d5ec10359"
+          "value": "60dc88aa6e8fa15aa4faae42239fde65d08634586a"
         }
       ],
       "transforms": [
@@ -566,7 +566,7 @@ Build Completed in .vercel/output [11s]
         {
           "type": "header",
           "key": "next-action",
-          "value": "4036923ac7504e3bd14fc3f2aee388b99fa3182ae8"
+          "value": "407799aac826c769f0e7f0cc352e9463669daaa027"
         }
       ],
       "transforms": [
@@ -586,7 +586,7 @@ Build Completed in .vercel/output [11s]
         {
           "type": "header",
           "key": "next-action",
-          "value": "4094aae86374e8341360a3891622bc395c5ae4dd32"
+          "value": "40c2d72808c8d05ce7f1327ed7a2367a5767e03ebc"
         }
       ],
       "transforms": [
@@ -606,7 +606,7 @@ Build Completed in .vercel/output [11s]
         {
           "type": "header",
           "key": "next-action",
-          "value": "40f217a1e84c4b6dafdf9c79ef440c2231356602d1"
+          "value": "401353f4992c3d1435699870c0e77ddbeab71dc0a1"
         }
       ],
       "transforms": [
@@ -626,7 +626,7 @@ Build Completed in .vercel/output [11s]
         {
           "type": "header",
           "key": "next-action",
-          "value": "40571bb2d057993a55f73ddce3d457e08ecc769d99"
+          "value": "4010919c4b95f5f8bc99a6a4c584e803d9021b0332"
         }
       ],
       "transforms": [
@@ -646,7 +646,7 @@ Build Completed in .vercel/output [11s]
         {
           "type": "header",
           "key": "next-action",
-          "value": "60b08036be4544eb9c4c7d0bc245c7fb39dd3ce292"
+          "value": "60de7f004a953f95a9a9f15e3df808c967c3130216"
         }
       ],
       "transforms": [
@@ -666,7 +666,7 @@ Build Completed in .vercel/output [11s]
         {
           "type": "header",
           "key": "next-action",
-          "value": "4044ad3e9d607c8cfda540ccc3c40dee7de6a75c8b"
+          "value": "40e6db97811c2a26e6d34968643995578fff9c1796"
         }
       ],
       "transforms": [
@@ -686,7 +686,7 @@ Build Completed in .vercel/output [11s]
         {
           "type": "header",
           "key": "next-action",
-          "value": "00be930135021da43172ca6c16b34e4d752d03c166"
+          "value": "0030f6dd7ab2785ef883fdbdf8b2b52e5bd0d8585c"
         }
       ],
       "transforms": [
@@ -706,7 +706,7 @@ Build Completed in .vercel/output [11s]
         {
           "type": "header",
           "key": "next-action",
-          "value": "40f37b1c1c12b8d98d9691451e6acaa4ea7aeff8cb"
+          "value": "4084ae716c0c6c71f956f4527ec799cb46f644cf9b"
         }
       ],
       "transforms": [
@@ -726,7 +726,7 @@ Build Completed in .vercel/output [11s]
         {
           "type": "header",
           "key": "next-action",
-          "value": "0081ae83e9cf5dfbdf26803707b88d13e25ad5f8e9"
+          "value": "000b93045f70d56726bc261dca681de2645fc4c278"
         }
       ],
       "transforms": [
@@ -746,7 +746,7 @@ Build Completed in .vercel/output [11s]
         {
           "type": "header",
           "key": "next-action",
-          "value": "6018ddfb4d7a09c62514dc99d25b394eb6153062f9"
+          "value": "60f921d1ffb08f6bb7e046d3e864c18bfad87575f7"
         }
       ],
       "transforms": [
@@ -766,7 +766,7 @@ Build Completed in .vercel/output [11s]
         {
           "type": "header",
           "key": "next-action",
-          "value": "405b6e3e798445518989c7a80716a1129194ab7a48"
+          "value": "407bfae2c5594e1ffa8d53167a9b60f87b90da0bc7"
         }
       ],
       "transforms": [
@@ -786,7 +786,7 @@ Build Completed in .vercel/output [11s]
         {
           "type": "header",
           "key": "next-action",
-          "value": "40fba00e25216de9a8a01663dd20a44fd0351c0cf8"
+          "value": "40d7077b0d92130cb8e600aa351f22b467850e9964"
         }
       ],
       "transforms": [
@@ -806,7 +806,7 @@ Build Completed in .vercel/output [11s]
         {
           "type": "header",
           "key": "next-action",
-          "value": "404e9738fc4193c4a8571d8a83e2603125c72509a4"
+          "value": "40e2a8e1075b10fdea284962c97544d743a2d36394"
         }
       ],
       "transforms": [
@@ -826,7 +826,7 @@ Build Completed in .vercel/output [11s]
         {
           "type": "header",
           "key": "next-action",
-          "value": "406e9f95108011b25f454d263c08c50c9c89256f55"
+          "value": "40324d1cdb24e2bd3dea2c683bb09e6b6c4f971904"
         }
       ],
       "transforms": [
@@ -846,7 +846,7 @@ Build Completed in .vercel/output [11s]
         {
           "type": "header",
           "key": "next-action",
-          "value": "40ab43b4a91dfa928b44ab9b4fbec8f678364c211f"
+          "value": "4025266fb90bd866438b3fa0bed49563ec8cd5845e"
         }
       ],
       "transforms": [
@@ -866,7 +866,7 @@ Build Completed in .vercel/output [11s]
         {
           "type": "header",
           "key": "next-action",
-          "value": "40b61a89e14535b480e86b59b433404f3ec55d296b"
+          "value": "4007acc9a2133bbf28bcb28c1902756223e96b70ef"
         }
       ],
       "transforms": [
@@ -886,7 +886,7 @@ Build Completed in .vercel/output [11s]
         {
           "type": "header",
           "key": "next-action",
-          "value": "403ad8a6e90cca3d9d272dddac8a7bc8e2446b9958"
+          "value": "404a5a07874fb9d285df53973131c48a7a2dbd52ad"
         }
       ],
       "transforms": [
@@ -906,7 +906,7 @@ Build Completed in .vercel/output [11s]
         {
           "type": "header",
           "key": "next-action",
-          "value": "60e59d7c1f29f7af9d29d036d3e2177805416c4726"
+          "value": "60dffe70e3794b457923243bbf3a2c069ab4c5a724"
         }
       ],
       "transforms": [
@@ -926,7 +926,7 @@ Build Completed in .vercel/output [11s]
         {
           "type": "header",
           "key": "next-action",
-          "value": "406404c74e93a7d0f4ebce09aced636c14394cd39d"
+          "value": "40e20b2d4a913419e773477d3594345627b570ae80"
         }
       ],
       "transforms": [
@@ -946,7 +946,7 @@ Build Completed in .vercel/output [11s]
         {
           "type": "header",
           "key": "next-action",
-          "value": "4072d91a4388c4be6d65ca8e018ad5f7b90f6a138b"
+          "value": "4033d44c7c80cda2175e52dfb4a42a44c142b84930"
         }
       ],
       "transforms": [
@@ -966,7 +966,7 @@ Build Completed in .vercel/output [11s]
         {
           "type": "header",
           "key": "next-action",
-          "value": "403f98cc264796c57234d376a82c35579fdbcb3a80"
+          "value": "401fae0fb939a7d85eaf1245a080070d9d8e3c18d3"
         }
       ],
       "transforms": [
@@ -986,7 +986,7 @@ Build Completed in .vercel/output [11s]
         {
           "type": "header",
           "key": "next-action",
-          "value": "40668930a2f1467aacfda56a6d1f1250662c4d70c6"
+          "value": "4054a6e77b256147f690d79a84a3b67384d4018612"
         }
       ],
       "transforms": [
@@ -1007,7 +1007,7 @@ Build Completed in .vercel/output [11s]
         {
           "type": "header",
           "key": "x-prerender-revalidate",
-          "value": "9cbf4d26a8df04a0e66026f65965c836"
+          "value": "1d2018764c0896e7ffa2bb64640bcc84"
         }
       ],
       "middlewarePath": "/_middleware",
@@ -1135,7 +1135,7 @@ Build Completed in .vercel/output [11s]
       "handle": "hit"
     },
     {
-      "src": "/_next/static/(?:[^/]+/pages|pages|chunks|runtime|css|image|media|ITgYYAqXL2gn2m48pElkh)/.+",
+      "src": "/_next/static/(?:[^/]+/pages|pages|chunks|runtime|css|image|media|KfpETs3amhvbpKep_xjja)/.+",
       "headers": {
         "cache-control": "public,max-age=31536000,immutable"
       },
@@ -1275,14 +1275,14 @@ Build Completed in .vercel/output [11s]
 Vercel CLI 65.14.0
 Retrieving project…
 Deploying vy-8173/link-portal
-Uploading [--------------------] (0.0B/3.4MB)
-Uploading [=====---------------] (876.7KB/3.4MB)
-Uploading [==========----------] (1.7MB/3.4MB)
-Uploading [===============-----] (2.5MB/3.4MB)
-Uploading [====================] (3.4MB/3.4MB)
-  Inspect         https://vercel.com/vy-8173/link-portal/CXJioPwSEy85dj7zGD4BdE27wh6h
-  Production      https://link-portal-5abdzvpza-vy-8173.vercel.app
-https://link-portal-5abdzvpza-vy-8173.vercel.appBuilding…
+Uploading [--------------------] (0.0B/2.6MB)
+Uploading [=====---------------] (656.2KB/2.6MB)
+Uploading [==========----------] (1.3MB/2.6MB)
+Uploading [===============-----] (1.9MB/2.6MB)
+Uploading [====================] (2.6MB/2.6MB)
+  Inspect         https://vercel.com/vy-8173/link-portal/DiMsU4MDvMihPJhZ9VNcEREkp1fF
+  Production      https://link-portal-1nenm7hlq-vy-8173.vercel.app
+https://link-portal-1nenm7hlq-vy-8173.vercel.appBuilding…
 Building…
 Running build in Washington, D.C., USA (East) – iad1
 Build machine configuration: 2 cores, 8 GB
@@ -1292,7 +1292,7 @@ Downloading 824 deployment files...
 Using prebuilt build artifacts from .vercel/output
 Learn more: https://vercel.link/build-output-api
 Deploying outputs...
-[2K[1A[2K[G  Production      https://link-portal-5abdzvpza-vy-8173.vercel.app
+[2K[1A[2K[G  Production      https://link-portal-1nenm7hlq-vy-8173.vercel.app
 Completing…
 ▲ Aliased         https://quanlydachucnang.vercel.app
 
@@ -1304,20 +1304,20 @@ Next steps:
 - Check the production response:
   vercel curl https://quanlydachucnang.vercel.app
 - View build logs:
-  vercel inspect link-portal-5abdzvpza-vy-8173.vercel.app --logs
+  vercel inspect link-portal-1nenm7hlq-vy-8173.vercel.app --logs
 - Create a new deployment from the same source:
-  vercel redeploy link-portal-5abdzvpza-vy-8173.vercel.app
-DEPLOY_URL: https://link-portal-5abdzvpza-vy-8173.vercel.app
+  vercel redeploy link-portal-1nenm7hlq-vy-8173.vercel.app
+DEPLOY_URL: https://link-portal-1nenm7hlq-vy-8173.vercel.app
 
 === 6. Setting Aliases ===
 Vercel CLI 65.14.0
-> Assigning alias quanlydachucnang.vercel.app to https://link-portal-5abdzvpza-vy-8173.vercel.app
+> Assigning alias quanlydachucnang.vercel.app to https://link-portal-1nenm7hlq-vy-8173.vercel.app
 Creating alias
-> Success! https://quanlydachucnang.vercel.app now points to https://link-portal-5abdzvpza-vy-8173.vercel.app [759ms]
+> Success! https://quanlydachucnang.vercel.app now points to https://link-portal-1nenm7hlq-vy-8173.vercel.app [521ms]
 Vercel CLI 65.14.0
-> Assigning alias link-portal-vy-8173.vercel.app to https://link-portal-5abdzvpza-vy-8173.vercel.app
+> Assigning alias link-portal-vy-8173.vercel.app to https://link-portal-1nenm7hlq-vy-8173.vercel.app
 Creating alias
-> Success! https://link-portal-vy-8173.vercel.app now points to https://link-portal-5abdzvpza-vy-8173.vercel.app [695ms]
+> Success! https://link-portal-vy-8173.vercel.app now points to https://link-portal-1nenm7hlq-vy-8173.vercel.app [462ms]
 ! link-portal-vy-8173.vercel.app is assigned to this deployment only, so it won't follow future production deployments.
   Deployment Protection (Vercel Authentication) covers it, so it isn't public.
 
@@ -1325,27 +1325,27 @@ Creating alias
     `vercel domains add link-portal-vy-8173.vercel.app link-portal`
 
 === 7. Connectivity Tests ===
---- Test DEPLOY_URL (https://link-portal-5abdzvpza-vy-8173.vercel.app) ---
+--- Test DEPLOY_URL (https://link-portal-1nenm7hlq-vy-8173.vercel.app) ---
 HTTP/2 302 
 cache-control: no-store, max-age=0
 content-type: text/plain
-date: Wed, 11 Nov 2026 03:22:24 GMT
-location: https://vercel.com/sso-api?url=https%3A%2F%2Flink-portal-5abdzvpza-vy-8173.vercel.app%2F&nonce=18afbc309fd83be4f42968c649c8bddee77fb713c1da0ba3321527192dcb2410
+date: Wed, 11 Nov 2026 04:00:00 GMT
+location: https://vercel.com/sso-api?url=https%3A%2F%2Flink-portal-1nenm7hlq-vy-8173.vercel.app%2F&nonce=21d8992c656c9f8327f43b7d6a90ff133dd77140f583e7e76e7179d479362362
 server: Vercel
-set-cookie: _vercel_sso_nonce=8d4934374007836ee71f8be0521623da33bc73e4cd80ee1a; Max-Age=3600; Path=/; Secure; HttpOnly; SameSite=Lax
+set-cookie: _vercel_sso_nonce=9c82fcc123c0578a4fb6405e26d2019920bf82f50a52394d; Max-Age=3600; Path=/; Secure; HttpOnly; SameSite=Lax
 strict-transport-security: max-age=63072000; includeSubDomains; preload
 x-frame-options: DENY
 x-robots-tag: noindex
-x-vercel-id: iad1::jkg85-1794367344240-a66ca2502c7c
+x-vercel-id: pdx1::9m897-1794369600315-8ca234c8422c
 
 HTTP/2 307 
 age: 0
 cache-control: public, max-age=0, must-revalidate
 content-security-policy: default-src 'self' vercel.com *.vercel.com *.vercel.sh vercel.live;script-src 'self' vercel.com *.vercel.com *.vercel.sh vercel.live va.vercel-scripts.com chrome-extension://* https://vercel.live *.fides-cdn.ethyca.com si-next.vercel-scripts.com 'unsafe-eval' 'unsafe-inline' blob: https://*.stripe.com https://accounts.google.com/gsi/client *.googleapis.com cdp.vercel.com;style-src 'self' vercel.com *.vercel.com *.vercel.sh vercel.live https://vercel.live 'unsafe-inline' https://accounts.google.com/gsi/style https://fonts.googleapis.com;img-src 'self' blob: data: vercel.com *.vercel.sh vercel.live https://vercel.live https://vercel.com *.vercel.com https://flag.vercel.app https://avatars.githubusercontent.com https://cdn.jsdelivr.net https://prod-uk-services-workspac-workspacefilespublicbuck-vs4gjqpqjkh6.s3.amazonaws.com https://api-frameworks.vercel.sh https://api.vercel.com https://github.com https://images.ctfassets.net https://og-image.vercel.app https://cdn.cosmicjs.com https://cdn.raster.app https://img.youtube.com https://raw.githubusercontent.com https://www.datocms-assets.com https://t3.gstatic.com https://dmmcy0pwk6bqi.cloudfront.net https://basehub.earth https://7nyt0uhk7sse4zvn.public.blob.vercel-storage.com https://lishhsx6kmthaacj.public.blob.vercel-storage.com https://myyiyhf3s6nwxrpk.public.blob.vercel-storage.com https://fvqcrhkhgatlyl2m.public.blob.vercel-storage.com https://py8fhxnkzwtsqdo9.public.blob.vercel-storage.com https://*.stripe.com *.public.blob.vercel-storage.com *.private.blob.vercel-storage.com;media-src 'self' vercel.com *.vercel.com *.vercel.sh vercel.live blob: data: videos.ctfassets.net user-images.githubusercontent.com *.public.blob.vercel-storage.com *.private.blob.vercel-storage.com;connect-src data: https://vercel.live wss://ws-us3.pusher.com * cdp.vercel.com;font-src 'self' vercel.live https://vercel.live https://assets.vercel.com *.vercel.sh *.vercel.com https://fonts.gstatic.com;child-src 'self' vercel.com *.vercel.com *.vercel.sh vercel.live *.tmp.now https://www.youtube.com https://*.stripe.com https://accounts.google.com/gsi/;worker-src 'self' blob:;frame-ancestors 'self' https://vercel.com https://app.contentful.com https://*.contentful.com https://*.vercel.sh https://*.vercel.com;
 cross-origin-opener-policy: restrict-properties
-date: Wed, 11 Nov 2026 03:22:24 GMT
+date: Wed, 11 Nov 2026 04:00:00 GMT
 feature-policy: fullscreen 'self'; camera 'none'
-location: /login?next=%2Fsso-api%3Furl%3Dhttps%253A%252F%252Flink-portal-5abdzvpza-vy-8173.vercel.app%252F%26nonce%3D18afbc309fd83be4f42968c649c8bddee77fb713c1da0ba3321527192dcb2410
+location: /login?next=%2Fsso-api%3Furl%3Dhttps%253A%252F%252Flink-portal-1nenm7hlq-vy-8173.vercel.app%252F%26nonce%3D21d8992c656c9f8327f43b7d6a90ff133dd77140f583e7e76e7179d479362362
 --- Content of DEPLOY_URL ---
 Protected by Vercel Authentication
 To access this deployment with an authenticated Vercel CLI, run: vercel curl <deployment-url>
@@ -1358,7 +1358,7 @@ age: 0
 cache-control: public, max-age=0, must-revalidate
 content-disposition: inline
 content-type: text/html; charset=utf-8
-date: Wed, 11 Nov 2026 03:22:25 GMT
+date: Wed, 11 Nov 2026 04:00:01 GMT
 link: </_next/static/media/07a39a8a4660cc7c-s.p.0r6juujl39pe6.woff2>; rel=preload; as="font"; crossorigin=""; type="font/woff2", </_next/static/media/605ce01b664af129-s.p.0wgildi0cnwt9.woff2>; rel=preload; as="font"; crossorigin=""; type="font/woff2"
 server: Vercel
 strict-transport-security: max-age=63072000; includeSubDomains; preload
@@ -1367,5 +1367,5 @@ x-matched-path: /
 x-nextjs-prerender: 1
 x-nextjs-stale-time: 300
 x-vercel-cache: PRERENDER
-x-vercel-id: iad1::x5n8l-1794367345042-74db94950c2c
+x-vercel-id: pdx1::s2pbk-1794369601028-01252e64c56d
 
