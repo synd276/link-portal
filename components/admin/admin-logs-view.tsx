@@ -22,6 +22,7 @@ import {
   ChevronRight,
   Database,
   Terminal,
+  Sparkles,
 } from "lucide-react";
 import { toast } from "sonner";
 import { EventLog, EventLogLevel, EventLogStats } from "@/types/database";
@@ -86,12 +87,52 @@ export function AdminLogsView({
   const [selectedLog, setSelectedLog] = React.useState<EventLog | null>(null);
   const [copiedJson, setCopiedJson] = React.useState(false);
   const [copiedSql, setCopiedSql] = React.useState(false);
+  const [copiedAiId, setCopiedAiId] = React.useState<string | null>(null);
 
   const [clearDialogOpen, setClearDialogOpen] = React.useState(false);
   const [isClearing, setIsClearing] = React.useState(false);
 
   const [deleteTarget, setDeleteTarget] = React.useState<EventLog | null>(null);
   const [isDeleting, setIsDeleting] = React.useState(false);
+
+  const handleCopyForAi = (log: EventLog | null) => {
+    if (!log) return;
+    const isError = log.level === "error";
+    const title = isError ? "LỖI HỆ THỐNG CẦN SỬA CHỮA" : "SỰ KIỆN HỆ THỐNG CẦN PHÂN TÍCH";
+    const detailsStr = log.details
+      ? JSON.stringify(log.details, null, 2)
+      : "Không có dữ liệu chi tiết kèm theo";
+
+    const prompt = [
+      `### [BÁO CÁO ${title} - LINKPORTAL]`,
+      `- **ID sự kiện**: ${log.id}`,
+      `- **Thời gian**: ${formatDateTime(log.created_at)} (${formatRelativeTime(log.created_at)})`,
+      `- **Mức độ (Level)**: ${log.level.toUpperCase()}`,
+      `- **Phân loại (Category)**: ${log.category}`,
+      `- **Hành động (Action)**: ${log.action}`,
+      `- **Đối tượng (Entity)**: ${log.entity_type || "Hệ thống"}${log.entity_id ? ` (ID: ${log.entity_id})` : ""}`,
+      `- **Tác nhân**: ${log.user_name || "Hệ thống"}${log.user_email ? ` (${log.user_email})` : ""}${log.ip_address ? ` - IP: ${log.ip_address}` : ""}`,
+      `- **Nội dung / Mô tả sự cố**: ${log.message}`,
+      "",
+      "#### Dữ liệu chi tiết kỹ thuật / Debug Context / Stack Trace:",
+      "```json",
+      detailsStr,
+      "```",
+      "",
+      "---",
+      "### YÊU CẦU DÀNH CHO AI:",
+      "1. **Phân tích nguyên nhân**: Đọc kỹ thông điệp lỗi và dữ liệu kỹ thuật ở trên để tìm ra nguyên nhân gốc rễ (Root Cause).",
+      "2. **Xác định vị trí code**: Xác định file, hàm hoặc Server Action / Component liên quan trong dự án LinkPortal (Next.js 16 App Router, Supabase, TypeScript, Tailwind CSS).",
+      "3. **Giải pháp khắc phục**: Đưa ra hướng giải quyết và cung cấp đoạn mã khắc phục chi tiết để sửa lỗi này.",
+    ].join("\n");
+
+    navigator.clipboard.writeText(prompt);
+    setCopiedAiId(log.id);
+    toast.success("Đã sao chép dữ liệu và prompt cho AI sửa lỗi!");
+    setTimeout(() => {
+      setCopiedAiId((current) => (current === log.id ? null : current));
+    }, 2500);
+  };
 
   React.useEffect(() => {
     const timer = setTimeout(() => {
@@ -611,7 +652,7 @@ create policy "event_logs_delete_admin" on public.event_logs for delete using (c
                 <th className="py-3 px-4">Hành động</th>
                 <th className="py-3 px-4">Nội dung sự kiện</th>
                 <th className="py-3 px-4">Tác nhân</th>
-                <th className="py-3 px-4 text-right">Chi tiết</th>
+                <th className="py-3 px-4 text-right">Thao tác</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-border">
@@ -629,6 +670,7 @@ create policy "event_logs_delete_admin" on public.event_logs for delete using (c
                 </tr>
               ) : (
                 logs.map((log) => {
+                  const isCopied = copiedAiId === log.id;
                   return (
                     <tr
                       key={log.id}
@@ -702,11 +744,39 @@ create policy "event_logs_delete_admin" on public.event_logs for delete using (c
                         </div>
                       </td>
 
+                      {/* Row Actions */}
                       <td
                         className="py-3 px-4 align-top text-right whitespace-nowrap"
                         onClick={(e) => e.stopPropagation()}
                       >
-                        <div className="flex items-center justify-end gap-1">
+                        <div className="flex items-center justify-end gap-1.5">
+                          {/* Quick Copy for AI Button */}
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            onClick={() => handleCopyForAi(log)}
+                            className={`h-7 px-2 text-xs font-medium gap-1 transition-all shadow-2xs ${
+                              isCopied
+                                ? "bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 border-emerald-500/40"
+                                : log.level === "error"
+                                ? "border-destructive/30 text-destructive hover:bg-destructive/10"
+                                : "border-amber-500/30 text-amber-600 dark:text-amber-400 hover:bg-amber-500/10"
+                            }`}
+                            title="Sao chép toàn bộ dữ liệu & prompt cho AI sửa lỗi"
+                          >
+                            {isCopied ? (
+                              <>
+                                <Check className="h-3.5 w-3.5 text-emerald-600 dark:text-emerald-400" />
+                                <span className="hidden sm:inline">Đã chép</span>
+                              </>
+                            ) : (
+                              <>
+                                <Sparkles className="h-3.5 w-3.5 text-amber-500" />
+                                <span className="hidden sm:inline">Copy cho AI</span>
+                              </>
+                            )}
+                          </Button>
+
                           <Button
                             variant="ghost"
                             size="icon"
@@ -716,6 +786,7 @@ create policy "event_logs_delete_admin" on public.event_logs for delete using (c
                           >
                             <Eye className="h-3.5 w-3.5" />
                           </Button>
+
                           <Button
                             variant="ghost"
                             size="icon"
@@ -772,9 +843,32 @@ create policy "event_logs_delete_admin" on public.event_logs for delete using (c
       <Dialog open={Boolean(selectedLog)} onOpenChange={(open) => !open && setSelectedLog(null)}>
         <DialogContent className="max-w-2xl max-h-[85vh] flex flex-col p-0 overflow-hidden">
           <DialogHeader className="p-6 pb-4 border-b">
-            <div className="flex items-center gap-2.5">
-              {selectedLog && renderLevelBadge(selectedLog.level)}
-              <DialogTitle className="text-lg font-bold">Chi tiết sự kiện nhật ký</DialogTitle>
+            <div className="flex items-center justify-between gap-3">
+              <div className="flex items-center gap-2.5">
+                {selectedLog && renderLevelBadge(selectedLog.level)}
+                <DialogTitle className="text-lg font-bold">Chi tiết sự kiện nhật ký</DialogTitle>
+              </div>
+
+              {/* Quick AI button in header */}
+              {selectedLog && (
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => handleCopyForAi(selectedLog)}
+                  className={`h-8 px-2.5 text-xs font-medium gap-1.5 ${
+                    copiedAiId === selectedLog.id
+                      ? "bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 border-emerald-500/40"
+                      : "border-amber-500/40 text-amber-700 dark:text-amber-300 hover:bg-amber-500/10"
+                  }`}
+                >
+                  {copiedAiId === selectedLog.id ? (
+                    <Check className="h-3.5 w-3.5 text-emerald-600" />
+                  ) : (
+                    <Sparkles className="h-3.5 w-3.5 text-amber-500" />
+                  )}
+                  {copiedAiId === selectedLog.id ? "Đã chép prompt AI" : "Copy cho AI"}
+                </Button>
+              )}
             </div>
             <DialogDescription className="text-xs font-mono text-muted-foreground mt-1">
               ID: {selectedLog?.id}
@@ -847,20 +941,31 @@ create policy "event_logs_delete_admin" on public.event_logs for delete using (c
               <div className="space-y-1.5">
                 <div className="flex items-center justify-between">
                   <p className="font-semibold text-foreground text-xs">Dữ liệu đối tượng / Stack trace (JSON)</p>
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    onClick={() => {
-                      navigator.clipboard.writeText(JSON.stringify(selectedLog.details, null, 2));
-                      setCopiedJson(true);
-                      toast.success("Đã sao chép chi tiết JSON");
-                      setTimeout(() => setCopiedJson(false), 2000);
-                    }}
-                    className="h-7 text-xs gap-1"
-                  >
-                    {copiedJson ? <Check className="h-3 w-3 text-emerald-600" /> : <Copy className="h-3 w-3" />}
-                    {copiedJson ? "Đã chép" : "Sao chép JSON"}
-                  </Button>
+                  <div className="flex items-center gap-1.5">
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={() => handleCopyForAi(selectedLog)}
+                      className="h-7 text-xs gap-1 text-amber-600 dark:text-amber-400 hover:bg-amber-500/10"
+                    >
+                      <Sparkles className="h-3 w-3 text-amber-500" />
+                      Copy cho AI
+                    </Button>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={() => {
+                        navigator.clipboard.writeText(JSON.stringify(selectedLog.details, null, 2));
+                        setCopiedJson(true);
+                        toast.success("Đã sao chép chi tiết JSON");
+                        setTimeout(() => setCopiedJson(false), 2000);
+                      }}
+                      className="h-7 text-xs gap-1"
+                    >
+                      {copiedJson ? <Check className="h-3 w-3 text-emerald-600" /> : <Copy className="h-3 w-3" />}
+                      {copiedJson ? "Đã chép" : "Sao chép JSON"}
+                    </Button>
+                  </div>
                 </div>
                 <pre className="p-4 rounded-xl bg-muted/60 border font-mono text-[11px] overflow-x-auto text-foreground max-h-60 whitespace-pre-wrap">
                   {JSON.stringify(selectedLog.details, null, 2)}
@@ -869,7 +974,23 @@ create policy "event_logs_delete_admin" on public.event_logs for delete using (c
             )}
           </div>
 
-          <DialogFooter className="p-4 border-t bg-muted/20">
+          <DialogFooter className="p-4 border-t bg-muted/20 flex sm:items-center sm:justify-between gap-2">
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => handleCopyForAi(selectedLog)}
+              className="text-xs gap-1.5 border-amber-500/40 text-amber-700 dark:text-amber-300 hover:bg-amber-500/10"
+            >
+              {copiedAiId === selectedLog?.id ? (
+                <Check className="h-3.5 w-3.5 text-emerald-600" />
+              ) : (
+                <Sparkles className="h-3.5 w-3.5 text-amber-500" />
+              )}
+              {copiedAiId === selectedLog?.id
+                ? "Đã sao chép prompt AI"
+                : "Sao chép toàn bộ prompt cho AI sửa lỗi"}
+            </Button>
+
             <Button variant="outline" size="sm" onClick={() => setSelectedLog(null)} className="text-xs">
               Đóng
             </Button>
