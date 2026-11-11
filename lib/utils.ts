@@ -47,7 +47,8 @@ export function formatDateTime(dateString: string | null | undefined): string {
 
 export function formatRelativeTime(dateString: string | null | undefined): string {
   if (!dateString) return "";
-  const now = Date.now();
+  // Tránh gọi Date.now() khi prerender trên server để không vi phạm Next.js PPR
+  const now = typeof window !== "undefined" ? Date.now() : new Date(dateString).getTime();
   const past = new Date(dateString).getTime();
   const diffSec = Math.floor((now - past) / 1000);
 

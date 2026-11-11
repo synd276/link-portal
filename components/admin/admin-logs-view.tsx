@@ -683,9 +683,7 @@ create policy "event_logs_delete_admin" on public.event_logs for delete using (c
 
                       <td className="py-3 px-4 align-top whitespace-nowrap">
                         <div className="flex flex-col">
-                          <span className="font-medium text-xs text-foreground">
-                            {formatRelativeTime(log.created_at)}
-                          </span>
+                          <span className="font-medium text-xs text-foreground" suppressHydrationWarning>{formatRelativeTime(log.created_at)}</span>
                           <span className="text-[11px] text-muted-foreground font-mono">
                             {formatDateTime(log.created_at)}
                           </span>

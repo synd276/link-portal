@@ -30,7 +30,7 @@ export const DEFAULT_EVENT_LOGS: EventLog[] = [
     user_email: null,
     user_name: "Hệ thống",
     ip_address: "127.0.0.1",
-    created_at: new Date(Date.now() - 3600000 * 24).toISOString(),
+    created_at: "2026-11-10T09:37:00.000Z",
   },
   {
     id: "log-seed-002",
@@ -51,7 +51,7 @@ export const DEFAULT_EVENT_LOGS: EventLog[] = [
     user_email: "admin@linkportal.local",
     user_name: "Quản trị viên Hệ thống",
     ip_address: "192.168.1.10",
-    created_at: new Date(Date.now() - 3600000 * 18).toISOString(),
+    created_at: "2026-11-10T15:37:00.000Z",
   },
   {
     id: "log-seed-003",
@@ -72,7 +72,7 @@ export const DEFAULT_EVENT_LOGS: EventLog[] = [
     user_email: "admin@linkportal.local",
     user_name: "Quản trị viên Hệ thống",
     ip_address: "192.168.1.10",
-    created_at: new Date(Date.now() - 3600000 * 12).toISOString(),
+    created_at: "2026-11-10T21:37:00.000Z",
   },
   {
     id: "log-seed-004",
@@ -91,7 +91,7 @@ export const DEFAULT_EVENT_LOGS: EventLog[] = [
     user_email: "admin@linkportal.local",
     user_name: "Quản trị viên Hệ thống",
     ip_address: "192.168.1.10",
-    created_at: new Date(Date.now() - 3600000 * 6).toISOString(),
+    created_at: "2026-11-11T03:37:00.000Z",
   },
   {
     id: "log-seed-005",
@@ -111,7 +111,7 @@ export const DEFAULT_EVENT_LOGS: EventLog[] = [
     user_email: "editor@linkportal.local",
     user_name: "Biên tập viên",
     ip_address: "192.168.1.45",
-    created_at: new Date(Date.now() - 3600000 * 3).toISOString(),
+    created_at: "2026-11-11T06:37:00.000Z",
   },
   {
     id: "log-seed-006",
@@ -131,7 +131,7 @@ export const DEFAULT_EVENT_LOGS: EventLog[] = [
     user_email: "unknown_user@portal.vn",
     user_name: "Khách",
     ip_address: "113.161.42.19",
-    created_at: new Date(Date.now() - 3600000 * 1.5).toISOString(),
+    created_at: "2026-11-11T08:07:00.000Z",
   },
   {
     id: "log-seed-007",
@@ -150,7 +150,7 @@ export const DEFAULT_EVENT_LOGS: EventLog[] = [
     user_email: "admin@linkportal.local",
     user_name: "Quản trị viên Hệ thống",
     ip_address: "192.168.1.10",
-    created_at: new Date(Date.now() - 1800000).toISOString(),
+    created_at: "2026-11-11T09:07:00.000Z",
   },
   {
     id: "log-seed-008",
@@ -169,7 +169,7 @@ export const DEFAULT_EVENT_LOGS: EventLog[] = [
     user_email: "admin@linkportal.local",
     user_name: "Quản trị viên Hệ thống",
     ip_address: "192.168.1.10",
-    created_at: new Date(Date.now() - 900000).toISOString(),
+    created_at: "2026-11-11T09:22:00.000Z",
   },
   {
     id: "log-seed-009",
@@ -189,7 +189,7 @@ export const DEFAULT_EVENT_LOGS: EventLog[] = [
     user_email: "user@linkportal.local",
     user_name: "Người dùng",
     ip_address: "192.168.1.55",
-    created_at: new Date(Date.now() - 300000).toISOString(),
+    created_at: "2026-11-11T09:32:00.000Z",
   },
 ];
 
